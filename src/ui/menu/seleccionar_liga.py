@@ -1,5 +1,3 @@
-# src/ui/menu/seleccionar_liga.py
-
 import pygame
 import settings
 import csv
