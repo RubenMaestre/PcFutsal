@@ -1,6 +1,0 @@
-player_id,player_name,team_name,age,position,overall,potential,skill_moves,preferred_foot,value_eur,wage_eur,pace,shooting,passing,dribbling,defending,physic,talent_stars
-1,Lionel Messi,Paris Saint-Germain,34,RF,93,93,4,Left,80000000,700000,85,92,91,95,35,65,5
-2,Cristiano Ronaldo,Manchester United,36,ST,91,91,5,Right,45000000,600000,87,93,82,88,35,77,5
-3,Robert Lewandowski,Bayern Munich,32,ST,92,92,4,Right,70000000,350000,78,92,78,85,42,82,5
-4,Kevin De Bruyne,Manchester City,30,CAM,91,91,4,Right,90000000,400000,76,86,93,87,64,78,5
-5,Jan Oblak,Atletico Madrid,28,GK,91,91,1,Right,75000000,300000,48,21,26,28,50,90,5

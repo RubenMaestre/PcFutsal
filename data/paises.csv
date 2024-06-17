@@ -1,0 +1,193 @@
+id_pais,nombre_pais,continente,capital,moneda,flag_path
+1,Albania,Europa,Tirana,Lek,assets/flags/albania.png
+2,Alemania,Europa,Berlín,Euro,assets/flags/germany.png
+3,Andorra,Europa,Andorra la Vella,Euro,assets/flags/andorra.png
+4,Austria,Europa,Viena,Euro,assets/flags/austria.png
+5,Bielorrusia,Europa,Minsk,Rublo bielorruso,assets/flags/belarus.png
+6,Bélgica,Europa,Bruselas,Euro,assets/flags/belgium.png
+7,Bosnia y Herzegovina,Europa,Sarajevo,Marco convertible,assets/flags/bosnia_and_herzegovina.png
+8,Bulgaria,Europa,Sofía,Lev búlgaro,assets/flags/bulgaria.png
+9,Croacia,Europa,Zagreb,Kuna,assets/flags/croatia.png
+10,Dinamarca,Europa,Copenhague,Corona danesa,assets/flags/denmark.png
+11,Eslovaquia,Europa,Bratislava,Euro,assets/flags/slovakia.png
+12,Eslovenia,Europa,Liubliana,Euro,assets/flags/slovenia.png
+13,España,Europa,Madrid,Euro,assets/flags/spain.png
+14,Estonia,Europa,Tallin,Euro,assets/flags/estonia.png
+15,Finlandia,Europa,Helsinki,Euro,assets/flags/finland.png
+16,Francia,Europa,París,Euro,assets/flags/france.png
+17,Grecia,Europa,Atenas,Euro,assets/flags/greece.png
+18,Hungría,Europa,Budapest,Forinto,assets/flags/hungary.png
+19,Islandia,Europa,Reikiavik,Corona islandesa,assets/flags/iceland.png
+20,Irlanda,Europa,Dublín,Euro,assets/flags/ireland.png
+21,Italia,Europa,Roma,Euro,assets/flags/italy.png
+22,Kosovo,Europa,Pristina,Euro,assets/flags/kosovo.png
+23,Letonia,Europa,Riga,Euro,assets/flags/latvia.png
+24,Liechtenstein,Europa,Vaduz,Franco suizo,assets/flags/liechtenstein.png
+25,Lituania,Europa,Vilna,Euro,assets/flags/lithuania.png
+26,Luxemburgo,Europa,Luxemburgo,Euro,assets/flags/luxembourg.png
+27,Malta,Europa,La Valeta,Euro,assets/flags/malta.png
+28,Moldavia,Europa,Chisináu,Leu moldavo,assets/flags/moldova.png
+29,Mónaco,Europa,Mónaco,Euro,assets/flags/monaco.png
+30,Montenegro,Europa,Podgorica,Euro,assets/flags/montenegro.png
+31,Noruega,Europa,Oslo,Corona noruega,assets/flags/norway.png
+32,Países Bajos,Europa,Ámsterdam,Euro,assets/flags/netherlands.png
+33,Polonia,Europa,Varsovia,Złoty,assets/flags/poland.png
+34,Portugal,Europa,Lisboa,Euro,assets/flags/portugal.png
+35,Reino Unido,Europa,Londres,Libra esterlina,assets/flags/united_kingdom.png
+36,República Checa,Europa,Praga,Corona checa,assets/flags/czech_republic.png
+37,Rumania,Europa,Bucarest,Leu rumano,assets/flags/romania.png
+38,Rusia,Europa,Moscú,Rublo ruso,assets/flags/russia.png
+39,San Marino,Europa,San Marino,Euro,assets/flags/san_marino.png
+40,Serbia,Europa,Belgrado,Dinar serbio,assets/flags/serbia.png
+41,Suecia,Europa,Estocolmo,Corona sueca,assets/flags/sweden.png
+42,Suiza,Europa,Berna,Franco suizo,assets/flags/switzerland.png
+43,Ucrania,Europa,Kiev,Hryvnia,assets/flags/ukraine.png
+44,Vaticano,Europa,Ciudad del Vaticano,Euro,assets/flags/vatican_city.png
+45,Antigua y Barbuda,América,Saint John's,Dólar del Caribe Oriental,assets/flags/antigua_and_barbuda.png
+46,Argentina,América,Buenos Aires,Peso argentino,assets/flags/argentina.png
+47,Bahamas,América,Nasáu,Dólar bahameño,assets/flags/bahamas.png
+48,Barbados,América,Bridgetown,Dólar de Barbados,assets/flags/barbados.png
+49,Belice,América,Ciudad de Belice,Dólar de Belice,assets/flags/belize.png
+50,Bolivia,América,Sucre,Peso boliviano,assets/flags/bolivia.png
+51,Brasil,América,Brasilia,Real brasileño,assets/flags/brazil.png
+52,Canadá,América,Ottawa,Dólar canadiense,assets/flags/canada.png
+53,Chile,América,Santiago,Peso chileno,assets/flags/chile.png
+54,Colombia,América,Bogotá,Peso colombiano,assets/flags/colombia.png
+55,Costa Rica,América,San José,Colón costarricense,assets/flags/costa_rica.png
+56,Cuba,América,La Habana,Peso cubano,assets/flags/cuba.png
+57,Dominica,América,Roseau,Dólar del Caribe Oriental,assets/flags/dominica.png
+58,Ecuador,América,Quito,Dólar estadounidense,assets/flags/ecuador.png
+59,El Salvador,América,San Salvador,Dólar estadounidense,assets/flags/el_salvador.png
+60,Granada,América,Saint George's,Dólar del Caribe Oriental,assets/flags/grenada.png
+61,Guatemala,América,Ciudad de Guatemala,Quetzal,assets/flags/guatemala.png
+62,Haití,América,Puerto Príncipe,Gourde haitiano,assets/flags/haiti.png
+63,Honduras,América,Tegucigalpa,Lempira,assets/flags/honduras.png
+64,Jamaica,América,Kingston,Dólar jamaicano,assets/flags/jamaica.png
+65,México,América,Ciudad de México,Peso mexicano,assets/flags/mexico.png
+66,Nicaragua,América,Managua,Córdoba nicaragüense,assets/flags/nicaragua.png
+67,Panamá,América,Ciudad de Panamá,Balboa,assets/flags/panama.png
+68,Paraguay,América,Asunción,Guaraní paraguayo,assets/flags/paraguay.png
+69,Perú,América,Lima,Sol peruano,assets/flags/peru.png
+70,República Dominicana,América,Santo Domingo,Peso dominicano,assets/flags/dominican_republic.png
+71,San Cristóbal y Nieves,América,Basseterre,Dólar del Caribe Oriental,assets/flags/saint_kitts_and_nevis.png
+72,San Vicente y las Granadinas,América,Kingstown,Dólar del Caribe Oriental,assets/flags/saint_vincent_and_the_grenadines.png
+73,Santa Lucía,América,Castries,Dólar del Caribe Oriental,assets/flags/saint_lucia.png
+74,Surinam,América,Paramaribo,Dólar surinamés,assets/flags/suriname.png
+75,Trinidad y Tobago,América,Puerto España,Dólar de Trinidad y Tobago,assets/flags/trinidad_and_tobago.png
+76,Uruguay,América,Montevideo,Peso uruguayo,assets/flags/uruguay.png
+77,Venezuela,América,Caracas,Bolívar soberano,assets/flags/venezuela.png
+78,Argelia,África,Argel,Dinar argelino,assets/flags/algeria.png
+79,Angola,África,Luanda,Kwanza,assets/flags/angola.png
+80,Benín,África,Porto Novo,Franco CFA de África Occidental,assets/flags/benin.png
+81,Botsuana,África,Gaborone,Pula,assets/flags/botswana.png
+82,Burkina Faso,África,Uagadugú,Franco CFA de África Occidental,assets/flags/burkina_faso.png
+83,Burundi,África,Gitega,Franco burundés,assets/flags/burundi.png
+84,Cabo Verde,África,Praia,Escudo caboverdiano,assets/flags/cape_verde.png
+85,Camerún,África,Yaundé,Franco CFA de África Central,assets/flags/cameroon.png
+86,Chad,África,Yamena,Franco CFA de África Central,assets/flags/chad.png
+87,Comoras,África,Moroni,Franc comorense,assets/flags/comoros.png
+88,Congo,África,Brazzaville,Franco CFA de África Central,assets/flags/congo.png
+89,Costa de Marfil,África,Yamusukro,Franco CFA de África Occidental,assets/flags/cote_divoire.png
+90,Egipto,África,El Cairo,Libra egipcia,assets/flags/egypt.png
+91,Eritrea,África,Asmara,Nakfa,assets/flags/eritrea.png
+92,Etiopía,África,Adís Abeba,Birr etíope,assets/flags/ethiopia.png
+93,Gabón,África,Libreville,Franco CFA de África Central,assets/flags/gabon.png
+94,Gambia,África,Banjul,Dalasi,assets/flags/gambia.png
+95,Ghana,África,Acra,Cedi ghanés,assets/flags/ghana.png
+96,Guinea,África,Conakry,Franco guineano,assets/flags/guinea.png
+97,Guinea-Bissau,África,Bissau,Franco CFA de África Occidental,assets/flags/guinea-bissau.png
+98,Guinea Ecuatorial,África,Malabo,Franco CFA de África Central,assets/flags/equatorial_guinea.png
+99,Lesoto,África,Maseru,Loti,assets/flags/lesotho.png
+100,Liberia,África,Monrovia,Dólar liberiano,assets/flags/liberia.png
+101,Libia,África,Trípoli,Dinar libio,assets/flags/libya.png
+102,Malaui,África,Lilongüe,Kwacha malauí,assets/flags/malawi.png
+103,Malí,África,Bamako,Franco CFA de África Occidental,assets/flags/mali.png
+104,Marruecos,África,Rabat,Dirham marroquí,assets/flags/morocco.png
+105,Mauricio,África,Port Louis,Rupia mauriciana,assets/flags/mauritius.png
+106,Mauritania,África,Nuakchot,Ouguiya,assets/flags/mauritania.png
+107,Mozambique,África,Maputo,Metical,assets/flags/mozambique.png
+108,Namibia,África,Windhoek,Dólar namibio,assets/flags/namibia.png
+109,Níger,África,Niamey,Franco CFA de África Occidental,assets/flags/niger.png
+110,Nigeria,África,Abuja,Naira,assets/flags/nigeria.png
+111,República Centroafricana,África,Bangui,Franco CFA de África Central,assets/flags/central_african_republic.png
+112,República Democrática del Congo,África,Kinshasa,Franco congoleño,assets/flags/democratic_republic_of_the_congo.png
+113,República del Congo,África,Brazzaville,Franco CFA de África Central,assets/flags/republic_of_the_congo.png
+114,Ruanda,África,Kigali,Franco ruandés,assets/flags/rwanda.png
+115,Santo Tomé y Príncipe,África,Santo Tomé,Dobra,assets/flags/sao_tome_and_principe.png
+116,Senegal,África,Dakar,Franco CFA de África Occidental,assets/flags/senegal.png
+117,Seychelles,África,Victoria,Rupia seychelense,assets/flags/seychelles.png
+118,Sierra Leona,África,Freetown,Leone,assets/flags/sierra_leone.png
+119,Somalia,África,Mogadiscio,Chelín somalí,assets/flags/somalia.png
+120,Sudáfrica,África,Pretoria,Rand sudafricano,assets/flags/south_africa.png
+121,Sudán,África,Jartum,Libra sudanesa,assets/flags/sudan.png
+122,Sudán del Sur,África,Yuba,Libra sursudanesa,assets/flags/south_sudan.png
+123,Swazilandia,África,Mbabane,Lilangeni,assets/flags/eswatini.png
+124,Tanzania,África,Dodoma,Chelín tanzano,assets/flags/tanzania.png
+125,Togo,África,Lomé,Franco CFA de África Occidental,assets/flags/togo.png
+126,Túnez,África,Túnez,Dinar tunecino,assets/flags/tunisia.png
+127,Uganda,África,Kampala,Chelín ugandés,assets/flags/uganda.png
+128,Yibuti,África,Yibuti,Franco yibutiano,assets/flags/djibouti.png
+129,Zambia,África,Lusaka,Kwacha zambiano,assets/flags/zambia.png
+130,Zimbabue,África,Harare,Dólar zimbabuense,assets/flags/zimbabwe.png
+131,Afganistán,Asia,Kabul,afgani,assets/flags/afghanistan.png
+132,Arabia Saudita,Asia,Riad,Riyal saudí,assets/flags/saudi_arabia.png
+133,Armenia,Asia,Ereván,Dram armenio,assets/flags/armenia.png
+134,Azerbaiyán,Asia,Bakú,Manat azerí,assets/flags/azerbaijan.png
+135,Bahréin,Asia,Manama,Dinar bahreiní,assets/flags/bahrain.png
+136,Bangladés,Asia,Daca,Taka,assets/flags/bangladesh.png
+137,Bután,Asia,Thimphu,Ngultrum,assets/flags/bhutan.png
+138,Birmania (Myanmar),Asia,Naypyidaw,Kyat,assets/flags/myanmar.png
+139,Camboya,Asia,Phnom Penh,Riel,assets/flags/cambodia.png
+140,China,Asia,Pekín,Yuan chino,assets/flags/china.png
+141,Chipre,Asia,Nicosia,Euro,assets/flags/cyprus.png
+142,Corea del Norte,Asia,Pionyang,Won norcoreano,assets/flags/north_korea.png
+143,Corea del Sur,Asia,Seúl,Won surcoreano,assets/flags/south_korea.png
+144,Emiratos Árabes Unidos,Asia,Abu Dabi,Dirham de los Emiratos Árabes Unidos,assets/flags/united_arab_emirates.png
+145,Filipinas,Asia,Manila,Peso filipino,assets/flags/philippines.png
+146,Georgia,Asia,Tiflis,Lari georgiano,assets/flags/georgia.png
+147,India,Asia,Nueva Delhi,Rupia india,assets/flags/india.png
+148,Indonesia,Asia,Yakarta,Rupia indonesia,assets/flags/indonesia.png
+149,Irak,Asia,Bagdad,Dinar iraquí,assets/flags/iraq.png
+150,Irán,Asia,Teherán,Rial iraní,assets/flags/iran.png
+151,Israel,Asia,Jerusalén,Nuevo shekel israelí,assets/flags/israel.png
+152,Japón,Asia,Tokio,Yen japonés,assets/flags/japan.png
+153,Jordania,Asia,Amán,Dinar jordano,assets/flags/jordan.png
+154,Kazajistán,Asia,Nur-Sultán,Tenge kazajo,assets/flags/kazakhstan.png
+155,Kirguistán,Asia,Biskek,Som kirguís,assets/flags/kyrgyzstan.png
+156,Kuwait,Asia,Kuwait,Dinar kuwaití,assets/flags/kuwait.png
+157,Laos,Asia,Vientián,Kip,assets/flags/laos.png
+158,Líbano,Asia,Beirut,Lira libanesa,assets/flags/lebanon.png
+159,Malasia,Asia,Kuala Lumpur,Ringgit malayo,assets/flags/malaysia.png
+160,Maldivas,Asia,Malé,Rupia maldiva,assets/flags/maldives.png
+161,Mongolia,Asia,Ulán Bator,Tugrik,assets/flags/mongolia.png
+162,Nepal,Asia,Katmandú,Rupia nepalesa,assets/flags/nepal.png
+163,Omán,Asia,Mascate,Riyal omaní,assets/flags/oman.png
+164,Pakistán,Asia,Islamabad,Rupia pakistaní,assets/flags/pakistan.png
+165,Palestina,Asia,Ramala,Shekel,assets/flags/palestine.png
+166,Qatar,Asia,Doha,Riyal catarí,assets/flags/qatar.png
+167,Singapur,Asia,Singapur,Dólar de Singapur,assets/flags/singapore.png
+168,Siria,Asia,Damasco,Lira siria,assets/flags/syria.png
+169,Sri Lanka,Asia,Colombo,Rupia de Sri Lanka,assets/flags/sri_lanka.png
+170,Tailandia,Asia,Bangkok,Baht tailandés,assets/flags/thailand.png
+171,Tayikistán,Asia,Dusambé,Somoni,assets/flags/tajikistan.png
+172,Timor Oriental,Asia,Dili,Dólar estadounidense,assets/flags/timor-leste.png
+173,Turkmenistán,Asia,Asjabad,Manat turcomano,assets/flags/turkmenistan.png
+174,Turquía,Asia,Ankara,Lira turca,assets/flags/turkey.png
+175,Uzbekistán,Asia,Tashkent,Som uzbeko,assets/flags/uzbekistan.png
+176,Vietnam,Asia,Hanói,Dong vietnamita,assets/flags/vietnam.png
+177,Yemen,Asia,Saná,Riyal yemení,assets/flags/yemen.png
+178,Australia,Oceanía,Sídney,Dólar australiano,assets/flags/australia.png
+179,Fiyi,Oceanía,Suva,Dólar fiyiano,assets/flags/fiji.png
+180,Islas Marshall,Oceanía,Majuro,Dólar estadounidense,assets/flags/marshall_islands.png
+181,Islas Salomón,Oceanía,Honiara,Dólar de Islas Salomón,assets/flags/solomon_islands.png
+182,Kiribati,Oceanía,Tarawa,Dólar australiano,assets/flags/kiribati.png
+183,Micronesia,Oceanía,Palikir,Dólar estadounidense,assets/flags/micronesia.png
+184,Nauru,Oceanía,Yaren,Dólar australiano,assets/flags/nauru.png
+185,Nueva Zelanda,Oceanía,Wellington,Dólar neozelandés,assets/flags/new_zealand.png
+186,Palau,Oceanía,Melekeok,Dólar estadounidense,assets/flags/palau.png
+187,Papúa Nueva Guinea,Oceanía,Port Moresby,Kina,assets/flags/papua_new_guinea.png
+188,Samoa,Oceanía,Apia,Tala,assets/flags/samoa.png
+189,Tonga,Oceanía,Nukualofa,Pa'anga,assets/flags/tonga.png
+190,Tuvalu,Oceanía,Funafuti,Dólar australiano,assets/flags/tuvalu.png
+191,Vanuatu,Oceanía,Port Vila,Vatu,assets/flags/vanuatu.png
+

@@ -1,0 +1,81 @@
+id_entrenador,nombre,apellidos,apodo,edad,fecha_nacimiento,nacionalidad,club_actual,sistema_preferido,sistema_secundario,tipo_jugadores_prefiere,control_vestuario,cantera,aguante,dejar_aconsejar
+1,José Mourinho,-,The Special One,59,1963-01-26,Portuguesa,Roma,4-2-3-1,4-3-3,Físicos y Experimentados,Alto,No,Alto,No
+2,Josep Guardiola,-,Pep,52,1971-01-18,Española,Manchester City,4-3-3,3-4-3,Técnicos y Jóvenes,Alto,Sí,Medio,Sí
+3,Jürgen Klopp,-,Kloppo,56,1967-06-16,Alemana,Liverpool,4-3-3,4-2-3-1,Dinámicos y Alto Presionar,Alto,Sí,Alto,Sí
+4,Diego Simeone,-,Cholo,52,1970-04-28,Argentina,Atlético de Madrid,4-4-2,4-3-3,Físicos y Experimentados,Alto,No,Alto,No
+5,Zinedine Zidane,-,Zizou,50,1972-06-23,Francesa,Real Madrid,4-3-3,4-2-3-1,Técnicos y Experimentados,Medio,No,Medio,No
+6,Carlo Ancelotti,-,Carletto,63,1959-06-10,Italiana,Real Madrid,4-4-2,4-3-3,Técnicos y Experimentados,Medio,No,Alto,Sí
+7,Thomas Tuchel,-,Tuchel,49,1973-08-29,Alemana,Chelsea,3-4-3,4-3-3,Técnicos y Jóvenes,Alto,Sí,Medio,Sí
+8,Antonio Conte,-,Conte,53,1969-07-31,Italiana,Tottenham Hotspur,3-5-2,3-4-3,Físicos y Experimentados,Medio,Sí,Alto,Sí
+9,Mauricio Pochettino,-,Poch,50,1972-03-02,Argentina,Paris Saint-Germain,4-2-3-1,4-3-3,Técnicos y Jóvenes,Alto,No,Medio,No
+10,Ole Gunnar Solskjær,-,Ole,50,1973-02-26,Noruega,Manchester United,4-2-3-1,4-4-2,Técnicos y Jóvenes,Medio,No,Medio,No
+11,Ronald Koeman,-,Koeman,59,1963-03-21,Holandesa,FC Barcelona,4-2-3-1,4-3-3,Técnicos y Experimentados,Medio,Sí,Medio,Sí
+12,Erik ten Hag,-,Ten Hag,52,1970-02-02,Holandesa,Ajax,4-3-3,4-2-3-1,Técnicos y Jóvenes,Medio,Sí,Alto,Sí
+13,Ralf Rangnick,-,Rangnick,64,1958-06-29,Alemana,AC Milan,4-4-2,3-4-3,Técnicos y Jóvenes,Alto,Sí,Alto,Sí
+14,Julian Nagelsmann,-,Nagelsmann,34,1987-07-23,Alemana,Bayern München,4-2-3-1,3-4-3,Técnicos y Jóvenes,Alto,Sí,Alto,Sí
+15,Brendan Rodgers,-,Rodgers,49,1973-01-26,Norirlandesa,Leicester City,4-1-4-1,4-3-3,Técnicos y Experimentados,Medio,No,Medio,No
+16,Massimiliano Allegri,-,Allegri,54,1967-08-11,Italiana,Juventus,4-4-2,4-3-3,Técnicos y Experimentados,Medio,No,Medio,No
+17,Marco Rose,-,Rose,45,1977-09-11,Alemana,Borussia Dortmund,4-2-3-1,4-3-3,Técnicos y Jóvenes,Alto,Sí,Medio,Sí
+18,Lucien Favre,-,Favre,64,1957-11-02,Suiza,-,4-2-3-1,4-3-3,Técnicos y Experimentados,Medio,Sí,Medio,Sí
+19,Gian Piero Gasperini,-,Gasperini,64,1957-01-26,Italiana,Atalanta,3-4-3,3-5-2,Técnicos y Jóvenes,Medio,Sí,Alto,Sí
+20,Maurizio Sarri,-,Sarri,63,1959-01-10,Italiana,Lazio,4-3-3,4-2-3-1,Técnicos y Experimentados,Alto,Sí,Medio,Sí
+21,Nuno Espírito Santo,-,Nuno,48,1974-01-25,Portuguesa,Tottenham Hotspur,3-4-3,4-2-3-1,Técnicos y Jóvenes,Medio,No,Medio,No
+22,Roger Schmidt,-,Schmidt,55,1967-03-13,Alemana,Bayer Leverkusen,4-4-2,4-3-3,Técnicos y Jóvenes,Medio,Sí,Alto,Sí
+23,Unai Emery,-,Emery,50,1971-11-03,Española,Villarreal,4-2-3-1,4-3-3,Técnicos y Experimentados,Medio,Sí,Medio,Sí
+24,Rui Vitória,-,Vitória,52,1970-05-16,Portuguesa,Al Nassr FC,4-4-2,4-2-3-1,Técnicos y Jóvenes,Medio,No,Alto,Sí
+25,Vincenzo Montella,-,Montella,49,1974-06-18,Italiana,Sampdoria,4-3-3,4-2-3-1,Técnicos y Experimentados,Medio,Sí,Medio,Sí
+26,Mark van Bommel,-,Van Bommel,45,1977-04-22,Holandesa,PSV Eindhoven,4-3-3,4-2-3-1,Técnicos y Jóvenes,Alto,Sí,Medio,Sí
+27,Andrea Pirlo,-,Pirlo,43,1979-05-19,Italiana,-,4-3-3,4-2-3-1,Técnicos y Experimentados,Medio,Sí,Medio,Sí
+28,Mikel Arteta,-,Arteta,40,1982-03-26,Española,Arsenal,4-2-3-1,4-3-3,Técnicos y Jóvenes,Alto,Sí,Medio,Sí
+29,Graham Potter,-,Potter,47,1975-05-20,Inglesa,Brighton & Hove Albion,4-3-3,4-2-3-1,Técnicos y Experimentados,Medio,No,Medio,No
+30,Eddie Howe,-,Howe,44,1977-11-29,Inglesa,Newcastle United,4-4-2,4-3-3,Técnicos y Jóvenes,Alto,Sí,Alto,Sí
+31,Julian Nagelsmann,-,Nagelsmann,36,1987-07-23,Alemana,FC Bayern München,4-2-3-1,3-4-3,Técnicos y Jóvenes,Alto,Sí,Alto,Sí
+32,Stefano Pioli,-,Pioli,56,1965-10-20,Italiana,AC Milan,4-2-3-1,4-3-3,Técnicos y Experimentados,Alto,No,Alto,No
+33,Bruno Lage,-,Lage,46,1975-10-12,Portuguesa,SS Lazio,4-3-3,4-2-3-1,Técnicos y Jóvenes,Medio,Sí,Medio,Sí
+34,Ernesto Valverde,-,Valverde,58,1964-02-09,Española,Al-Sadd SC,4-3-3,4-2-3-1,Técnicos y Experimentados,Medio,Sí,Alto,Sí
+35,Graham Potter,-,Potter,45,1975-05-20,Inglesa,Brighton & Hove Albion,4-2-3-1,4-3-3,Técnicos y Jóvenes,Alto,Sí,Medio,Sí
+36,Domenico Tedesco,-,Tedesco,36,1985-09-12,Alemana,FC Spartak Moskva,3-5-2,3-4-3,Técnicos y Experimentados,Medio,No,Alto,Sí
+37,Rui Vitória,-,Vitória,55,1967-05-16,Portuguesa,CR Flamengo,4-4-2,4-3-3,Técnicos y Jóvenes,Alto,Sí,Alto,Sí
+38,David Moyes,-,Moyes,59,1963-04-25,Escocesa,West Ham United,5-4-1,4-2-3-1,Técnicos y Experimentados,Medio,Sí,Medio,Sí
+39,Marcelo Bielsa,-,Bielsa,66,1955-07-21,Argentina,Leeds United,3-3-1-3,3-4-3,Dinámicos y Alto Presionar,Alto,Sí,Alto,Sí
+40,Adi Hütter,-,Hütter,51,1970-02-11,Alemana,FC Bayern München,3-4-1-2,4-3-3,Técnicos y Jóvenes,Medio,No,Alto,Sí
+41,André Villas-Boas,-,Villas-Boas,44,1977-10-17,Portuguesa,Shanghai SIPG FC,4-2-3-1,4-3-3,Técnicos y Experimentados,Alto,Sí,Medio,Sí
+42,Frank Lampard,-,Lampard,44,1978-06-20,Inglesa,Everton FC,4-3-3,4-2-3-1,Técnicos y Jóvenes,Medio,No,Medio,No
+43,José Bordalás,-,Bordalás,57,1967-03-05,Española,Valencia CF,4-4-2,4-2-3-1,Técnicos y Experimentados,Medio,Sí,Alto,Sí
+44,Luís Castro,-,Castro,61,1963-06-11,Portuguesa,Granada CF,4-2-3-1,4-3-3,Técnicos y Jóvenes,Medio,Sí,Medio,Sí
+45,Steve Bruce,-,Bruce,61,1961-12-31,Inglesa,Newcastle United,5-4-1,4-2-3-1,Técnicos y Experimentados,Medio,No,Alto,Sí
+46,Diego Martínez,-,Martínez,41,1980-05-28,Española,Real Sociedad,4-2-3-1,4-3-3,Técnicos y Jóvenes,Medio,No,Medio,No
+47,Vítor Pereira,-,Pereira,54,1968-07-27,Portuguesa,Spartak Moskva,4-3-3,4-2-3-1,Técnicos y Experimentados,Alto,Sí,Medio,Sí
+48,Gennaro Gattuso,-,Gattuso,45,1978-01-09,Italiana,ACF Fiorentina,4-3-3,4-2-3-1,Técnicos y Jóvenes,Medio,No,Medio,No
+49,Juan Carlos Unzué,-,Unzué,55,1967-04-22,Española,Real Valladolid,4-3-3,4-2-3-1,Técnicos y Experimentados,Medio,Sí,Medio,Sí
+50,Eusebio Sacristán,-,Sacristán,58,1964-04-13,Española,UD Almería,4-2-3-1,4-3-3,Técnicos y Jóvenes,Medio,No,Alto,Sí
+51,Javi Gracia,-,Gracia,51,1970-05-01,Española,Watford FC,4-2-3-1,4-3-3,Técnicos y Experimentados,Medio,Sí,Medio,Sí
+52,Michel,-,Michel,59,1963-03-23,Española,Getafe CF,4-4-2,4-2-3-1,Técnicos y Jóvenes,Medio,No,Alto,Sí
+53,Gerardo Seoane,-,Seoane,43,1979-11-21,Suiza,Bayer Leverkusen,4-3-3,4-2-3-1,Técnicos y Experimentados,Alto,Sí,Medio,Sí
+54,Manuel Pellegrini,-,Pellegrini,69,1953-09-16,Chilena,Real Betis Balompié,4-2-3-1,4-3-3,Técnicos y Jóvenes,Medio,No,Medio,No
+55,Leonardo Jardim,-,Jardim,47,1974-08-01,Portuguesa,AS Monaco FC,4-4-2,4-3-3,Técnicos y Experimentados,Alto,Sí,Alto,Sí
+56,Markus Gisdol,-,Gisdol,53,1968-08-17,Alemana,1. FC Köln,4-2-3-1,4-3-3,Técnicos y Jóvenes,Medio,No,Alto,Sí
+57,Stefano Pioli,-,Pioli,57,1965-10-20,Italiana,AC Milan,4-3-3,4-2-3-1,Técnicos y Experimentados,Alto,Sí,Medio,Sí
+58,Marco Silva,-,Silva,45,1977-07-12,Portuguesa,Fulham FC,4-2-3-1,4-3-3,Técnicos y Jóvenes,Medio,Sí,Medio,Sí
+59,John van den Brom,-,Van den Brom,56,1965-10-04,Holandesa,Genoa CFC,4-3-3,4-2-3-1,Técnicos y Experimentados,Alto,Sí,Alto,Sí
+60,Paulo Fonseca,-,Fonseca,48,1973-03-05,Portuguesa,AS Roma,4-2-3-1,4-3-3,Técnicos y Jóvenes,Medio,Sí,Medio,Sí
+61,Luciano Spalletti,-,Spalletti,63,1959-03-07,Italiana,Napoli,4-2-3-1,4-3-3,Técnicos y Experimentados,Medio,Sí,Alto,Sí
+62,Marcelino García Toral,-,Marcelino,56,1965-08-14,Española,Athletic Club,4-4-2,4-3-3,Técnicos y Jóvenes,Medio,Sí,Medio,Sí
+63,Philippe Clement,-,Clement,48,1974-03-22,Belga,Club Brugge KV,3-5-2,4-3-3,Técnicos y Experimentados,Alto,Sí,Medio,Sí
+64,Eduardo Coudet,-,Coudet,48,1974-09-12,Argentina,Celta de Vigo,4-3-3,4-2-3-1,Técnicos y Jóvenes,Medio,No,Alto,Sí
+65,Aleksandr Yermakovich,-,Yermakovich,44,1978-06-03,Belarusa,Dinamo Brest,4-3-3,4-2-3-1,Técnicos y Experimentados,Medio,Sí,Alto,Sí
+66,Bo Henriksen,-,Henriksen,53,1968-05-21,Danesa,FC Midtjylland,4-4-2,4-3-3,Técnicos y Jóvenes,Alto,Sí,Alto,Sí
+67,John van den Brom,-,Van den Brom,54,1965-10-04,Holandesa,Racing Genk,4-3-3,4-2-3-1,Técnicos y Experimentados,Alto,Sí,Medio,Sí
+68,Christophe Galtier,-,Galtier,55,1966-08-28,Francesa,Nice,4-4-2,4-3-3,Técnicos y Jóvenes,Medio,No,Medio,No
+69,Vladimir Ivic,-,Ivic,47,1977-03-05,Serbia,FK Partizan,4-2-3-1,4-3-3,Técnicos y Experimentados,Alto,Sí,Alto,Sí
+70,Markus Anfang,-,Anfang,47,1974-05-12,Alemana,Werder Bremen,4-3-3,4-2-3-1,Técnicos y Jóvenes,Medio,Sí,Medio,Sí
+71,Gian Piero Gasperini,-,Gasperini,63,1958-01-26,Italiana,Atalanta,3-4-3,3-5-2,Dinámicos y Alto Presionar,Alto,Sí,Alto,Sí
+72,Pedro Martins,-,Martins,51,1970-07-17,Portuguesa,Olympiacos FC,4-2-3-1,4-3-3,Técnicos y Jóvenes,Medio,Sí,Medio,Sí
+73,Jorge Jesus,-,Jesus,67,1954-07-24,Portuguesa,Benfica,4-4-2,4-3-3,Técnicos y Experimentados,Alto,Sí,Medio,Sí
+74,Stefan Kuntz,-,Kuntz,59,1962-10-30,Alemana,Turkish Football Federation,4-4-2,4-3-3,Técnicos y Jóvenes,Medio,No,Alto,Sí
+75,Peter Bosz,-,Bosz,58,1963-11-21,Holandesa,Olympique Lyonnais,4-3-3,4-2-3-1,Técnicos y Experimentados,Medio,Sí,Alto,Sí
+76,Peter Bosz,-,Bosz,60,1963-11-21,Holandesa,Bayer Leverkusen,4-3-3,4-2-3-1,Técnicos y Jóvenes,Medio,Sí,Alto,Sí
+77,José Peseiro,-,Peseiro,61,1960-04-04,Portuguesa,Vitória Guimarães,4-3-3,4-2-3-1,Técnicos y Experimentados,Medio,Sí,Medio,Sí
+78,Sergio Conceição,-,Conceição,47,1974-11-15,Portuguesa,FC Porto,4-4-2,4-3-3,Técnicos y Jóvenes,Medio,Sí,Medio,Sí
+79,Abel Ferreira,-,Ferreira,43,1978-08-22,Portuguesa,PAOK FC,4-3-3,4-2-3-1,Técnicos y Experimentados,Alto,Sí,Alto,Sí
+80,Andrea Pirlo,-,Pirlo,43,1979-05-19,Italiana,-,4-3-3,4-2-3-1,Técnicos y Jóvenes,Medio,Sí,Medio,Sí

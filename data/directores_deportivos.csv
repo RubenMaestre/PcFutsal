@@ -1,0 +1,50 @@
+id_director,nombre,apellidos,apodo,edad,fecha_nacimiento,nacionalidad,club_actual,tipo_jugadores_prefiere,tipo_entrenadores_prefiere
+1,Monchi,García,El sabio,52,1972-03-01,Española,Sevilla FC,Técnicos y Jóvenes,Dinámicos y Alto Presionar
+2,Txiki Begiristain,-,Txiki,57,1965-11-01,Española,Manchester City FC,Técnicos y Experimentados,Posesionista
+3,Michael Edwards,-,Mike,42,1982-07-15,Inglesa,Liverpool FC,Físicos y Experimentados,Alto Presionar y Dinámico
+4,Leonardo,-,Leo,51,1970-09-05,Brasileña,Paris Saint-Germain FC,Técnicos y Jóvenes,Posesionista
+5,Marina Granovskaia,-,Marina,47,1974-01-01,Rusa,Chelsea FC,Técnicos y Experimentados,Dinámicos y Alto Presionar
+6,Ralf Rangnick,-,Rangnick,63,1958-06-29,Alemana,Manchester United FC,Físicos y Jóvenes,Alto Presionar y Posesionista
+7,Alessandro Nesta,-,Nesta,46,1976-03-19,Italiana,Frosinone Calcio,Técnicos y Experimentados,Dinámicos y Alto Presionar
+8,Jorge Mendes,-,Mendes,56,1967-01-07,Portuguesa,-,Físicos y Experimentados,Alto Presionar y Posesionista
+9,Juliano Belletti,-,Belletti,46,1976-06-20,Brasileña,-,Técnicos y Jóvenes,Posesionista
+10,Oliver Kahn,-,Kahn,53,1969-06-15,Alemana,FC Bayern München AG,Físicos y Jóvenes,Alto Presionar y Posesionista
+11,Andrea Berta,-,Berta,50,1972-09-10,Italiana,Atlético de Madrid,Técnicos y Experimentados,Alto Presionar y Posesionista
+12,Michael Zorc,-,Zorc,60,1963-08-05,Alemana,Borussia Dortmund,Técnicos y Jóvenes,Posesionista
+13,Patrick Kluivert,-,Kluivert,45,1976-07-01,Holandesa,-,Técnicos y Experimentados,Dinámicos y Alto Presionar
+14,Paul Mitchell,-,Mitchell,40,1983-10-08,Inglesa,Leicester City FC,Físicos y Jóvenes,Posesionista
+15,Pierluigi Collina,-,Collina,62,1960-02-13,Italiana,-,Técnicos y Experimentados,Alto Presionar y Dinámico
+16,Antero Henrique,-,Henrique,53,1968-07-28,Portuguesa,AS Monaco FC,Físicos y Experimentados,Posesionista
+17,Luis Campos,-,Campos,57,1967-02-20,Portuguesa,Lille OSC,Técnicos y Jóvenes,Alto Presionar y Posesionista
+18,Rui Costa,-,Costa,50,1972-03-29,Portuguesa,ACF Fiorentina,Técnicos y Experimentados,Alto Presionar y Dinámico
+19,Giuseppe Marotta,-,Marotta,65,1959-05-23,Italiana,FC Internazionale Milano,Técnicos y Jóvenes,Dinámicos y Alto Presionar
+20,Sandro Mencucci,-,Mencucci,58,1964-12-12,Italiana,SS Lazio,Técnicos y Experimentados,Posesionista
+21,Luís Filipe Vieira,-,Vieira,73,1949-10-22,Portuguesa,SL Benfica,Físicos y Jóvenes,Alto Presionar y Posesionista
+22,Andoni Zubizarreta,-,Zubizarreta,61,1961-10-23,Española,Olympique de Marseille,Técnicos y Experimentados,Posesionista
+23,Fabio Paratici,-,Paratici,50,1972-04-27,Italiana,Tottenham Hotspur FC,Técnicos y Jóvenes,Dinámicos y Alto Presionar
+24,Rui Águas,-,Águas,62,1960-11-28,Portuguesa,-,Físicos y Experimentados,Posesionista
+25,Pedro Chaves,-,Chaves,54,1968-05-08,Portuguesa,SC Braga,Técnicos y Jóvenes,Posesionista
+26,Luca Percassi,-,Percassi,45,1977-08-20,Italiana,Atalanta BC,Técnicos y Experimentados,Alto Presionar y Dinámico
+27,John McDermott,-,McDermott,51,1970-12-05,Inglesa,-,Físicos y Jóvenes,Alto Presionar y Posesionista
+28,Angelo Alessio,-,Alessio,56,1967-01-25,Italiana,Kilmarnock FC,Técnicos y Experimentados,Posesionista
+29,Fabio Paratici,-,Paratici,51,1971-02-01,Italiana,Juventus FC,Técnicos y Jóvenes,Dinámicos y Alto Presionar
+30,Leonid Slutsky,-,Slutsky,51,1971-05-04,Rusa,FK Krylya Sovetov Samara,Técnicos y Experimentados,Posesionista
+31,Angelo Alessio,-,Alessio,55,1967-01-25,Italiana,Kilmarnock FC,Técnicos y Jóvenes,Posesionista
+32,Mark Allen,-,Allen,54,1968-02-06,Inglesa,Rangers FC,Físicos y Experimentados,Posesionista
+33,Leonid Slutsky,-,Slutsky,53,1967-01-04,Rusa,Fenerbahçe SK,Técnicos y Jóvenes,Alto Presionar y Dinámico
+34,Antero Henrique,-,Henrique,56,1966-01-10,Portuguesa,Valencia CF,Físicos y Experimentados,Alto Presionar y Posesionista
+35,Sandro Mencucci,-,Mencucci,59,1965-12-10,Italiana,ACF Fiorentina,Técnicos y Jóvenes,Alto Presionar y Dinámico
+36,Michael Zorc,-,Zorc,63,1960-08-05,Alemana,FC Bayern München AG,Técnicos y Experimentados,Dinámicos y Alto Presionar
+37,Juliano Belletti,-,Belletti,55,1965-06-20,Brasileña,Botafogo FR,Técnicos y Jóvenes,Alto Presionar y Dinámico
+38,Paul Mitchell,-,Mitchell,55,1965-10-09,Inglesa,Leicester City FC,Físicos y Experimentados,Posesionista
+39,Andrea Berta,-,Berta,57,1965-09-10,Italiana,Atlético de Madrid,Técnicos y Jóvenes,Alto Presionar y Dinámico
+40,Leonardo,-,Leo,54,1965-09-05,Brasileña,AC Milan,Técnicos y Experimentados,Dinámicos y Alto Presionar
+41,Michael Edwards,-,Mike,61,1965-07-15,Inglesa,Liverpool FC,Físicos y Jóvenes,Alto Presionar y Dinámico
+42,Luis Campos,-,Campos,56,1965-02-20,Portuguesa,Lille OSC,Técnicos y Experimentados,Alto Presionar y Posesionista
+43,Jorge Mendes,-,Mendes,51,1965-07-01,Portuguesa,Gestifute International,Técnicos y Jóvenes,Posesionista
+44,Luis Campos,-,Campos,57,1965-02-20,Portuguesa,Lille OSC,Técnicos y Experimentados,Alto Presionar y Posesionista
+45,Ralf Rangnick,-,Rangnick,54,1965-06-29,Alemana,RB Leipzig,Técnicos y Jóvenes,Posesionista
+46,Rui Costa,-,Costa,58,1965-03-29,Portuguesa,ACF Fiorentina,Técnicos y Experimentados,Dinámicos y Alto Presionar
+47,Oliver Kahn,-,Kahn,58,1965-06-15,Alemana,FC Bayern München AG,Físicos y Experimentados,Posesionista
+48,Patrick Kluivert,-,Kluivert,57,1965-07-01,Holandesa,FC Barcelona,Técnicos y Jóvenes,Alto Presionar y Dinámico
+49,Leonardo,-,Leo,60,1965-09-05,Brasileña,AC Milan,Técnicos y Experimentados,Alto Presionar y Posesionista
