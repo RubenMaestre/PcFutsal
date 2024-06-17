@@ -1,16 +1,18 @@
-import csv
-from src.core.director_deportivo import SportingDirector
+# src/core/cargar_directores_deportivos.py
 
-def load_sporting_directors(file_path):
-    sporting_directors = []
-    with open(file_path, newline='', encoding='utf-8') as csvfile:
+import csv
+from src.core.director_deportivo import DirectorDeportivo
+
+def cargar_directores_deportivos(ruta_archivo):
+    directores_deportivos = []
+    with open(ruta_archivo, newline='', encoding='utf-8') as csvfile:
         reader = csv.DictReader(csvfile)
         for row in reader:
-            sporting_director = SportingDirector(
+            director_deportivo = DirectorDeportivo(
                 id=row['id'],
-                name=row['name'],
-                preferred_player_types=row['preferred_player_types'].split(' and '),
-                preferred_coach_types=row['preferred_coach_types'].split(' and ')
+                nombre=row['name'],
+                tipos_jugador_preferidos=row['preferred_player_types'].split(' and '),
+                tipos_entrenador_preferidos=row['preferred_coach_types'].split(' and ')
             )
-            sporting_directors.append(sporting_director)
-    return sporting_directors
+            directores_deportivos.append(director_deportivo)
+    return directores_deportivos

@@ -1,21 +1,23 @@
-import csv
-from proyecto_pcfutbol.manager.src.core.entrenador import Coach
+# src/core/cargar_entrenadores.py
 
-def load_coaches(file_path):
-    coaches = []
-    with open(file_path, newline='', encoding='utf-8') as csvfile:
+import csv
+from src.core.entrenador import Entrenador
+
+def cargar_entrenadores(ruta_archivo):
+    entrenadores = []
+    with open(ruta_archivo, newline='', encoding='utf-8') as csvfile:
         reader = csv.DictReader(csvfile)
         for row in reader:
-            coach = Coach(
+            entrenador = Entrenador(
                 id=row['id'],
-                name=row['name'],
-                preferred_system=row['preferred_system'],
-                secondary_systems=row['secondary_systems'].split(','),
-                preferred_player_types=row['preferred_player_types'].split(' and '),
+                nombre=row['name'],
+                sistema_preferido=row['preferred_system'],
+                sistemas_secundarios=row['secondary_systems'].split(','),
+                tipos_jugador_preferidos=row['preferred_player_types'].split(' and '),
                 control_vestuario=row['control_vestuario'],
                 cantera=row['cantera'],
                 aguante=row['aguante'],
                 dejar_aconsejar=row['dejar_aconsejar']
             )
-            coaches.append(coach)
-    return coaches
+            entrenadores.append(entrenador)
+    return entrenadores

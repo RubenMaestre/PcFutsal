@@ -1,12 +1,12 @@
-# src/core/game.py
+# src/core/juego.py
 
 from datetime import datetime, timedelta
-from proyecto_pcfutbol.manager.src.core.cargar_equipos import load_teams, assign_teams_to_leagues
-from proyecto_pcfutbol.manager.src.core.competicion import Competencia, Copa, SuperCopa
-from proyecto_pcfutbol.manager.src.core.simulador_partidos import jugar_jornada_liga
-from proyecto_pcfutbol.manager.src.core.calendario_liga import LeagueSchedule
-from proyecto_pcfutbol.manager.src.core.calendario_copa import CalendarioCopa
-from core.despido import Despido
+from src.core.cargar_equipos import cargar_equipos, asignar_equipos_a_ligas
+from src.core.competicion import Competicion, Copa, SuperCopa
+from src.core.simular_partidos import jugar_jornada_liga
+from src.core.calendario_liga import CalendarioLiga
+from src.core.calendario_copa import CalendarioCopa
+from src.core.despido import Despido
 import random
 
 class Juego:
@@ -24,22 +24,22 @@ class Juego:
         self.manejar_eventos_semanales()
 
     def manejar_eventos_semanales(self):
-        for nombre_liga, competencia in self.ligas.items():
+        for nombre_liga, competicion in self.ligas.items():
             numero_jornada = (self.fecha_actual - datetime(2024, 7, 1)).days // 7
-            if numero_jornada < len(competencia.calendario):
+            if numero_jornada < len(competicion.calendario):
                 print(f"Jugando la jornada {numero_jornada + 1} de {nombre_liga}")
-                resultados = competencia.jugar_jornada(numero_jornada)
+                resultados = competicion.jugar_jornada(numero_jornada)
                 for resultado in resultados:
                     equipo1, equipo2, puntuacion1, puntuacion2 = resultado
                     print(f"{equipo1.nombre} {puntuacion1} - {puntuacion2} {equipo2.nombre}")
-                competencia.mostrar_clasificacion()
-            self.verificar_eventos(competencia, numero_jornada)
+                competicion.mostrar_clasificacion()
+            self.verificar_eventos(competicion, numero_jornada)
         self.verificar_despido()
 
-    def verificar_eventos(self, competencia, numero_jornada):
+    def verificar_eventos(self, competicion, numero_jornada):
         # Ejemplo de evento: oferta de fichaje
         if numero_jornada % 4 == 0:  # Cada 4 semanas
-            for equipo in competencia.liga.obtener_equipos():
+            for equipo in competicion.liga.obtener_equipos():
                 if random.random() < 0.1:  # 10% de probabilidad de oferta de fichaje
                     evento = f"Oferta de fichaje para {equipo.nombre}"
                     self.interrumpir_por_evento(evento)
@@ -62,12 +62,12 @@ class Juego:
             self.avanzar_semana()
 
 def principal(equipo_seleccionado, puede_ser_despedido, modo_juego):
-    equipos = load_teams('data/teams.csv')
-    ligas_dict = assign_teams_to_leagues(equipos)
+    equipos = cargar_equipos('data/equipos.csv')
+    ligas_dict = asignar_equipos_a_ligas(equipos)
     
     ligas = {
-        "Primera División": Competencia(ligas_dict['Primera División']),
-        "Segunda División": Competencia(ligas_dict['Segunda División'])
+        "Primera División": Competicion(ligas_dict['Primera División']),
+        "Segunda División": Competicion(ligas_dict['Segunda División'])
     }
 
     fecha_inicio = datetime(2024, 7, 1)
@@ -76,4 +76,3 @@ def principal(equipo_seleccionado, puede_ser_despedido, modo_juego):
 
 if __name__ == "__main__":
     principal()
-

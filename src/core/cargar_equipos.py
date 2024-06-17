@@ -1,22 +1,22 @@
-# src/core/load_teams.py
+# src/core/cargar_equipos.py
 
 import csv
-from proyecto_pcfutbol.manager.src.core.equipo import Team
-from proyecto_pcfutbol.manager.src.core.liga import League
+from src.core.equipo import Equipo
+from src.core.liga import Liga
 
-def load_teams(file_path):
-    teams = []
-    with open(file_path, mode='r') as file:
+def cargar_equipos(ruta_archivo):
+    equipos = []
+    with open(ruta_archivo, mode='r') as file:
         csv_reader = csv.DictReader(file)
         for row in csv_reader:
-            team = Team(row['team_name'], int(row['budget']))
-            teams.append((team, row['country'], row['league']))
-    return teams
+            equipo = Equipo(row['team_name'], int(row['budget']))
+            equipos.append((equipo, row['country'], row['league']))
+    return equipos
 
-def assign_teams_to_leagues(teams):
-    leagues = {}
-    for team, country, league_name in teams:
-        if league_name not in leagues:
-            leagues[league_name] = League(league_name, country, 1)
-        leagues[league_name].add_team(team)
-    return leagues
+def asignar_equipos_a_ligas(equipos):
+    ligas = {}
+    for equipo, pais, nombre_liga in equipos:
+        if nombre_liga not in ligas:
+            ligas[nombre_liga] = Liga(nombre_liga, pais, 1)
+        ligas[nombre_liga].agregar_equipo(equipo)
+    return ligas

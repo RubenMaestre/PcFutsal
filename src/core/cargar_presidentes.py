@@ -1,18 +1,20 @@
-import csv
-from proyecto_pcfutbol.manager.src.core.presidente import President
+# src/core/presidentes.py
 
-def load_presidents(file_path):
-    presidents = []
-    with open(file_path, newline='', encoding='utf-8') as csvfile:
+import csv
+from src.core.presidente import Presidente
+
+def cargar_presidentes(ruta_archivo):
+    presidentes = []
+    with open(ruta_archivo, newline='', encoding='utf-8') as csvfile:
         reader = csv.DictReader(csvfile)
         for row in reader:
-            president = President(
+            presidente = Presidente(
                 id=row['id'],
-                name=row['name'],
-                character=row['character'],
-                patience=row['patience'],
-                preferred_coach_types=row['preferred_coach_types'].split(' and '),
-                preferred_director_types=row['preferred_director_types'].split(' and ')
+                nombre=row['name'],
+                caracter=row['character'],
+                paciencia=row['patience'],
+                tipos_entrenadores_preferidos=row['preferred_coach_types'].split(' and '),
+                tipos_directores_preferidos=row['preferred_director_types'].split(' and ')
             )
-            presidents.append(president)
-    return presidents
+            presidentes.append(presidente)
+    return presidentes

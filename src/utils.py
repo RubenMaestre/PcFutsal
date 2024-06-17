@@ -1,78 +1,80 @@
+# src/utils.py
+
 import csv
 import json
 import pygame
 import math
 
 # Funciones para Manejo de Archivos
-def read_csv(file_path):
+def leer_csv(ruta_archivo):
     """Leer un archivo CSV y devolver una lista de diccionarios"""
     data = []
-    with open(file_path, mode='r', encoding='utf-8-sig') as file:
+    with open(ruta_archivo, mode='r', encoding='utf-8-sig') as file:
         reader = csv.DictReader(file)
         for row in reader:
             data.append(row)
     return data
 
-def write_csv(file_path, data, fieldnames):
+def escribir_csv(ruta_archivo, datos, encabezados):
     """Escribir datos en un archivo CSV"""
-    with open(file_path, mode='w', newline='', encoding='utf-8') as file:
-        writer = csv.DictWriter(file, fieldnames=fieldnames)
+    with open(ruta_archivo, mode='w', newline='', encoding='utf-8') as file:
+        writer = csv.DictWriter(file, fieldnames=encabezados)
         writer.writeheader()
-        writer.writerows(data)
+        writer.writerows(datos)
 
-def read_json(file_path):
+def leer_json(ruta_archivo):
     """Leer un archivo JSON y devolver los datos"""
-    with open(file_path, mode='r', encoding='utf-8') as file:
+    with open(ruta_archivo, mode='r', encoding='utf-8') as file:
         return json.load(file)
 
-def write_json(file_path, data):
+def escribir_json(ruta_archivo, datos):
     """Escribir datos en un archivo JSON"""
-    with open(file_path, mode='w', encoding='utf-8') as file:
-        json.dump(data, file, indent=4)
+    with open(ruta_archivo, mode='w', encoding='utf-8') as file:
+        json.dump(datos, file, indent=4)
 
 # Funciones para Manipulación de Imágenes
-def load_image(file_path):
+def cargar_imagen(ruta_archivo):
     """Cargar una imagen y devolver una superficie de Pygame"""
-    return pygame.image.load(file_path)
+    return pygame.image.load(ruta_archivo)
 
-def scale_image(image, width, height):
+def escalar_imagen(imagen, ancho, alto):
     """Escalar una imagen a las dimensiones especificadas"""
-    return pygame.transform.scale(image, (width, height))
+    return pygame.transform.scale(imagen, (ancho, alto))
 
-def rotate_image(image, angle):
+def rotar_imagen(imagen, angulo):
     """Rotar una imagen en el ángulo especificado"""
-    return pygame.transform.rotate(image, angle)
+    return pygame.transform.rotate(imagen, angulo)
 
 # Funciones de Conversión y Formato
-def rgb_to_hex(rgb):
+def rgb_a_hex(rgb):
     """Convertir un color RGB a formato hexadecimal"""
     return '#{:02x}{:02x}{:02x}'.format(*rgb)
 
-def hex_to_rgb(hex_color):
+def hex_a_rgb(color_hex):
     """Convertir un color hexadecimal a formato RGB"""
-    hex_color = hex_color.lstrip('#')
-    return tuple(int(hex_color[i:i+2], 16) for i in (0, 2, 4))
+    color_hex = color_hex.lstrip('#')
+    return tuple(int(color_hex[i:i+2], 16) for i in (0, 2, 4))
 
-def format_text(text, font, size, color):
+def formatear_texto(texto, fuente, tamano, color):
     """Formatear texto para renderizar en pantalla"""
-    font = pygame.font.Font(font, size)
-    return font.render(text, True, color)
+    fuente = pygame.font.Font(fuente, tamano)
+    return fuente.render(texto, True, color)
 
 # Funciones Matemáticas Comunes
-def calculate_distance(point1, point2):
+def calcular_distancia(punto1, punto2):
     """Calcular la distancia entre dos puntos"""
-    return math.sqrt((point2[0] - point1[0]) ** 2 + (point2[1] - point1[1]) ** 2)
+    return math.sqrt((punto2[0] - punto1[0]) ** 2 + (punto2[1] - punto1[1]) ** 2)
 
-def calculate_angle(point1, point2):
+def calcular_angulo(punto1, punto2):
     """Calcular el ángulo entre dos puntos"""
-    return math.degrees(math.atan2(point2[1] - point1[1], point2[0] - point1[0]))
+    return math.degrees(math.atan2(punto2[1] - punto1[1], punto2[0] - punto1[0]))
 
-def save_game(state, filename='savegame.json'):
+def guardar_juego(estado, nombre_archivo='savegame.json'):
     """Guardar el estado del juego en un archivo JSON"""
-    with open(filename, 'w') as file:
-        json.dump(state, file, indent=4)
+    with open(nombre_archivo, 'w') as file:
+        json.dump(estado, file, indent=4)
 
-def load_game(filename='savegame.json'):
+def cargar_juego(nombre_archivo='savegame.json'):
     """Cargar el estado del juego desde un archivo JSON"""
-    with open(filename, 'r') as file:
+    with open(nombre_archivo, 'r') as file:
         return json.load(file)

@@ -2,27 +2,27 @@
 import pygame
 
 # Dimensiones de la ventana
-WIDTH = 1920
-HEIGHT = 1080
+ANCHO = 1920
+ALTO = 1080
 
 # Frames per second (FPS)
 FPS = 60
 
 # Paleta de colores
-BLACK = (0, 0, 0)
-WHITE = (255, 255, 255)
-RED = (255, 0, 0)
-GREEN = (0, 255, 0)
-BLUE = (0, 0, 255)
+NEGRO = (0, 0, 0)
+BLANCO = (255, 255, 255)
+ROJO = (255, 0, 0)
+VERDE = (0, 255, 0)
+AZUL = (0, 0, 255)
 
 # Definición de las fuentes
 pygame.init()  # Inicializar Pygame antes de definir fuentes
-FONT = pygame.font.Font(None, 74)
-BUTTON_FONT = pygame.font.Font(None, 50)
-COMMENT_FONT = pygame.font.Font(None, 30)
+FUENTE = pygame.font.Font(None, 74)
+FUENTE_BOTON = pygame.font.Font(None, 50)
+FUENTE_COMENTARIO = pygame.font.Font(None, 30)
 
 # Configuraciones de sonido
-SOUND_VOLUME = 0.5
+VOLUMEN_SONIDO = 0.5
 
 # Rutas de archivos
-ASSETS_PATH = 'assets/'
+RUTA_RECURSOS = 'assets/'

@@ -1,0 +1,11 @@
+id_equipo,nombre_equipo,pais,liga,budget
+1,El Pozo,España,Primera División,500000000
+2,Inter Movistar,España,Primera División,700000000
+3,Valdepeñas,España,Primera División,600000000
+4,F.C. Barcelona,España,Primera División,550000000
+5,Palma,España,Primera División,650000000
+6,Cartagena,España,Primera División,550000000
+7,Elche,España,Segunda División,600000000
+8,Valencia,España,Segunda División,500000000
+9,Málaga,España,Segunda División,520000000
+10,Zaragoza,España,Segunda División,480000000

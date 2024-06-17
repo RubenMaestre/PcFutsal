@@ -1,36 +1,38 @@
+# src/ui/ui_helpers.py
+
 import pygame
 import settings
 
 # Crear botones
-def create_button(text, pos, font, color=settings.WHITE):
-    text_surface = font.render(text, True, color)
-    rect = text_surface.get_rect(center=pos)
-    return text_surface, rect
+def crear_boton(texto, posicion, fuente, color=settings.BLANCO):
+    superficie_texto = fuente.render(texto, True, color)
+    rect = superficie_texto.get_rect(center=posicion)
+    return superficie_texto, rect
 
 # Dibujar botones
-def draw_buttons(screen, buttons):
-    for text_surface, rect in buttons:
-        pygame.draw.rect(screen, settings.RED, rect.inflate(20, 20))
-        screen.blit(text_surface, rect)
+def dibujar_botones(pantalla, botones):
+    for superficie_texto, rect in botones:
+        pygame.draw.rect(pantalla, settings.ROJO, rect.inflate(20, 20))
+        pantalla.blit(superficie_texto, rect)
 
-# Función para dividir el texto en múltiples líneas
-def wrap_text(text, font, max_width):
-    words = text.split(' ')
-    lines = []
-    current_line = []
-    current_width = 0
+# Ajustar texto para dividirlo en múltiples líneas
+def ajustar_texto(texto, fuente, max_ancho):
+    palabras = texto.split(' ')
+    lineas = []
+    linea_actual = []
+    ancho_actual = 0
 
-    for word in words:
-        word_width, word_height = font.size(word + ' ')
-        if current_width + word_width <= max_width:
-            current_line.append(word)
-            current_width += word_width
+    for palabra in palabras:
+        ancho_palabra, _ = fuente.size(palabra + ' ')
+        if ancho_actual + ancho_palabra <= max_ancho:
+            linea_actual.append(palabra)
+            ancho_actual += ancho_palabra
         else:
-            lines.append(' '.join(current_line))
-            current_line = [word]
-            current_width = word_width
+            lineas.append(' '.join(linea_actual))
+            linea_actual = [palabra]
+            ancho_actual = ancho_palabra
 
-    if current_line:
-        lines.append(' '.join(current_line))
+    if linea_actual:
+        lineas.append(' '.join(linea_actual))
 
-    return lines
+    return lineas

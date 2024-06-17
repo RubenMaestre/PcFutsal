@@ -1,4 +1,41 @@
-id_presidente,nombre,caracter,paciencia,tipo_entrenador_prefiere,tipo_director_deportivo_prefiere,tipo_jugadores_prefiere
-1,Florentino Pérez,Impulsive,Low,High-Profile and Experienced,Technical and Experienced
-2,Joan Laporta,Patient,High,Possession-Based,Technical and Young
-3,Andrea Agnelli,Medium,Medium,Dynamic and High-Press,Physical and Experienced
+id_presidente,nombre,apellidos,apodo,edad,fecha_nacimiento,nacionalidad,club_actual,caracter,paciencia,tipo_entrenador_prefiere,tipo_director_deportivo_prefiere,tipo_jugadores_prefiere
+1,Florentino,Pérez,El Visionario,75,1946-03-08,España,Real Madrid CF,Impulsivo,Baja,High-Profile and Experienced,Technical and Experienced,Dynamic and High-Press
+2,Joan,Laporta,El Estratega,59,1962-06-29,España,FC Barcelona,Paciente,Alta,Possession-Based,Technical and Young,Physical and Experienced
+3,Andrea,Agnelli,El Visionario,46,1978-12-06,Italia,Juventus FC,Medio,Media,Dynamic and High-Press,Physical and Experienced,Technical and Experienced
+4,Stan,Kroenke,El Empresario,74,1947-07-29,Estados Unidos,Arsenal FC,Impulsivo,Baja,High-Profile and Experienced,Technical and Experienced,Dynamic and High-Press
+5,Abramovich,Roman,Abramovich,El Mecenas,54,1966-10-24,Rusia,Chelsea FC,Impulsivo,Baja,High-Profile and Experienced,Technical and Experienced,Dynamic and High-Press
+6,Sheikh Mansour bin Zayed Al Nahyan,Mansour,Mansour,51,1970-11-20,Emiratos Árabes Unidos,Manchester City FC,Impulsivo,Baja,High-Profile and Experienced,Technical and Experienced,Dynamic and High-Press
+7,Agnelli,John,El Líder,61,1963-12-12,Italia,AC Milan,Paciente,Alta,Possession-Based,Technical and Young,Physical and Experienced
+8,Josep,Maria Bartomeu,Bartomeu,Bartomeu,59,1963-02-06,España,FC Barcelona,Impulsivo,Baja,High-Profile and Experienced,Technical and Experienced,Dynamic and High-Press
+9,Daniel,Levy,El Negociador,59,1963-02-08,Inglaterra,Tottenham Hotspur FC,Impulsivo,Baja,High-Profile and Experienced,Technical and Experienced,Dynamic and High-Press
+10,Nasser,Al-Khelaifi,Al-Khelaifi,Nasser,48,1973-11-12,Qatar,Paris Saint-Germain FC,Impulsivo,Baja,High-Profile and Experienced,Technical and Experienced,Dynamic and High-Press
+11,Massimo,Moratti,Moratti,El Visionario,76,1945-05-16,Italia,Inter Milan,Impulsivo,Baja,High-Profile and Experienced,Technical and Experienced,Dynamic and High-Press
+12,Steven,Zhang,El Innovador,30,1991-12-01,China,Inter Milan,Paciente,Alta,Possession-Based,Technical and Young,Physical and Experienced
+13,John,W.Henry,Henry,John,72,1949-09-13,Estados Unidos,Liverpool FC,Impulsivo,Baja,High-Profile and Experienced,Technical and Experienced,Dynamic and High-Press
+14,Jean-Michel,Aulas,El Constructor,72,1949-03-22,Francia,Olympique Lyonnais,Paciente,Alta,Possession-Based,Technical and Young,Physical and Experienced
+15,Karl-Heinz,Rummenigge,El Campeón,66,1955-09-25,Alemania,Bayern Munich,Impulsivo,Baja,High-Profile and Experienced,Technical and Experienced,Dynamic and High-Press
+16,Robert,Kraft,Kraft,El Poderoso,80,1941-06-05,Estados Unidos,New England Revolution,Impulsivo,Baja,High-Profile and Experienced,Technical and Experienced,Dynamic and High-Press
+17,Jean-Pierre,Rivère,El Transformador,59,1962-06-20,Francia,Nice,Paciente,Alta,Possession-Based,Technical and Young,Physical and Experienced
+18,Aurelio,De Laurentiis,El Visionario,72,1949-05-04,Italia,Napoli,Impulsivo,Baja,High-Profile and Experienced,Technical and Experienced,Dynamic and High-Press
+19,Luca,De Meo,El Innovador,54,1967-07-13,Italia,AC Milan,Paciente,Alta,Possession-Based,Technical and Young,Physical and Experienced
+20,Martin,Bain,Bain,Martin,53,1969-07-03,Escocia,West Bromwich Albion,Impulsivo,Baja,High-Profile and Experienced,Technical and Experienced,Dynamic and High-Press
+21,David,Gill,El Ejecutivo,64,1957-08-05,Inglaterra,Manchester United FC,Impulsivo,Baja,High-Profile and Experienced,Technical and Experienced,Dynamic and High-Press
+22,Michael,Edwards,El Transformador,42,1980-08-08,Inglaterra,Liverpool FC,Paciente,Alta,Possession-Based,Technical and Young,Physical and Experienced
+23,Uli,Hoeness,Hoeness,El Constructor,69,1952-01-05,Alemania,Bayern Munich,Impulsivo,Baja,High-Profile and Experienced,Technical and Experienced,Dynamic and High-Press
+24,Klaus-Allofs,Klaus,El Líder,65,1957-12-05,Alemania,Borussia Dortmund,Paciente,Alta,Possession-Based,Technical and Young,Physical and Experienced
+25,Paulo,Gazzaniga,Gazzaniga,El Futuro,30,1993-01-02,Argentina,Spezia Calcio,Impulsivo,Baja,High-Profile and Experienced,Technical and Experienced,Dynamic and High-Press
+26,Emmanuel,Macron,Macron,El Político,43,1977-12-21,Francia,FC Nantes,Paciente,Alta,Possession-Based,Technical and Young,Physical and Experienced
+27,Elton,John,Elton,El Músico,74,1947-03-25,Inglaterra,Watford FC,Impulsivo,Baja,High-Profile and Experienced,Technical and Experienced,Dynamic and High-Press
+28,Laurent,Blanc,Blanc,El Líder,56,1965-11-19,Francia,Girondins Bordeaux,Paciente,Alta,Possession-Based,Technical and Young,Physical and Experienced
+29,Daniel,Ek,Ek,Daniel,38,1983-02-21,Suecia,Arsenal FC,Impulsivo,Baja,High-Profile and Experienced,Technical and Experienced,Dynamic and High-Press
+30,Andrea,Pirlo,Pirlo,El Maestro,42,1979-05-19,Italia,Juventus FC,Paciente,Alta,Possession-Based,Technical and Young,Physical and Experienced
+31,Oliver,Kahn,Kahn,El Muro,52,1969-06-15,Alemania,FC Bayern München AG,Impulsivo,Baja,High-Profile and Experienced,Technical and Experienced,Dynamic and High-Press
+32,Joan,Miró,El Artista,91,1893-04-20,España,RCD Espanyol,Impulsivo,Baja,High-Profile and Experienced,Technical and Experienced,Dynamic and High-Press
+33,Roy,Keane,Keane,El Guerrero,50,1971-08-10,República de Irlanda,Sunderland AFC,Impulsivo,Baja,High-Profile and Experienced,Technical and Experienced,Dynamic and High-Press
+34,Steven,Seagal,Seagal,El Luchador,69,1952-04-10,Estados Unidos,Maccabi Haifa FC,Impulsivo,Baja,High-Profile and Experienced,Technical and Experienced,Dynamic and High-Press
+35,LeBron,James,LeBron,El Rey,36,1984-12-30,Estados Unidos,Liverpool FC,Impulsivo,Baja,High-Profile and Experienced,Technical and Experienced,Dynamic and High-Press
+36,Donald,Trump,Trump,El Político,75,1946-06-14,Estados Unidos,AC Milan,Impulsivo,Baja,High-Profile and Experienced,Technical and Experienced,Dynamic and High-Press
+37,Ricardo,Quaresma,Quaresma,El Artista,38,1983-09-26,Portugal,Besiktas JK,Impulsivo,Baja,High-Profile and Experienced,Technical and Experienced,Dynamic and High-Press
+38,Phil,Collins,Collins,El Músico,70,1951-01-30,Inglaterra,West Ham United FC,Impulsivo,Baja,High-Profile and Experienced,Technical and Experienced,Dynamic and High-Press
+39,Adam,Sandler,Sandler,El Comediante,55,1966-09-09,Estados Unidos,Borussia Dortmund,Impulsivo,Baja,High-Profile and Experienced,Technical and Experienced,Dynamic and High-Press
+40,Karim,Abdel-Gawad,Abdel-Gawad,El Constructor,68,1953-02-27,Egipto,Montpellier HSC,Impulsivo,Baja,High-Profile and Experienced,Technical and Experienced,Dynamic and High-Press

@@ -1,5 +1,5 @@
 # src/core/jugador.py
-# Aquí están las posiciones para el fútbol, habría que adaptarlo para el fútbol sala
+# Aquí están las posiciones adaptadas para el fútbol sala
 
 class Jugador:
     def __init__(self, id_jugador, url_jugador, version_fifa, actualizacion_fifa, actualizacion_al_dia, nombre_corto, nombre_largo,
@@ -14,8 +14,8 @@ class Jugador:
                  potencia_fuerza_tiro, potencia_salto, potencia_resistencia, potencia_fuerza, potencia_tiros_lejanos, mentalidad_agresion,
                  mentalidad_intercepciones, mentalidad_posicionamiento, mentalidad_vision, mentalidad_penaltis, mentalidad_compostura,
                  defensa_marcaje, defensa_entrada, defensa_entrada_deslizante, portero_estirada, portero_manejo, portero_saque,
-                 portero_colocacion, portero_reflejos, portero_velocidad, ls, st, rs, lw, lf, cf, rf, rw, lam, cam, ram, lm, lcm, cm, rcm,
-                 rm, lwb, ldm, cdm, rdm, rwb, lb, lcb, cb, rcb, rb, gk, estrellas_talento):
+                 portero_colocacion, portero_reflejos, portero_velocidad, portero, cierre, ala_cierre, ala_izquierda, ala_derecha, 
+                 ala_pivot, pivot, universal, estrellas_talento):
         self.id_jugador = id_jugador
         self.url_jugador = url_jugador
         self.version_fifa = version_fifa
@@ -98,33 +98,14 @@ class Jugador:
         self.portero_colocacion = portero_colocacion
         self.portero_reflejos = portero_reflejos
         self.portero_velocidad = portero_velocidad
-        self.ls = ls
-        self.st = st
-        self.rs = rs
-        self.lw = lw
-        self.lf = lf
-        self.cf = cf
-        self.rf = rf
-        self.rw = rw
-        self.lam = lam
-        self.cam = cam
-        self.ram = ram
-        self.lm = lm
-        self.lcm = lcm
-        self.cm = cm
-        self.rcm = rcm
-        self.rm = rm
-        self.lwb = lwb
-        self.ldm = ldm
-        self.cdm = cdm
-        self.rdm = rdm
-        self.rwb = rwb
-        self.lb = lb
-        self.lcb = lcb
-        self.cb = cb
-        self.rcb = rcb
-        self.rb = rb
-        self.gk = gk
+        self.portero = portero
+        self.cierre = cierre
+        self.ala_cierre = ala_cierre
+        self.ala_izquierda = ala_izquierda
+        self.ala_derecha = ala_derecha
+        self.ala_pivot = ala_pivot
+        self.pivot = pivot
+        self.universal = universal
         self.estrellas_talento = estrellas_talento
         self.lesion = None
         self.partidos_jugados_temporada_pasada = 0
@@ -175,8 +156,8 @@ class Jugador:
 
     def considerar_retiro(self):
         """Evaluar si el jugador debe retirarse"""
-        from proyecto_pcfutbol.manager.src.core.retirada import should_retire
-        self.retirado = should_retire(self)
+        from src.core.retirada import deberia_retirarse
+        self.retirado = deberia_retirarse(self)
 
 class JugadorJuvenil(Jugador):
     def __init__(self, nombre, edad, posicion, habilidades, potencial, moral=100, condicion_fisica=100):
