@@ -1,0 +1,11 @@
+team_id,team_name,country,league,budget
+1,Manchester United,Inglaterra,Premier League,500000000
+2,Real Madrid,España,La Liga,700000000
+3,Bayern Munich,Alemania,Bundesliga,600000000
+4,Juventus,Italia,Serie A,550000000
+5,Paris Saint-Germain,Francia,Ligue 1,650000000
+6,Manchester City,Inglaterra,Premier League,550000000
+7,Barcelona,España,La Liga,600000000
+8,Borussia Dortmund,Alemania,Bundesliga,500000000
+9,Inter Milan,Italia,Serie A,520000000
+10,Lyon,Francia,Ligue 1,480000000

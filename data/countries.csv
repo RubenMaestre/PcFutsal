@@ -1,0 +1,6 @@
+country_id,country_name,continent,flag_path
+1,España,Europa,assets/flags/spain.png
+2,Inglaterra,Europa,assets/flags/england.png
+3,Alemania,Europa,assets/flags/germany.png
+4,Italia,Europa,assets/flags/italy.png
+5,Francia,Europa,assets/flags/france.png
