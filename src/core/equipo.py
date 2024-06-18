@@ -3,8 +3,11 @@
 from .jugador import Jugador
 
 class Equipo:
-    def __init__(self, nombre, presupuesto):
-        self.nombre = nombre
+    def __init__(self, id_equipo, nombre_equipo, pais, liga, presupuesto):
+        self.id_equipo = id_equipo
+        self.nombre = nombre_equipo
+        self.pais = pais
+        self.liga = liga
         self.presupuesto = presupuesto
         self.jugadores = []
         self.tacticas = "Predeterminada"  # Placeholder para tácticas

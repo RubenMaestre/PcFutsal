@@ -57,6 +57,7 @@ def menu_seleccion_equipo(pantalla):
                             for j, competicion in enumerate(competiciones)
                             if competicion['nombre_pais'] == pais_seleccionado
                         ]
+                        competicion_seleccionada = False  # Marcar como competiciones mostradas
                 else:
                     for i, (superficie_boton, competicion) in enumerate(botones_competiciones):
                         if superficie_boton[1].collidepoint(evento.pos):
@@ -67,16 +68,21 @@ def menu_seleccion_equipo(pantalla):
                                 if equipo['liga'] == competicion_seleccionada['nombre_competicion']
                             ]
                             equipo_seleccionado = None
+
                 for i, (superficie_boton, equipo) in enumerate(botones_equipos):
                     if superficie_boton[1].collidepoint(evento.pos):
                         equipo_seleccionado = equipo
+
                 # Check para despido
                 if casilla_despido.collidepoint(evento.pos):
                     puede_ser_despedido = not puede_ser_despedido
 
-        if competicion_seleccionada is None:
-            dibujar_botones(pantalla, [boton_espana])
-        else:
+        # Dibujar el botón de España y los botones de competiciones o equipos
+        dibujar_botones(pantalla, [boton_espana])
+        
+        if competicion_seleccionada is False:
+            dibujar_botones(pantalla, [superficie_boton for superficie_boton, _ in botones_competiciones])
+        elif competicion_seleccionada:
             dibujar_botones(pantalla, [superficie_boton for superficie_boton, _ in botones_competiciones])
             dibujar_botones(pantalla, [superficie_boton for superficie_boton, _ in botones_equipos])
 
@@ -87,7 +93,7 @@ def menu_seleccion_equipo(pantalla):
             rect_texto = superficie_texto.get_rect(center=(settings.ANCHO // 2, settings.ALTO - 150))
             pantalla.blit(superficie_texto, rect_texto)
 
-        if competicion_seleccionada:
+        if competicion_seleccionada and competicion_seleccionada is not False:
             texto_seleccionado = f"Competición seleccionada: {competicion_seleccionada['nombre_competicion']}"
             superficie_texto = settings.FUENTE_BOTON.render(texto_seleccionado, True, settings.BLANCO)
             rect_texto = superficie_texto.get_rect(center=(settings.ANCHO // 2, settings.ALTO - 100))
@@ -110,8 +116,8 @@ def menu_seleccion_equipo(pantalla):
         # Botón de "Volver"
         boton_volver = crear_boton("VOLVER", (settings.ANCHO // 4, settings.ALTO - 50), settings.FUENTE_COMENTARIO)
         dibujar_botones(pantalla, [boton_volver])
-        if boton_volver[1].collidepoint(pygame.mouse.get_pos()) and evento.type == pygame.MOUSEBUTTONDOWN:
-            corriendo = False
+        if evento.type == pygame.MOUSEBUTTONDOWN and boton_volver[1].collidepoint(evento.pos):
+            return None, False
 
         # Botón de "Siguiente"
         if equipo_seleccionado:
@@ -147,7 +153,7 @@ def menu_equipo_aleatorio(pantalla):
                     equipo_seleccionado = random.choice(equipos)
                 # Botón de "Volver"
                 if boton_volver[1].collidepoint(evento.pos):
-                    corriendo = False
+                    return None, False
                 # Botón de "Siguiente"
                 if boton_siguiente[1].collidepoint(evento.pos):
                     print(f"Equipo seleccionado: {equipo_seleccionado['nombre_equipo']}")
@@ -201,7 +207,7 @@ def menu_modo_carrera(pantalla):
                         equipo_seleccionado = equipo
                 # Botón de "Volver"
                 if boton_volver[1].collidepoint(evento.pos):
-                    corriendo = False
+                    return None
                 # Botón de "Siguiente"
                 if equipo_seleccionado and boton_siguiente[1].collidepoint(evento.pos):
                     print(f"Equipo seleccionado en modo carrera: {equipo_seleccionado['nombre_equipo']}")

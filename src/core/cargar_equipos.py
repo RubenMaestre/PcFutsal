@@ -2,21 +2,38 @@
 
 import csv
 from src.core.equipo import Equipo
-from src.core.liga import Liga
 
-def cargar_equipos(ruta_archivo):
+def cargar_equipos(file_path):
     equipos = []
-    with open(ruta_archivo, mode='r') as file:
-        csv_reader = csv.DictReader(file)
-        for row in csv_reader:
-            equipo = Equipo(row['team_name'], int(row['budget']))
-            equipos.append((equipo, row['country'], row['league']))
+    try:
+        with open(file_path, mode='r', encoding='utf-8') as file:
+            csv_reader = csv.DictReader(file)
+            for row in csv_reader:
+                try:
+                    equipo = Equipo(
+                        id_equipo=row['id_equipo'],
+                        nombre_equipo=row['nombre_equipo'],
+                        pais=row['pais'],
+                        liga=row['liga'],
+                        presupuesto=int(row['budget'])
+                    )
+                    equipos.append(equipo)
+                except KeyError as e:
+                    print(f"Error: Columna no encontrada en CSV: {e}")
+                except ValueError as e:
+                    print(f"Error: Valor incorrecto en CSV: {e}")
+    except Exception as e:
+        print(f"Error al leer {file_path}: {e}")
     return equipos
 
 def asignar_equipos_a_ligas(equipos):
-    ligas = {}
-    for equipo, pais, nombre_liga in equipos:
-        if nombre_liga not in ligas:
-            ligas[nombre_liga] = Liga(nombre_liga, pais, 1)
-        ligas[nombre_liga].agregar_equipo(equipo)
-    return ligas
+    ligas_dict = {
+        "Primera División": [],
+        "Segunda División": []
+    }
+    for equipo in equipos:
+        if equipo.liga == "Primera División":
+            ligas_dict["Primera División"].append(equipo)
+        elif equipo.liga == "Segunda División":
+            ligas_dict["Segunda División"].append(equipo)
+    return ligas_dict

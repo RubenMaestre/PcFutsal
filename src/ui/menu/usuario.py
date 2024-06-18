@@ -1,9 +1,8 @@
-# src/ui/menu/usuario.py
-
 import pygame
 import settings
 import csv
 from src.ui.ui_helpers import crear_boton, dibujar_botones, ajustar_texto  # Importar funciones auxiliares
+from src.ui.game.menu_principal_gestion import menu_principal_gestion  # Importar la función del menú principal de gestión
 
 # Inicializar Pygame (esto se debe hacer en main.py realmente)
 pygame.init()
@@ -25,7 +24,7 @@ preguntas = [
 # Función para cargar los países desde el CSV
 def cargar_paises(ruta_archivo):
     paises = []
-    with open(ruta_archivo, mode='r') as archivo:
+    with open(ruta_archivo, mode='r', encoding='utf-8') as archivo:
         lector_csv = csv.DictReader(archivo)
         for fila in lector_csv:
             paises.append(fila['nombre_pais'])
@@ -74,7 +73,12 @@ def menu_informacion_usuario(pantalla):
                 if boton_siguiente[1].collidepoint(evento.pos):
                     print("Información del usuario:", info_usuario)
                     print("Respuestas:", respuestas)
-                    corriendo = False
+                    equipo_seleccionado = "Elche"  # Aquí debería ser el equipo seleccionado en tu lógica
+                    puede_ser_despedido = True  # Aquí deberías obtener si puede ser despedido de tu lógica
+                    modo_juego = "Modo Entrenador"  # Aquí deberías obtener el modo de juego seleccionado
+                    menu_principal_gestion(pantalla, equipo_seleccionado, puede_ser_despedido, modo_juego)
+                    return info_usuario, respuestas  # Termina el bucle y devuelve los datos del usuario
+
             elif evento.type == pygame.KEYDOWN:
                 if caja_activa is not None:
                     if evento.key == pygame.K_RETURN:

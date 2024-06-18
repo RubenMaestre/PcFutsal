@@ -9,14 +9,14 @@ from src.core.copa_spain import CalendarioCopaSpain
 from src.core.simular_partidos import simular_partido
 
 class Competicion:
-    def __init__(self, liga, puntos_por_victoria=3, puntos_por_empate=1, puntos_por_derrota=0):
-        self.liga = liga
+    def __init__(self, equipos, puntos_por_victoria=3, puntos_por_empate=1, puntos_por_derrota=0):
+        self.equipos = equipos
         self.puntos_por_victoria = puntos_por_victoria
         self.puntos_por_empate = puntos_por_empate
         self.puntos_por_derrota = puntos_por_derrota
-        self.clasificacion = {equipo: 0 for equipo in liga.obtener_equipos()}
-        self.estadisticas_equipos = {equipo.nombre: EstadisticasEquipo(equipo.nombre) for equipo in liga.obtener_equipos()}
-        self.calendario = CalendarioLiga(liga.obtener_equipos()).generar_calendario()
+        self.clasificacion = {equipo: 0 for equipo in equipos}
+        self.estadisticas_equipos = {equipo.nombre: EstadisticasEquipo(equipo.nombre) for equipo in equipos}
+        self.calendario = CalendarioLiga(equipos).generar_calendario()
         self.campeon_liga = None
         self.campeon_copa_rey = None
         self.subcampeon_copa_rey = None
@@ -110,23 +110,23 @@ class Competicion:
 
     def jugar_copa_espana(self):
         """Jugar el torneo de la Copa de España"""
-        if len(self.liga.obtener_equipos()) != 8:
+        if len(self.equipos) != 8:
             raise ValueError("La Copa de España debe tener exactamente 8 equipos")
-        calendario_copa = CalendarioCopaSpain(self.liga.obtener_equipos())
+        calendario_copa = CalendarioCopaSpain(self.equipos)
         ganador = calendario_copa.jugar_torneo()
         return ganador
 
     def jugar_copa_del_rey(self):
         """Jugar el torneo de la Copa del Rey"""
-        copa_del_rey = Copa(self.liga)
+        copa_del_rey = Copa(self.equipos)
         ganador_copa = copa_del_rey.jugar_copa()
         self.campeon_copa_rey = ganador_copa
         return ganador_copa
 
 class Copa:
-    def __init__(self, copa):
-        self.copa = copa
-        self.calendario = CalendarioCopa(copa.obtener_equipos()).generar_calendario()
+    def __init__(self, equipos):
+        self.equipos = equipos
+        self.calendario = CalendarioCopa(equipos).generar_calendario()
 
     def jugar_ronda(self):
         """Jugar una ronda de la copa"""
