@@ -13,6 +13,8 @@ type Props = {
   lang?: string;
 };
 
+// Genera las iniciales del nombre del club para usar como fallback cuando no hay escudo.
+// Toma la primera letra de cada palabra y limita a 3 caracteres para mantenerlo compacto.
 function getClubInitials(clubName?: string | null): string {
   if (!clubName) return "";
   const parts = clubName.trim().split(/\s+/);
@@ -62,15 +64,18 @@ export default function MVPOfMatchday({ grupoId, jornada, dict, lang = "es" }: P
     );
   }
 
-  // --- datos principales que devuelve la API ---
+  // Extraer datos principales de la API con fallbacks.
+  // Los fallbacks aseguran que siempre haya algo que mostrar incluso si faltan datos.
   const displayName = jugadorTop.nombre || "—";
   const clubName = jugadorTop.club_nombre || "—";
   const clubInitials = getClubInitials(clubName);
   const puntos = jugadorTop.puntos ?? "—";
+  // Prioridad: jornada pasada como prop > jornada de la respuesta de la API
   const jornadaNum =
     jornada != null ? jornada : data?.jornada != null ? data.jornada : null;
 
   const fotoJugador = jugadorTop.foto || "";
+  // Fallback del escudo: si no viene en la respuesta, intentar construir la ruta estándar
   const clubEscudo =
     jugadorTop.club_escudo ||
     (jugadorTop.club_id

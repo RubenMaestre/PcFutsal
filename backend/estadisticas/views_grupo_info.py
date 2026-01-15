@@ -67,35 +67,43 @@ class GrupoInfoFullView(APIView):
                     status=status.HTTP_404_NOT_FOUND,
                 )
 
-        # 4. Elegir un grupo definitivo
-        #    Si hay varios (varias temporadas), nos quedamos con la "más reciente".
-        #    Suposición: temporada.nombre es algo tipo "2025/2026". Ordenamos desc y cogemos la primera.
+        # 4. Elegir un grupo definitivo.
+        # Si hay varios grupos con el mismo slug pero de diferentes temporadas,
+        # nos quedamos con la "más reciente" (temporada más actual).
+        # Esto es útil cuando se accede a una URL sin especificar temporada:
+        # automáticamente muestra los datos de la temporada actual.
         grupos_ordenados = sorted(
             grupos_qs,
-            key=lambda g: g.temporada.nombre,
-            reverse=True,
+            key=lambda g: g.temporada.nombre,  # Ordenar por nombre de temporada (ej: "2025/2026")
+            reverse=True,  # Más reciente primero
         )
         grupo = grupos_ordenados[0]
 
         grupo_id = grupo.id
 
         # ---------------------------------------------------------------------
-        # A partir de aquí REPLICAMOS la lógica de tus otras views,
-        # pero inline, para evitar tener que instanciar subclases DRF una por una.
+        # A partir de aquí REPLICAMOS la lógica de otras views inline.
+        # Esto evita tener que instanciar múltiples subclases DRF y hacer
+        # múltiples peticiones HTTP, mejorando el rendimiento al consolidar
+        # toda la información del grupo en una sola respuesta.
         # ---------------------------------------------------------------------
 
         # ========== CLASIFICACION (similar a ClasificacionMiniView) ==========
+        # Obtenemos todas las posiciones del grupo ordenadas por posición actual.
+        # Usamos select_related para optimizar las consultas y evitar N+1 queries.
         posiciones = (
             ClubEnGrupo.objects
             .filter(grupo=grupo)
             .select_related("club")
         )
 
+        # Ordenar por posición actual (si es None, ponerlo al final con 9999).
+        # Si hay empate en posición, desempatar por puntos (más puntos = mejor).
         posiciones_ordenadas = sorted(
             posiciones,
             key=lambda row: (
                 row.posicion_actual if row.posicion_actual is not None else 9999,
-                -row.puntos,
+                -row.puntos,  # Negativo para orden descendente (más puntos primero)
             )
         )
 

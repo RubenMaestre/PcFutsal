@@ -50,6 +50,9 @@ export function useMVPTop3(opts: Options) {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    // Construir parámetros de la petición.
+    // Los parámetros 'from' y 'to' permiten filtrar por rango de fechas (ventana de tiempo).
+    // El parámetro 'only_porteros' permite filtrar solo porteros del ranking.
     const params = new URLSearchParams();
     if (from) params.set("from", from);
     if (to) params.set("to", to);
@@ -58,6 +61,7 @@ export function useMVPTop3(opts: Options) {
     }
     if (onlyPorteros) params.set("only_porteros", "1");
 
+    // Usamos el endpoint optimizado que precalcula los datos en lugar de calcularlos en tiempo real.
     const url = `/api/fantasy/mvp-top3-optimized/?${params.toString()}`;
 
     let cancelled = false;

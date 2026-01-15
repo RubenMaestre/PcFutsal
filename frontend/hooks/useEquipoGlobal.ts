@@ -63,8 +63,9 @@ export function useEquipoGlobal(opts: Options) {
     if (top) params.append("top", String(top));
     if (strict) params.append("strict", "1");
 
-    // Usar endpoint optimizado si está disponible (lee de PuntosEquipoTotal y PuntosEquipoJornada)
-    // Fallback al endpoint original si falla
+    // Usar endpoint optimizado si está disponible (lee de PuntosEquipoTotal y PuntosEquipoJornada).
+    // El endpoint optimizado precalcula los datos en lugar de calcularlos en tiempo real,
+    // mejorando significativamente el rendimiento. Si falla, usar el endpoint original como fallback.
     const url = `/api/fantasy/equipo-global-optimized/?${params.toString()}`;
     const fallbackUrl = `/api/valoraciones/equipo-jornada-global/?${params.toString()}`;
 
@@ -72,16 +73,19 @@ export function useEquipoGlobal(opts: Options) {
     setLoading(true);
     setError(null);
 
-    // Función auxiliar para procesar la respuesta
+    // Función auxiliar para procesar la respuesta y normalizar campos.
+    // El backend puede devolver los puntos con diferentes nombres de campo,
+    // por lo que aquí se unifica la lógica para usar nombres consistentes.
     const processResponse = async (res: Response) => {
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const json = (await res.json()) as any;
 
-      // Normalización de campos
+      // Normalización de campos: el backend puede usar diferentes nombres para los mismos datos.
+      // Esto permite mantener compatibilidad con diferentes versiones del backend.
       if (Array.isArray(json.ranking_global)) {
         let mapped: EquipoGlobalRow[] = json.ranking_global.map(
           (row: any): EquipoGlobalRow => {
-            // Puntos de la semana
+            // Puntos de la semana: intentar múltiples nombres de campo posibles
             const puntosSemana: number | null =
               row.score ??
               row.score_week ??
@@ -89,7 +93,7 @@ export function useEquipoGlobal(opts: Options) {
               row.puntos ??
               null;
 
-            // Puntos totales
+            // Puntos totales: intentar múltiples nombres de campo posibles
             const puntosGlobal: number =
               row.score_global ??
               row.score_total ??
@@ -115,7 +119,8 @@ export function useEquipoGlobal(opts: Options) {
           }
         );
 
-        // Ordenar por puntos totales (descendente)
+        // Ordenar por puntos totales (descendente) para mostrar los mejores equipos primero.
+        // Esto asegura que el ranking esté siempre ordenado correctamente.
         mapped.sort(
           (a: EquipoGlobalRow, b: EquipoGlobalRow) =>
             (b.score_global ?? 0) - (a.score_global ?? 0)
@@ -129,17 +134,20 @@ export function useEquipoGlobal(opts: Options) {
       }
     };
 
+    // Medir el tiempo de respuesta para debugging y monitoreo de rendimiento.
     const startTime = performance.now();
-    // Intentar primero con endpoint optimizado
+    // Intentar primero con endpoint optimizado (más rápido)
     fetch(url, { cache: "no-store" })
       .then(async (res) => {
         const elapsed = performance.now() - startTime;
+        // Log de rendimiento para identificar si el endpoint optimizado está funcionando correctamente
         console.log(`[EQUIPO] Endpoint optimizado usado: ${(elapsed / 1000).toFixed(2)}s`);
         return processResponse(res);
       })
       .catch(async (e) => {
         console.warn(`[EQUIPO] Endpoint optimizado falló, usando fallback:`, e);
-        // Si falla el endpoint optimizado, intentar con el original
+        // Si falla el endpoint optimizado, intentar con el original como fallback.
+        // Esto asegura que el hook funcione incluso si el endpoint optimizado no está disponible.
         if (!cancelled) {
           try {
             const fallbackStart = performance.now();

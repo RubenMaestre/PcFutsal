@@ -17,14 +17,19 @@ from jugadores.models import JugadorEnClubTemporada
 
 
 # --- Helpers ---
+# Helper para normalizar URLs de media.
+# Asegura que todas las URLs de imágenes tengan el prefijo /media/ correcto.
+# Esto es necesario porque FFCV a veces devuelve rutas relativas sin prefijo.
 def norm_media(url: str | None) -> str:
     if not url:
         return ""
     u = url.strip()
+    # Si ya es URL absoluta o tiene /media/, dejarla como está
     if u.startswith("http://") or u.startswith("https://"):
         return u
     if u.startswith("/media/"):
         return u
+    # Añadir prefijo /media/ si falta
     return "/media/" + u.lstrip("/")
 
 
@@ -42,7 +47,9 @@ class ClubLiteSerializer(serializers.ModelSerializer):
 
 
 class ClasificacionActualSerializer(serializers.ModelSerializer):
-    # Mapear campos del modelo a los nombres que espera el frontend
+    # Mapear campos del modelo a los nombres abreviados que espera el frontend.
+    # El frontend usa abreviaciones (v, e, d, gf, gc) para mantener las respuestas compactas.
+    # Si los datos no están disponibles en el modelo, se calculan desde los partidos como fallback.
     posicion = serializers.SerializerMethodField()
     v = serializers.SerializerMethodField()
     e = serializers.SerializerMethodField()
@@ -50,7 +57,8 @@ class ClasificacionActualSerializer(serializers.ModelSerializer):
     gf = serializers.SerializerMethodField()
     gc = serializers.SerializerMethodField()
     
-    # Campos calculados para tarjetas
+    # Campos calculados para tarjetas (no están directamente en ClubEnGrupo).
+    # Se calculan desde los partidos para tener estadísticas completas de fair play.
     tarjetas_amarillas = serializers.SerializerMethodField()
     tarjetas_dobles_amarillas = serializers.SerializerMethodField()
     tarjetas_rojas = serializers.SerializerMethodField()
@@ -78,15 +86,24 @@ class ClasificacionActualSerializer(serializers.ModelSerializer):
         return obj.posicion_actual if obj else None
     
     def get_v(self, obj):
-        """Devuelve victorias, calculando desde partidos si es necesario"""
+        """
+        Devuelve victorias, calculando desde partidos si es necesario.
+        
+        Prioridad:
+        1. Si hay victorias en el modelo (ClubEnGrupo.victorias) → usar esas
+        2. Si no → calcular desde los partidos jugados
+        
+        Esto permite que el serializer funcione incluso si los datos del modelo
+        no están sincronizados, mejorando la robustez del sistema.
+        """
         if not obj:
             return 0
         
-        # Si hay victorias en el modelo, usarlas
+        # Si hay victorias en el modelo, usarlas (más rápido)
         if obj.victorias and obj.victorias > 0:
             return obj.victorias
         
-        # Si no, calcular desde partidos
+        # Si no, calcular desde partidos (fallback más lento pero siempre funciona)
         return self._calcular_victorias_desde_partidos(obj)
     
     def get_e(self, obj):

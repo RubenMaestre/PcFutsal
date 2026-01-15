@@ -85,10 +85,13 @@ export default function SeasonTopScorersImpact({
       {/* LISTA */}
       <ul className="mt-2 flex flex-col gap-2">
         {top10.map((row, idx) => {
+          // Prioridad: apodo (más personal) > nombre (más formal)
           const name = row.apodo || row.nombre;
           const golesJugador = row.goles_total ?? 0;
           const golesEquipo = row.goles_equipo_total ?? 0;
           const pct = row.contribucion_pct ?? 0;
+          // Calcular ratio de contribución: qué porcentaje de los goles del equipo
+          // ha marcado este jugador. Se limita a 100% para evitar valores absurdos.
           const ratio =
             golesEquipo > 0
               ? Math.min(100, (golesJugador / golesEquipo) * 100)

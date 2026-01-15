@@ -33,6 +33,7 @@ export function useSeasonTopScorers(grupoId: number | null) {
   const [error, setError] = React.useState<string | null>(null);
 
   React.useEffect(() => {
+    // Si no hay grupoId, no tiene sentido hacer la petición.
     if (!grupoId) {
       setData(null);
       setError(null);
@@ -40,6 +41,8 @@ export function useSeasonTopScorers(grupoId: number | null) {
       return;
     }
 
+    // Flag para cancelar la petición si el componente se desmonta antes de que termine.
+    // Evita errores de "Can't perform a React state update on an unmounted component".
     let cancelled = false;
 
     async function fetchData() {
@@ -47,6 +50,8 @@ export function useSeasonTopScorers(grupoId: number | null) {
       setError(null);
 
       try {
+        // Usamos ruta relativa /api/ para aprovechar el proxy de Nginx.
+        // cache: "no-store" asegura que siempre obtenemos datos frescos.
         const url = `/api/estadisticas/pichichi-temporada/?grupo_id=${grupoId}`;
         const res = await fetch(url, { cache: "no-store" });
         if (!res.ok) throw new Error("HTTP " + res.status);
@@ -72,6 +77,8 @@ export function useSeasonTopScorers(grupoId: number | null) {
     };
   }, [grupoId]);
 
+  // Limitar a los top 12 goleadores para mostrar en la interfaz.
+  // Esto mantiene la lista manejable y enfocada en los más destacados.
   const top10: SeasonScorer[] = React.useMemo(() => {
     if (!data?.goleadores) return [];
     return data.goleadores.slice(0, 12);

@@ -38,6 +38,7 @@ export function usePorteroJornada(
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    // Si no hay grupoId, no tiene sentido hacer la petición.
     if (!grupoId) {
       setData(null);
       setPorteroTop(null);
@@ -46,6 +47,8 @@ export function usePorteroJornada(
       return;
     }
 
+    // Flag para cancelar la petición si el componente se desmonta antes de que termine.
+    // Evita errores de "Can't perform a React state update on an unmounted component".
     let cancelled = false;
 
     async function fetchData() {
@@ -53,6 +56,9 @@ export function usePorteroJornada(
       setError(null);
 
       try {
+        // Construir parámetros de la petición.
+        // El parámetro only_porteros=1 filtra solo porteros del ranking de jugadores.
+        // La jornada es opcional: si no se especifica, se obtiene el portero de la última jornada jugada.
         const params = new URLSearchParams();
         params.set("grupo_id", String(grupoId));
         if (jornada != null) {
@@ -60,6 +66,7 @@ export function usePorteroJornada(
         }
         params.set("only_porteros", "1");
 
+        // Usamos ruta relativa /api/ para aprovechar el proxy de Nginx.
         const res = await fetch(
           `/api/valoraciones/jugadores-jornada/?${params.toString()}`,
           {
@@ -75,7 +82,8 @@ export function usePorteroJornada(
         const json: ApiResponse = await res.json();
         if (cancelled) return;
 
-        // el primero ya es el portero de la jornada
+        // El primer jugador del ranking ya es el portero de la jornada (ordenado por puntos).
+        // Esto permite mostrar directamente el portero destacado sin procesamiento adicional.
         const top =
           json.ranking_jugadores && json.ranking_jugadores.length > 0
             ? json.ranking_jugadores[0]
