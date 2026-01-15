@@ -20,16 +20,20 @@ type Props = {
   lang?: string;
 };
 
-// Función para generar colores únicos para cada equipo
+// Genera colores únicos distribuidos uniformemente en el círculo cromático HSL
+// Esto asegura que equipos cercanos en el array tengan colores visualmente distintos
 function getColorForTeam(index: number, total: number): string {
+  // Distribuir los tonos (hue) uniformemente: 0°, 30°, 60°... para total equipos
   const hues = Array.from({ length: total }, (_, i) => (i * 360) / total);
   const hue = hues[index % total];
+  // Variar saturación y luminosidad ligeramente para evitar colores demasiado similares
   const saturation = 60 + (index % 3) * 10; // 60-80%
   const lightness = 50 + (index % 2) * 5; // 50-55%
   return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
 }
 
-// Componente personalizado para mostrar el escudo en lugar de círculos
+// Componente personalizado: muestra escudos de equipos en lugar de círculos genéricos
+// Esto hace la gráfica más visual e identificable. Usa ClipPath para hacer los escudos circulares.
 function CustomDotWithShield({
   cx,
   cy,
@@ -167,9 +171,10 @@ export default function ClasificacionEvolucionChart({
   const labels = dict?.clasificacion_evolucion || {};
 
   // Inicializar equipos habilitados cuando lleguen los datos
+  // Por defecto solo se muestran los primeros 8 equipos para evitar sobrecargar
+  // la gráfica con demasiadas líneas (afecta rendimiento y legibilidad)
   React.useEffect(() => {
     if (data && data.equipos.length > 0 && enabledTeams.size === 0) {
-      // Por defecto, habilitar los primeros 8 equipos para no sobrecargar la gráfica
       const initialTeams = new Set(
         data.equipos.slice(0, 8).map((e) => e.club_id)
       );
@@ -333,6 +338,7 @@ export default function ClasificacionEvolucionChart({
             />
             <YAxis
               domain={[maxPosition, 1]}
+              // Invertir eje Y para que posición 1 (mejor) esté arriba, más intuitivo visualmente
               reversed
               stroke="var(--color-text-secondary)"
               tick={{ fill: "var(--color-text-secondary)", fontSize: 12 }}

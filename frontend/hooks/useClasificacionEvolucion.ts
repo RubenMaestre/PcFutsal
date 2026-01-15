@@ -49,6 +49,8 @@ export function useClasificacionEvolucion(
       return;
     }
 
+    // Flag de cancelación para evitar actualizar estado si el componente se desmonta
+    // durante el fetch (evita race conditions y warnings de React)
     let cancelled = false;
 
     async function fetchData() {
@@ -81,10 +83,12 @@ export function useClasificacionEvolucion(
 
         const json: ClasificacionEvolucionResponse = await res.json();
 
+        // Verificar cancelación antes de actualizar estado
         if (cancelled) return;
 
         setData(json);
       } catch (err: any) {
+        // Verificar cancelación antes de actualizar estado con error
         if (cancelled) return;
         console.error("useClasificacionEvolucion error:", err);
         const errorMessage =

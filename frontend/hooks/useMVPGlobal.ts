@@ -106,17 +106,22 @@ export function useMVPGlobal(opts: Options) {
       // ————————————————————————————————
       // Normalización de campos + ordenación
       // ————————————————————————————————
+      // Workaround: diferentes endpoints devuelven campos con nombres distintos
+      // (puntos/puntos_semana/puntos_global/puntos_totales). Normalizamos aquí
+      // para que el componente siempre reciba los mismos nombres de campos.
       if (Array.isArray(json.ranking_global)) {
         let mapped: MVPGlobalRow[] = json.ranking_global.map(
           (row: any): MVPGlobalRow => {
-            // Puntos de la semana (si no viene nada, lo dejamos en null)
+            // Puntos de la semana: puede venir como puntos, puntos_semana o points_week
+            // Si no viene nada, null (porque puede que no haya datos de esa semana)
             const puntosSemana: number | null =
               row.puntos ??
               row.puntos_semana ??
               row.points_week ??
               null;
 
-            // Puntos totales/globales (si no viene nada, 0)
+            // Puntos totales/globales: puede venir con varios nombres
+            // Si no viene nada, 0 (porque siempre hay puntos acumulados)
             const puntosGlobal: number =
               row.puntos_global ??
               row.puntos_totales ??
