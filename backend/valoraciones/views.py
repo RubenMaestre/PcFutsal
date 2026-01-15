@@ -29,6 +29,11 @@ class PartidoEstrellaView(APIView):
 
     # --- Helpers internos ---------------------------------------------
     def _bonus_racha(self, racha_texto: str) -> float:
+        """
+        Calcula bonus según la racha reciente del equipo (últimas 5 jornadas).
+        Valores: V=victoria (+0.05), E=empate (+0.02), D=derrota (-0.03).
+        Equipos en racha positiva suman más al score de interés del partido.
+        """
         if not racha_texto:
             return 0.0
         racha_texto = racha_texto.strip().upper()[:5]
@@ -43,6 +48,10 @@ class PartidoEstrellaView(APIView):
         return total
 
     def _bonus_goles(self, goles_local: int, goles_visit: int) -> float:
+        """
+        Bonus por potencial goleador del partido. Partidos con muchos goles
+        son más interesantes. Umbrales: 35+ goles (muy ofensivo), 25+ goles (ofensivo).
+        """
         goles_local = goles_local or 0
         goles_visit = goles_visit or 0
         bonus = 0.0
@@ -56,6 +65,11 @@ class PartidoEstrellaView(APIView):
         return bonus
 
     def _penalizacion_desigual(self, pos_local, pos_visit) -> float:
+        """
+        Penaliza partidos muy desiguales en clasificación. Partidos entre equipos
+        muy separados suelen ser menos interesantes. Penalización extra si es
+        top3 vs descenso (muy predecible).
+        """
         if not pos_local or not pos_visit:
             return 0.0
         diff = abs(pos_local - pos_visit)
@@ -66,6 +80,7 @@ class PartidoEstrellaView(APIView):
             pen -= 0.10
         elif diff >= 6:
             pen -= 0.06
+        # Penalización extra: top3 vs zona descenso es muy predecible
         top3 = pos_local <= 3 or pos_visit <= 3
         descenso = pos_local >= 15 or pos_visit >= 15
         if top3 and descenso:
@@ -202,25 +217,34 @@ class PartidoEstrellaView(APIView):
             goles_por_club[vid] = goles_por_club.get(vid, 0) + gv
 
         # 8. Calcular score por partido
+        # Fórmula: base_score (coeficientes) + bonus_duelo + bonus_racha + bonus_goles - penalizacion_desigual
+        # El score más alto = partido más interesante
         ranking = []
         for p in partidos_jornada:
             local_id = p.local_id
             visit_id = p.visitante_id
+            # Coeficiente base del club (0.4 = valor por defecto si no existe)
             coef_local = coef_lookup.get(local_id, 0.4)
             coef_visit = coef_lookup.get(visit_id, 0.4)
-            base_score = coef_local + coef_visit  # 👈 sin coeficiente de división
+            # Base score: suma de coeficientes (sin multiplicar por coef división aquí)
+            base_score = coef_local + coef_visit
 
             pos_local = clasif_lookup.get(local_id, {}).get("pos")
             pos_visit = clasif_lookup.get(visit_id, {}).get("pos")
+            # Bonus por duelo: partidos entre equipos cercanos en clasificación son más interesantes
             bonus_duelo = 0.0
             if pos_local and pos_visit:
+                # Duelo directo 1º vs 2º: máximo interés
                 if {pos_local, pos_visit} == {1, 2}:
                     bonus_duelo += 0.25
+                # Duelos entre top 4 con diferencia de 1 posición
                 elif abs(pos_local - pos_visit) == 1 and max(pos_local, pos_visit) <= 4:
                     bonus_duelo += 0.15
                 diff = abs(pos_local - pos_visit)
+                # Partidos entre equipos muy cercanos (diferencia <= 2 posiciones)
                 if diff <= 2:
                     bonus_duelo += 0.08
+                # Partidos entre equipos cercanos (diferencia <= 4 posiciones)
                 elif diff <= 4:
                     bonus_duelo += 0.04
 

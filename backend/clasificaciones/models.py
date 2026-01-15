@@ -28,10 +28,13 @@ class ClasificacionJornada(models.Model):
     )
 
     class Meta:
+        # Un grupo solo puede tener una clasificación por jornada
         unique_together = (("grupo", "jornada"),)
         indexes = [
+            # Índice para búsquedas por grupo y jornada (consulta más común)
             models.Index(fields=["grupo", "jornada"]),
-            models.Index(fields=["grupo", "-jornada"]),  # Para obtener la última jornada
+            # Índice para obtener la última jornada de un grupo (orden descendente)
+            models.Index(fields=["grupo", "-jornada"]),
         ]
         ordering = ["grupo", "jornada"]
         verbose_name = "Clasificación por Jornada"
@@ -82,9 +85,12 @@ class PosicionJornada(models.Model):
     )
 
     class Meta:
+        # Un club solo puede aparecer una vez por clasificación (snapshot único)
         unique_together = (("clasificacion_jornada", "club"),)
         indexes = [
+            # Índice para ordenar por posición dentro de una jornada (gráficas de evolución)
             models.Index(fields=["clasificacion_jornada", "posicion"]),
+            # Índice para buscar todas las posiciones de un club a lo largo del tiempo
             models.Index(fields=["club", "clasificacion_jornada"]),
         ]
         ordering = ["clasificacion_jornada", "posicion"]

@@ -76,7 +76,8 @@ def _extraer_partidos_y_fechas(soup: BeautifulSoup) -> List[Dict[str, Any]]:
         pabellon_txt = pabellon_div.get_text(strip=True) if pabellon_div else None
 
         # --- id_partido ---
-        # podemos sacar el primer <a href='partido.php?...id_partido=XXXXX...'>
+        # El id_partido es crítico para identificar el partido único en FFCV
+        # Se busca primero en el href del enlace porque es la forma más fiable
         enlace_partido = tr.select_one("a[href*='partido.php']")
         id_partido = None
         if enlace_partido and enlace_partido.has_attr("href"):
@@ -85,7 +86,8 @@ def _extraer_partidos_y_fechas(soup: BeautifulSoup) -> List[Dict[str, Any]]:
             if m_id:
                 id_partido = int(m_id.group(1))
 
-        # si no lo encontramos por href, plan B: mirar el onclick del botón Historial
+        # Workaround: a veces FFCV no incluye el enlace, pero el id está en el onclick del botón Historial
+        # Esto pasa en algunas jornadas donde el HTML está incompleto
         if not id_partido:
             btn_hist = tr.select_one("[onclick*='modalHistorial']")
             if btn_hist and btn_hist.has_attr("onclick"):
