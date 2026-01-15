@@ -550,30 +550,6 @@ sudo systemctl restart nginx
 
 ---
 
-## 📝 Estilo de Código
-
-El proyecto sigue una guía de estilo específica para comentarios. Ver [`DOCUMENTACION/TONO_Y_ESTILO_COMMENTS.md`](DOCUMENTACION/TONO_Y_ESTILO_COMMENTS.md) para más detalles.
-
-### Principios
-
-- **Comentar el por qué, no el qué**: Explicar decisiones y razones, no obviedades
-- **Comentarios directos y honestos**: Sin postureo técnico
-- **Español de España**: Todos los comentarios en español
-- **Contexto suficiente**: Incluir limitaciones y decisiones de diseño
-
-### Ejemplo
-
-```python
-# Headers personalizados para simular un navegador real y evitar bloqueos de FFCV.
-# Es crucial para que el scraping no sea detectado y bloqueado.
-BASE_HEADERS = {
-    "User-Agent": "Mozilla/5.0...",
-    # ...
-}
-```
-
----
-
 ## 🚀 Deployment
 
 ### Producción
