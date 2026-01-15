@@ -178,7 +178,7 @@ source ../venv/bin/activate
 python manage.py runserver
 ```
 
-El backend estará disponible en la URL configurada (por defecto `http://localhost:8000` en desarrollo)
+El backend estará disponible en la URL configurada según tu configuración
 
 #### Frontend (Terminal 2)
 
