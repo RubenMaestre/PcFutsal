@@ -289,11 +289,13 @@ class GoleadoresJornadaView(APIView):
                 "goleadores": [],
             }, status=status.HTTP_200_OK)
 
-        # 📌 Mapa rápido: club_id -> partido_de_esa_jornada
-        # (en una jornada un club juega 1 partido)
+        # Mapa rápido: club_id -> partido_de_esa_jornada.
+        # En una jornada, cada club juega exactamente 1 partido, por lo que este mapa
+        # permite acceso O(1) al partido de un club sin tener que iterar.
         partido_por_club = {}
         for p in partidos_de_jornada:
-            # pabellón defensivo igual que en ResultadosJornadaView
+            # Pabellón: prioridad al pabellón específico del partido (puede diferir del del club).
+            # Si no hay, usar el pabellón del club local como fallback.
             if getattr(p, "pabellon", None):
                 pab = p.pabellon
             elif p.local and getattr(p.local, "pabellon", None):

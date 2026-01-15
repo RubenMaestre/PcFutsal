@@ -16,14 +16,18 @@ export function useEquipoJornada(
   const [error, setError] = React.useState<string | null>(null);
 
   React.useEffect(() => {
-    // si no hay grupo todavía (móvil en primer render), no pedimos nada
+    // Si no hay grupoId, no tiene sentido hacer la petición.
+    // Esto es especialmente importante en móvil donde el grupo puede no estar disponible
+    // en el primer render.
     if (!grupoId) {
       setData(null);
       setError(null);
-      setLoading(false); // 👈 lo dejamos claro
+      setLoading(false);
       return;
     }
 
+    // AbortController permite cancelar la petición si el componente se desmonta
+    // o si cambian los parámetros antes de que termine la petición anterior.
     const controller = new AbortController();
     const params = new URLSearchParams();
     params.set("grupo_id", String(grupoId));
@@ -35,13 +39,15 @@ export function useEquipoJornada(
       setLoading(true);
       setError(null);
       try {
-        // 👇 IMPORTANTE: igual que en los otros hooks, ruta RELATIVA
+        // Usamos ruta relativa /api/ para aprovechar el proxy de Nginx.
+        // Esto evita problemas de CORS y permite que el mismo dominio sirva
+        // tanto el frontend como el backend.
         const res = await fetch(
           `/api/valoraciones/equipo-jornada/?${params.toString()}`,
           {
             method: "GET",
             signal: controller.signal,
-            cache: "no-store",
+            cache: "no-store", // Siempre obtener datos frescos
           }
         );
 

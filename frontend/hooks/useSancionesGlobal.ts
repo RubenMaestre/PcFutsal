@@ -58,18 +58,23 @@ export function useSancionesGlobal(opts: Options) {
       return;
     }
 
+    // Construir parámetros de la petición.
+    // Los parámetros 'from' y 'to' permiten filtrar por rango de fechas (ventana de tiempo).
+    // El parámetro 'top' limita el número de resultados para mejorar el rendimiento.
     const params = new URLSearchParams();
     params.append("temporada_id", String(temporadaId));
     if (from) params.append("from", from);
     if (to) params.append("to", to);
     if (top) params.append("top", String(top));
 
+    // Usamos el endpoint optimizado que precalcula los datos en lugar de calcularlos en tiempo real.
     const url = `/api/estadisticas/sanciones-global-optimized/?${params.toString()}`;
 
     let cancelled = false;
     setLoading(true);
     setError(null);
 
+    // Medimos el tiempo de respuesta para debugging y monitoreo de rendimiento.
     const startTime = performance.now();
     
     fetch(url, { cache: "no-store" })
@@ -80,6 +85,7 @@ export function useSancionesGlobal(opts: Options) {
         if (!cancelled) {
           setData(json);
           const elapsed = performance.now() - startTime;
+          // Log de rendimiento para identificar si el endpoint optimizado está funcionando correctamente.
           console.log(`[SANCIONES] Endpoint optimizado usado: ${(elapsed / 1000).toFixed(2)}s`);
         }
       })

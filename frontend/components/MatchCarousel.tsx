@@ -20,7 +20,9 @@ export default function MatchCarousel({
 }) {
   const trackRef = React.useRef<HTMLDivElement | null>(null);
 
-  // === AUTO-SLIDE CADA 7s (sin hacer scroll vertical en la página) ===
+  // Auto-slide cada 7 segundos para mostrar todos los partidos sin interacción del usuario.
+  // El intervalo de 7s es un balance entre dar tiempo a leer y mantener el contenido dinámico.
+  // Solo hace scroll horizontal dentro del carrusel, no afecta el scroll vertical de la página.
   React.useEffect(() => {
     const track = trackRef.current;
     if (!track || !matches?.length) return;
@@ -32,11 +34,12 @@ export default function MatchCarousel({
       const slides = track.children;
       if (!slides.length) return;
 
+      // Avanzar al siguiente slide de forma circular (vuelve al inicio al final)
       index = (index + 1) % slides.length;
       const next = slides[index] as HTMLElement;
       if (!next) return;
 
-      // scroll horizontal suave solo dentro del carrusel
+      // Scroll horizontal suave solo dentro del carrusel
       const offsetLeft = next.offsetLeft;
       track.scrollTo({
         left: offsetLeft,
@@ -47,7 +50,9 @@ export default function MatchCarousel({
     return () => clearInterval(interval);
   }, [matches]);
 
-  // === SCROLL MANUAL CON FLECHAS (solo desktop) ===
+  // Scroll manual con flechas (solo visible en desktop).
+  // Avanza aproximadamente el 90% del ancho visible, mostrando ~3 cards a la vez.
+  // Esto permite navegación rápida sin tener que hacer scroll manual.
   const scrollByAmount = (dir: "left" | "right") => {
     const track = trackRef.current;
     if (!track) return;

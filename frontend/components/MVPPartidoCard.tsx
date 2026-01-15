@@ -30,12 +30,15 @@ export default function MVPPartidoCard({ partidoId, dict, lang = "es" }: Props) 
     );
   }
 
+  // Si hay error o no hay MVP, no mostramos nada en lugar de mostrar un error.
+  // Esto evita mostrar mensajes de error cuando simplemente no hay MVP asignado aún.
   if (error || !data || !data.mvp) {
     return null; // No mostrar si no hay MVP o hay error
   }
 
   const mvp = data.mvp;
   const jugador = mvp.jugador;
+  // Prioridad: apodo (más personal) > nombre (más formal)
   const nombreJugador = jugador.apodo || jugador.nombre || "";
   const fotoJugador = jugador.foto || "";
 

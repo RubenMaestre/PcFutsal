@@ -16,11 +16,14 @@ type Props = {
   };
 };
 
-// función para asegurar https
+// Normaliza URLs de escudos para asegurar que usen HTTPS.
+// Esto es importante porque algunos escudos pueden venir con HTTP desde FFCV,
+// y los navegadores modernos bloquean contenido mixto (HTTP en páginas HTTPS).
 function normalizeShieldUrl(raw: string | null | undefined): string {
   if (!raw) return "";
   let url = raw.trim();
   if (url.startsWith("http://")) {
+    // Convertir HTTP a HTTPS para evitar problemas de contenido mixto
     url = "https://" + url.slice("http://".length);
   }
   return url;
