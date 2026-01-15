@@ -43,17 +43,21 @@ export default function HomeShell({ dict, filterData, lang = "es" }: any) {
 
   const [selectedJornada, setSelectedJornada] = React.useState<number | null>(null);
 
-  // Valores por defecto: Tercera División (ID: 4) y Grupo XV (ID: 1)
+  // Valores por defecto: Tercera División (ID: 4) y Grupo XV (ID: 1).
+  // Estos valores aseguran que la interfaz siempre muestre datos relevantes al cargar,
+  // especialmente cuando el usuario cambia de scope GLOBAL a COMPETICIONES.
   const DEFAULT_COMPETICION_ID = 4; // Tercera División
   const DEFAULT_GRUPO_ID = 1; // Grupo XV
 
-  // Ref para rastrear si ya se establecieron los valores por defecto
+  // Ref para rastrear si ya se establecieron los valores por defecto.
+  // Esto evita que se reestablezcan los filtros en cada renderizado.
   const hasDefaultSetRef = React.useRef<boolean>(false);
 
-  // Establecer valores por defecto cuando se cambia a COMPETICIONES sin grupo
+  // Establecer valores por defecto cuando se cambia a COMPETICIONES sin grupo.
+  // Esto mejora la UX al mostrar automáticamente datos relevantes en lugar de una pantalla vacía.
   React.useEffect(() => {
     if (scope === "COMPETICIONES" && !selectedGrupoId && filterData?.competiciones && filterData.competiciones.length > 0 && !hasDefaultSetRef.current) {
-      // Buscar Tercera División y Grupo XV
+      // Buscar Tercera División y Grupo XV en los datos de filtro disponibles
       const tercera = filterData.competiciones.find((c: any) => c.id === DEFAULT_COMPETICION_ID);
       if (tercera) {
         const grupoXV = tercera.grupos?.find((g: any) => g.id === DEFAULT_GRUPO_ID);
@@ -64,31 +68,36 @@ export default function HomeShell({ dict, filterData, lang = "es" }: any) {
         }
       }
     } else if (scope === "GLOBAL") {
+      // Al cambiar a GLOBAL, limpiar los filtros de competición/grupo
       setSelectedCompeticionId(null);
       setSelectedGrupoId(null);
       hasDefaultSetRef.current = false; // Reset para permitir establecer valores por defecto de nuevo
     }
   }, [scope, filterData, selectedGrupoId]);
 
-  // Semana seleccionada (YYYY-MM-DD) — valor por defecto: martes de la semana más reciente disponible
+  // Semana seleccionada (YYYY-MM-DD) — valor por defecto: martes de la semana más reciente disponible.
+  // El martes se usa como referencia porque es cuando típicamente se juegan los partidos de fútbol sala.
+  // Esto asegura que al cargar la home se muestren los datos más relevantes automáticamente.
   const [selectedWeekend, setSelectedWeekend] = React.useState<string>(() => {
     // Calcular el martes por defecto (semana más reciente disponible)
     const today = new Date();
     today.setHours(0, 0, 0, 0);
     const dayOfWeek = today.getDay();
     
-    // Función auxiliar para obtener el miércoles de una semana
+    // Función auxiliar para obtener el miércoles de una semana.
+    // Se usa el miércoles como punto de referencia para calcular el martes de esa semana.
     const getWednesdayOfWeek = (date: Date): Date => {
       const d = new Date(date);
       d.setHours(0, 0, 0, 0);
       const dow = d.getDay();
       let daysToSubtract;
+      // Calcular días a restar para llegar al miércoles (día 3, donde domingo=0)
       if (dow === 3) {
-        daysToSubtract = 0;
+        daysToSubtract = 0; // Ya es miércoles
       } else if (dow > 3 || dow === 0) {
-        daysToSubtract = dow === 0 ? 4 : dow - 3;
+        daysToSubtract = dow === 0 ? 4 : dow - 3; // Si es domingo o después del miércoles
       } else {
-        daysToSubtract = dow + 4;
+        daysToSubtract = dow + 4; // Si es antes del miércoles (lunes o martes)
       }
       d.setDate(d.getDate() - daysToSubtract);
       return d;

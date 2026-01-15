@@ -34,6 +34,7 @@ export function useSancionesJornada(grupoId: number | null, jornada: number | nu
   const [error, setError] = React.useState<string | null>(null);
 
   React.useEffect(() => {
+    // Si no hay grupoId, no tiene sentido hacer la petición.
     if (!grupoId) {
       setData(null);
       setError(null);
@@ -41,6 +42,8 @@ export function useSancionesJornada(grupoId: number | null, jornada: number | nu
       return;
     }
 
+    // Flag para cancelar la petición si el componente se desmonta antes de que termine.
+    // Evita errores de "Can't perform a React state update on an unmounted component".
     let cancelled = false;
 
     async function fetchData() {
@@ -48,10 +51,14 @@ export function useSancionesJornada(grupoId: number | null, jornada: number | nu
       setError(null);
 
       try {
+        // Construir parámetros de la petición.
+        // La jornada es opcional: si no se especifica, se obtienen las sanciones de la última jornada jugada.
         const params = new URLSearchParams();
         params.set("grupo_id", String(grupoId));
         if (jornada != null) params.set("jornada", String(jornada));
 
+        // Usamos ruta relativa /api/ para aprovechar el proxy de Nginx.
+        // cache: "no-store" asegura que siempre obtenemos datos frescos.
         const res = await fetch(`/api/estadisticas/sanciones-jornada/?${params.toString()}`, { cache: "no-store" });
         if (!res.ok) throw new Error("HTTP " + res.status);
         const json = (await res.json()) as SancionesJornadaResponse;

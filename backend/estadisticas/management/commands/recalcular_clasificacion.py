@@ -33,9 +33,10 @@ class Command(BaseCommand):
             f"Recalculando clasificación para Grupo {grupo.id} ({grupo.nombre}) / {grupo.competicion.nombre} / {grupo.temporada.nombre}"
         ))
 
-        # 2. Obtenemos todos los clubs que han jugado (o deberían estar en este grupo)
-        #    Aquí asumimos que si han jugado algún partido en este grupo, pertenecen al grupo.
-        #    Alternativamente podríamos tener ClubEnGrupo creado ya para todos desde el principio.
+        # 2. Obtenemos todos los clubs que han jugado (o deberían estar en este grupo).
+        # Combinamos clubs que aparecen en partidos (local o visitante) con clubs
+        # registrados en ClubEnGrupo para asegurar que no se nos escape ningún club.
+        # Esto es importante porque algunos clubs pueden estar registrados pero aún no haber jugado.
         clubs_en_partidos_ids = set(
             Partido.objects.filter(grupo=grupo)
             .values_list("local_id", flat=True)
@@ -44,12 +45,15 @@ class Command(BaseCommand):
             .values_list("visitante_id", flat=True)
         )
 
-        # También añadimos los que ya están en ClubEnGrupo por si aún no han jugado
+        # También añadimos los que ya están en ClubEnGrupo por si aún no han jugado.
+        # Esto asegura que clubs recién añadidos al grupo aparezcan en la clasificación
+        # incluso si aún no han disputado ningún partido.
         clubs_en_grupo_ids = set(
             ClubEnGrupo.objects.filter(grupo=grupo)
             .values_list("club_id", flat=True)
         )
 
+        # Unión de ambos sets para obtener todos los clubs posibles
         club_ids = clubs_en_partidos_ids | clubs_en_grupo_ids
 
         clubs = Club.objects.filter(id__in=club_ids)
@@ -70,8 +74,10 @@ class Command(BaseCommand):
                 "resultados_ordenados": [],  # para racha
             }
 
-        # 4. Cogemos TODOS los partidos jugados de este grupo (solo los que tienen marcador válido)
-        #    Ordenados por jornada_numero y luego por fecha_hora para construir la racha en orden cronológico
+        # 4. Obtenemos TODOS los partidos jugados de este grupo (solo los que tienen marcador válido).
+        # Ordenados por jornada_numero y luego por fecha_hora para construir la racha
+        # en orden cronológico correcto. El orden es crucial para que la racha refleje
+        # la secuencia real de resultados del equipo.
         partidos_jugados = (
             Partido.objects
             .filter(

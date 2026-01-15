@@ -24,6 +24,7 @@ export function useFairPlayEquipos(grupoId: number | null) {
   const [error, setError] = React.useState<string | null>(null);
 
   React.useEffect(() => {
+    // Si no hay grupoId, no tiene sentido hacer la petición.
     if (!grupoId) {
       setData(null);
       setError(null);
@@ -31,11 +32,15 @@ export function useFairPlayEquipos(grupoId: number | null) {
       return;
     }
 
+    // Flag para cancelar la petición si el componente se desmonta antes de que termine.
+    // Evita errores de "Can't perform a React state update on an unmounted component".
     let cancelled = false;
     async function fetchData() {
       setLoading(true);
       setError(null);
       try {
+        // Usamos ruta relativa /api/ para aprovechar el proxy de Nginx.
+        // cache: "no-store" asegura que siempre obtenemos datos frescos.
         const url = `/api/estadisticas/fair-play-equipos/?grupo_id=${grupoId}`;
         const res = await fetch(url, { cache: "no-store" });
         if (!res.ok) throw new Error("HTTP " + res.status);
