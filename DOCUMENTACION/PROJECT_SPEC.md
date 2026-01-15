@@ -781,7 +781,7 @@ Mejorar scraping.
 
 Añadir endpoints (si no requieren modelos nuevos).
 
-10) Conexión obligatoria con archivos de control .cursor
+10) Conexión obligatoria con archivos de control DOCUMENTACION
 
 El agente SIEMPRE debe leer antes de actuar:
 
