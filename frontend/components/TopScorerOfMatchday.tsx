@@ -12,6 +12,8 @@ type Props = {
   lang?: string;
 };
 
+// Genera las iniciales del nombre del club para usar como fallback cuando no hay escudo.
+// Toma la primera letra de cada palabra y limita a 3 caracteres para mantenerlo compacto.
 function getClubInitials(clubName?: string | null): string {
   if (!clubName) return "";
   const parts = clubName.trim().split(/\s+/);
@@ -65,6 +67,8 @@ export default function TopScorerOfMatchday({
     );
   }
 
+  // Prioridad: apodo (más personal) > nombre (más formal).
+  // Solo usar apodo si no está vacío o solo contiene espacios.
   const displayName =
     topScorer.apodo && topScorer.apodo.trim() !== ""
       ? topScorer.apodo
@@ -73,9 +77,11 @@ export default function TopScorerOfMatchday({
   const clubName = topScorer.club_nombre || "—";
   const clubInitials = getClubInitials(clubName);
   const goals = topScorer.goles_jornada ?? "—";
+  // Prioridad: jornada pasada como prop > jornada de la respuesta de la API
   const jornadaNum =
     jornada != null ? jornada : data?.jornada != null ? data.jornada : null;
 
+  // Fallbacks para pabellón y fecha con valores por defecto legibles
   const pabellon = topScorer.pabellon || "— pabellón —";
   const fecha = topScorer.fecha_hora
     ? new Date(topScorer.fecha_hora).toLocaleDateString("es-ES")

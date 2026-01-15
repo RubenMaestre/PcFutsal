@@ -54,12 +54,13 @@ export default function GoalkeeperOfMatchday({
     );
   }
 
+  // Prioridad: jornada pasada como prop > jornada de la respuesta de la API
   const jornadaNum =
     jornada != null ? jornada : data?.jornada != null ? data.jornada : null;
 
   return (
     <div className="flex items-center gap-3 bg-[#121212] rounded-xl px-3 py-2 shadow-sm">
-      {/* Foto */}
+      {/* Foto del portero. Si no hay foto, mostrar el nombre como fallback. */}
       <div className="relative w-14 h-14 rounded-full overflow-hidden bg-black/20 border border-[#d4af37]/50">
         {porteroTop.foto ? (
           // eslint-disable-next-line @next/next/no-img-element
@@ -69,6 +70,7 @@ export default function GoalkeeperOfMatchday({
             className="w-full h-full object-cover"
           />
         ) : (
+          // Fallback: mostrar nombre del portero si no hay foto disponible
           <div className="w-full h-full flex items-center justify-center text-[0.6rem] text-white text-center px-1">
             {porteroTop.nombre}
           </div>

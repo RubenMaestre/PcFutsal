@@ -37,7 +37,7 @@ export function useJugadoresJornada(
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    // si no hay grupo seleccionado, limpiamos
+    // Si no hay grupo seleccionado, limpiar todos los estados.
     if (!grupoId) {
       setData(null);
       setJugadorTop(null);
@@ -46,6 +46,8 @@ export function useJugadoresJornada(
       return;
     }
 
+    // Flag para cancelar la petición si el componente se desmonta antes de que termine.
+    // Evita errores de "Can't perform a React state update on an unmounted component".
     let cancelled = false;
 
     async function fetchData() {
@@ -53,18 +55,22 @@ export function useJugadoresJornada(
       setError(null);
 
       try {
+        // Construir parámetros de la petición.
+        // La jornada es opcional: si no se especifica, se obtiene el jugador de la última jornada jugada.
         const params = new URLSearchParams();
         params.set("grupo_id", String(grupoId));
         if (jornada != null) {
           params.set("jornada", String(jornada));
         }
 
-        // OJO: aquí usamos ruta RELATIVA como en goleadores y clasificación
+        // Usamos ruta relativa /api/ para aprovechar el proxy de Nginx.
+        // Esto evita problemas de CORS y permite que el mismo dominio sirva
+        // tanto el frontend como el backend.
         const res = await fetch(
           `/api/valoraciones/jugadores-jornada/?${params.toString()}`,
           {
             method: "GET",
-            cache: "no-store",
+            cache: "no-store", // Siempre obtener datos frescos
           }
         );
 
@@ -76,7 +82,9 @@ export function useJugadoresJornada(
 
         if (cancelled) return;
 
-        // normalizamos un pelín por si el backend alguna vez no manda escudo
+        // Normalizar datos del jugador top con fallbacks para campos opcionales.
+        // Esto asegura que siempre tengamos valores válidos incluso si el backend
+        // no envía algunos campos (foto, escudo, nombre del club).
         let top: JugadorJornada | null = json.jugador_de_la_jornada || null;
         if (top) {
           top = {
