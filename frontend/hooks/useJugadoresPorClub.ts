@@ -3,6 +3,9 @@
 
 import { useEffect, useState } from "react";
 
+// Determina la base de la URL de la API según el contexto (navegador vs servidor).
+// En el navegador, se usa una URL relativa para aprovechar el proxy de Nginx.
+// En SSR, se usa la variable de entorno NEXT_PUBLIC_API_BASE_URL.
 const isBrowser = typeof window !== "undefined";
 const API_BASE = !isBrowser
   ? process.env.NEXT_PUBLIC_API_BASE_URL || "https://pcfutsal.es"
@@ -48,7 +51,8 @@ export function useJugadoresPorClub(clubId: number | null, random: boolean = fal
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    // Si no hay clubId y no es random y no hay búsqueda, no hacer nada
+    // Si no hay parámetros válidos (clubId, random o search), no hacer la petición.
+    // Esto evita peticiones innecesarias cuando el componente aún no tiene datos.
     if (!clubId && !random && !search) {
       setData(null);
       setError(null);
@@ -56,6 +60,8 @@ export function useJugadoresPorClub(clubId: number | null, random: boolean = fal
       return;
     }
 
+    // AbortController permite cancelar la petición si el componente se desmonta
+    // o si cambian los parámetros antes de que termine la petición anterior.
     const controller = new AbortController();
 
     const fetchJugadores = async () => {
@@ -63,7 +69,9 @@ export function useJugadoresPorClub(clubId: number | null, random: boolean = fal
       setError(null);
 
       try {
-        // Construir URL con parámetros
+        // Construir URL con parámetros según lo disponible.
+        // Prioridad: clubId > random > search.
+        // Esto permite diferentes casos de uso: jugadores de un club, aleatorios, o búsqueda.
         const params = new URLSearchParams();
         if (clubId) {
           params.set("club_id", String(clubId));

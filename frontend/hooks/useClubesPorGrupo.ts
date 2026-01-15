@@ -3,6 +3,9 @@
 
 import { useEffect, useState } from "react";
 
+// Determina la base de la URL de la API según el contexto (navegador vs servidor).
+// En el navegador, se usa una URL relativa para aprovechar el proxy de Nginx.
+// En SSR, se usa la variable de entorno NEXT_PUBLIC_API_BASE_URL.
 const isBrowser = typeof window !== "undefined";
 const API_BASE = !isBrowser
   ? process.env.NEXT_PUBLIC_API_BASE_URL || "https://pcfutsal.es"
@@ -53,16 +56,18 @@ export function useClubesPorGrupo(grupoId: number | null, random: boolean = fals
       setError(null);
 
       try {
-        // Construir URL según los parámetros:
-        // - Si hay grupoId: usar endpoint con grupo_id
-        // - Si random=true: usar endpoint con random=true (20 aleatorios)
-        // - Si no hay grupoId y no es random: usar endpoint sin parámetros (todos los de temporada activa)
+        // Construir URL según los parámetros disponibles.
+        // Prioridad: grupoId > random > todos.
+        // Esto permite diferentes casos de uso: clubes de un grupo específico,
+        // clubes aleatorios para destacados, o todos los clubes de la temporada activa.
         let url: string;
         if (grupoId) {
+          // Clubes de un grupo específico
           url = isBrowser
             ? `/api/clubes/lista/?grupo_id=${grupoId}`
             : `${API_BASE}/api/clubes/lista/?grupo_id=${grupoId}`;
         } else if (random) {
+          // Clubes aleatorios (útil para destacados en la home)
           url = isBrowser
             ? `/api/clubes/lista/?random=true`
             : `${API_BASE}/api/clubes/lista/?random=true`;

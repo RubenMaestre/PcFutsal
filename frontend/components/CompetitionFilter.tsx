@@ -54,22 +54,26 @@ export default function CompetitionFilter({
   const router = useRouter();
   const pathname = usePathname();
 
-  // /es/... → lang = es
+  // Extraer el idioma desde la URL (primer segmento: /es/... → "es").
+  // Esto permite que el componente funcione en cualquier página sin necesidad
+  // de pasar el idioma como prop explícitamente.
   const lang = React.useMemo(() => {
     const parts = pathname.split("/").filter(Boolean);
-    return parts[0] || "es";
+    return parts[0] || "es"; // Fallback a español si no se encuentra
   }, [pathname]);
 
-  // estamos en /es/clasificacion...
+  // Detectar si estamos en una página de clasificación para ajustar el comportamiento del filtro.
+  // Esto permite personalizar la navegación según el contexto de la página.
   const isClassificationPage = React.useMemo(() => {
     const parts = pathname.split("/").filter(Boolean);
     return parts[1] === "clasificacion";
   }, [pathname]);
 
-  // 👇 nuevo: estamos en /es/mvp o en /es/competicion/mvp/...
+  // Detectar si estamos en una página de MVP (puede ser global o por competición).
+  // Esto permite personalizar el filtro para mostrar solo grupos relevantes para MVP.
   const isMVPPage = React.useMemo(() => {
     const parts = pathname.split("/").filter(Boolean);
-    // casos:
+    // Casos posibles:
     // /es/mvp              → parts = ["es","mvp"]
     // /es/competicion/mvp  → parts = ["es","competicion","mvp",...]
     if (parts[1] === "mvp") return true;

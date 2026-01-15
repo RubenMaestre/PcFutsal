@@ -37,7 +37,9 @@ export default function ClubsGrid({ clubs, dict, onSelectClub, lang }: Props) {
       "
     >
       {clubs.map((club) => {
+        // Prioridad: nombre_corto (más legible) > nombre_oficial (más formal)
         const nombre = club.nombre_corto || club.nombre_oficial;
+        // Construir URL con idioma si está disponible, sino usar hash fallback
         const href =
           lang && club.id
             ? `/${lang}/clubes/${club.id}`
@@ -45,6 +47,7 @@ export default function ClubsGrid({ clubs, dict, onSelectClub, lang }: Props) {
 
         const cardContent = (
           <div className="flex flex-col items-center gap-2 bg-white/5 rounded-xl border border-white/10 p-3 hover:border-white/30 hover:bg-white/10 transition">
+            {/* Mostrar escudo si está disponible, sino mostrar iniciales como fallback */}
             {club.escudo_url ? (
               // eslint-disable-next-line @next/next/no-img-element
               <img
@@ -53,6 +56,7 @@ export default function ClubsGrid({ clubs, dict, onSelectClub, lang }: Props) {
                 className="w-16 h-16 object-contain"
               />
             ) : (
+              // Fallback: mostrar las dos primeras letras del nombre en un círculo
               <div className="w-16 h-16 rounded-full bg-slate-700/40 flex items-center justify-center text-sm">
                 {nombre?.slice(0, 2)?.toUpperCase()}
               </div>
@@ -69,7 +73,9 @@ export default function ClubsGrid({ clubs, dict, onSelectClub, lang }: Props) {
           </div>
         );
 
-        // si nos pasan onSelectClub lo tratamos como botón
+        // Si se pasa onSelectClub, el componente actúa como botón (útil para modales o selección).
+        // Si no, actúa como enlace normal (navegación a la página del club).
+        // Esto permite reutilizar el componente en diferentes contextos.
         if (onSelectClub) {
           return (
             <button
@@ -82,7 +88,7 @@ export default function ClubsGrid({ clubs, dict, onSelectClub, lang }: Props) {
           );
         }
 
-        // si no, lo tratamos como enlace
+        // Enlace normal para navegación a la página del club
         return (
           <a key={club.id} href={href} className="block">
             {cardContent}

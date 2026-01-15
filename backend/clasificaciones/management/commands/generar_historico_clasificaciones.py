@@ -46,9 +46,14 @@ class Command(BaseCommand):
     def _calcular_clasificacion_hasta_jornada(self, grupo: Grupo, hasta_jornada: int):
         """
         Calcula la clasificación de un grupo hasta una jornada específica.
-        Reutiliza la misma lógica que recalcular_clasificacion.py
+        
+        Esta función reutiliza la misma lógica que recalcular_clasificacion.py pero
+        permite calcular la clasificación en cualquier punto del tiempo (hasta una jornada específica).
+        Esto es crucial para generar el histórico de clasificaciones.
         """
-        # 1. Obtener todos los clubs del grupo
+        # 1. Obtener todos los clubs del grupo.
+        # Combinamos clubs que aparecen en partidos (local o visitante) con clubs
+        # registrados en ClubEnGrupo para asegurar que no se nos escape ningún club.
         clubs_en_partidos_ids = set(
             Partido.objects.filter(grupo=grupo)
             .values_list("local_id", flat=True)
@@ -62,6 +67,7 @@ class Command(BaseCommand):
             .values_list("club_id", flat=True)
         )
 
+        # Unión de ambos sets para obtener todos los clubs posibles
         club_ids = clubs_en_partidos_ids | clubs_en_grupo_ids
         clubs = Club.objects.filter(id__in=club_ids)
 
@@ -80,7 +86,9 @@ class Command(BaseCommand):
                 "resultados_ordenados": [],
             }
 
-        # 3. Obtener partidos jugados hasta la jornada indicada
+        # 3. Obtener partidos jugados hasta la jornada indicada.
+        # El filtro jornada_numero__lte=hasta_jornada es crucial: permite calcular
+        # la clasificación como estaba en ese momento histórico, no la actual.
         partidos_jugados = (
             Partido.objects
             .filter(
@@ -88,7 +96,7 @@ class Command(BaseCommand):
                 jugado=True,
                 goles_local__isnull=False,
                 goles_visitante__isnull=False,
-                jornada_numero__lte=hasta_jornada,
+                jornada_numero__lte=hasta_jornada,  # Solo partidos hasta esta jornada
             )
             .order_by("jornada_numero", "fecha_hora", "id")
         )
