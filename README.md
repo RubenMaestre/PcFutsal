@@ -13,6 +13,8 @@
 
 [Características](#-características-principales) • [Instalación](#-instalación) • [Documentación](#-documentación) • [API](#-api) • [Contribuir](#-contribución)
 
+[🇬🇧 English](README.en.md) | [🇪🇸 Español](README.md)
+
 </div>
 
 ---
