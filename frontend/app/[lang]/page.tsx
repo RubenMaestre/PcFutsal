@@ -7,12 +7,12 @@ import { generateMetadataWithAlternates } from "../../lib/seo";
 import type { Metadata } from "next";
 
 export async function generateMetadata({ params }: any): Promise<Metadata> {
-  const { lang } = params;
+  const { lang } = await params;
   const dict = await getDictionary(lang);
-  
+
   const title = dict?.seo?.home?.title || "PC FUTSAL — Resultados, Estadísticas y Rankings de Fútbol Sala en España";
   const description = dict?.seo?.home?.description || "Resultados oficiales, clasificaciones, jugadores, clubes y rankings tipo FIFA del fútbol sala amateur en España. Datos actualizados y Fantasy semanal.";
-  
+
   return generateMetadataWithAlternates(
     lang,
     "/",
@@ -24,7 +24,8 @@ export async function generateMetadata({ params }: any): Promise<Metadata> {
 }
 
 export default async function HomePage({ params }: any) {
-  const dict = await getDictionary(params.lang);
+  const { lang } = await params;
+  const dict = await getDictionary(lang);
 
   // Vamos a intentar leer el contexto de filtros desde Django directamente
   // usando el puerto interno de Gunicorn (127.0.0.1:8024)
@@ -35,7 +36,7 @@ export default async function HomePage({ params }: any) {
       "http://127.0.0.1:8024/api/nucleo/filter-context/",
       {
         method: "GET",
-        cache: "no-store", // no cachear para SSR/render
+        next: { revalidate: 3600 },
       }
     );
 
@@ -52,5 +53,5 @@ export default async function HomePage({ params }: any) {
     };
   }
 
-  return <HomeShell dict={dict} filterData={filterData} lang={params.lang} />;
+  return <HomeShell dict={dict} filterData={filterData} lang={lang} />;
 }

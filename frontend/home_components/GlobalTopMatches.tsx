@@ -105,7 +105,7 @@ function Shield({
     >
       {src ? (
         // eslint-disable-next-line @next/next/no-img-element
-        <img src={src} alt={alt} className="w-full h-full object-contain" />
+        <img src={src} alt={alt} loading="lazy" decoding="async" className="w-full h-full object-contain" />
       ) : (
         <span className="text-[10px] text-neutral-500">?</span>
       )}
@@ -229,6 +229,8 @@ function MatchMiniCard({
               <img
                 src={divisionLogoSrc}
                 alt={dict?.match?.competition_alt || "Competición"}
+                loading="lazy"
+                decoding="async"
                 className="w-full h-full object-contain"
               />
             </div>

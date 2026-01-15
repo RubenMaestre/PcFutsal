@@ -96,3 +96,11 @@ Desktop.ini
 
 # Deployment scripts (use .example versions)
 deploy_pcfutsal.sh
+
+# Playwright test artifacts
+playwright-report/
+test-results/
+.playwright/
+
+# Temporary files
+tmpclaude-*

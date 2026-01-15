@@ -3,12 +3,28 @@
 
 import "../globals.css";
 import type { Metadata } from "next";
+import { Cabin, Orbitron } from "next/font/google";
 import { getDictionary } from "../../lib/i18n";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import AnimatedShell from "../../components/AnimatedShell";
 import { generateOrganizationSchema } from "../../lib/schema";
 import { getDefaultOgImage, getDefaultOgTitle, getDefaultOgDescription } from "../../lib/seo";
+
+const cabin = Cabin({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
+  display: "swap",
+  variable: "--font-cabin",
+});
+
+const orbitron = Orbitron({
+  subsets: ["latin"],
+  weight: ["500", "700", "900"],
+  display: "swap",
+  variable: "--font-orbitron",
+});
 
 const siteUrl = "https://pcfutsal.es";
 const ogImage = getDefaultOgImage();
@@ -55,7 +71,7 @@ async function getLastUpdateFromAPI() {
   try {
     const res = await fetch("https://pcfutsal.es/api/status/last_update/", {
       method: "GET",
-      cache: "no-store",
+      next: { revalidate: 300 },
     });
 
     if (!res.ok) {
@@ -73,34 +89,34 @@ async function getLastUpdateFromAPI() {
 }
 
 export default async function LangLayout({ children, params }: any) {
-  const dict = await getDictionary(params.lang);
+  const { lang } = await params;
+  const dict = await getDictionary(lang);
   const lastUpdate = await getLastUpdateFromAPI();
   const organizationSchema = generateOrganizationSchema();
 
   return (
-    <html lang={params.lang}>
+    <html lang={lang} className={`${cabin.variable} ${orbitron.variable}`}>
       <head>
-        {/* Google AdSense */}
         <script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9121651028519630"
           crossOrigin="anonymous"
         />
-        
+
         {/* Schema.org Organization */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
         />
       </head>
-      <body className="bg-brand-bg text-brand-text min-h-screen antialiased font-base flex flex-col">
-        <Header dict={dict} lang={params.lang} lastUpdate={lastUpdate} />
+      <body className={`bg-brand-bg text-brand-text min-h-screen antialiased font-base flex flex-col ${cabin.className}`}>
+        <Header dict={dict} lang={lang} lastUpdate={lastUpdate} />
         <main className="flex-1 w-full">
           <div className="max-w-7xl mx-auto w-full px-4 py-4">
             <AnimatedShell>{children}</AnimatedShell>
           </div>
         </main>
-        <Footer dict={dict} lang={params.lang} />
+        <Footer dict={dict} lang={lang} />
       </body>
     </html>
   );
