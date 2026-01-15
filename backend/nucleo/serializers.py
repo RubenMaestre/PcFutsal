@@ -25,7 +25,9 @@ class TemporadaMiniSerializer(serializers.ModelSerializer):
 
 
 class FilterContextResponseSerializer(serializers.Serializer):
-    # 👇 muy importante: puede venir sin temporada
+    # La temporada activa puede ser None si no hay temporadas en la base de datos.
+    # Esto permite que el frontend maneje el caso de una base de datos vacía sin errores.
     temporada_activa = TemporadaMiniSerializer(allow_null=True)
-    # 👇 y aquí el nombre CORRECTO que usa el frontend
+    # El nombre 'competiciones' es el que espera el frontend para los filtros.
+    # Mantener este nombre es crucial para la compatibilidad con el código existente.
     competiciones = CompeticionWithGruposSerializer(many=True)
