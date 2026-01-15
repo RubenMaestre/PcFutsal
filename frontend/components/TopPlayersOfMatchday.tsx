@@ -40,24 +40,27 @@ export default function TopPlayersOfMatchday({
   const jornadaNum =
     jornada != null ? jornada : data?.jornada != null ? data.jornada : null;
 
-  // 1) Si vienen por props, priorízalos
+  // 1) Si vienen por props, priorízalos (más confiable que deducir de la URL)
   let compSlug = competicionSlug;
   let grpSlug = grupoSlug;
 
-  // 2) Si no vienen, intenta deducirlos de la URL actual
-  //    - Ej: /es/competicion/tercera-division/grupo-xv
-  //    - Ej MVP: /es/competicion/mvp/tercera-division/grupo-xv
+  // 2) Si no vienen por props, intenta deducirlos de la URL actual.
+  // Esto permite que el componente funcione incluso cuando no se pasan explícitamente los slugs,
+  // mejorando la flexibilidad y reduciendo la necesidad de pasar props redundantes.
+  // Ejemplos de URLs:
+  //    - /es/competicion/tercera-division/grupo-xv
+  //    - /es/competicion/mvp/tercera-division/grupo-xv
   if ((!compSlug || !grpSlug) && pathname) {
     const parts = pathname.split("/").filter(Boolean); // sin vacíos
     // parts: ["es","competicion","...","..."] o ["es","competicion","mvp","...","..."]
     const idxCompeticion = parts.indexOf("competicion");
     if (idxCompeticion !== -1) {
-      // Si es /competicion/mvp/<comp>/<grupo>
+      // Si es /competicion/mvp/<comp>/<grupo> (ruta de MVP)
       if (parts[idxCompeticion + 1] === "mvp" && parts.length >= idxCompeticion + 4) {
         compSlug = compSlug || parts[idxCompeticion + 2];
         grpSlug  = grpSlug  || parts[idxCompeticion + 3];
       }
-      // Si es /competicion/<comp>/<grupo>
+      // Si es /competicion/<comp>/<grupo> (ruta estándar)
       else if (parts.length >= idxCompeticion + 3) {
         compSlug = compSlug || parts[idxCompeticion + 1];
         grpSlug  = grpSlug  || parts[idxCompeticion + 2];
@@ -65,7 +68,8 @@ export default function TopPlayersOfMatchday({
     }
   }
 
-  // 3) Construir ruta destino
+  // 3) Construir ruta destino para el enlace "Ver más".
+  // Si tenemos slugs, construir ruta específica; si no, usar ruta genérica.
   const mvpRoute =
     compSlug && grpSlug
       ? `/${lang}/competicion/mvp/${compSlug}/${grpSlug}`

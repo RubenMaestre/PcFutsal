@@ -70,8 +70,13 @@ class MockRequest:
 def obtener_fecha_martes_semana(fecha: datetime) -> datetime:
     """
     Obtiene la fecha del martes de la semana para una fecha dada.
-    Semana: Miércoles 19:00 - Domingo 21:00
-    El martes corresponde a la semana siguiente.
+    
+    La semana en el sistema Fantasy va de Miércoles 19:00 a Domingo 21:00.
+    El martes corresponde a la semana siguiente porque es el día de referencia
+    para agrupar los reconocimientos globales (MVP global, equipo global, etc.).
+    
+    Esta función es crucial para determinar a qué semana pertenece un reconocimiento
+    cuando se calculan los rankings globales que agrupan múltiples jornadas.
     """
     # Si es domingo o lunes, el martes es de esta semana
     # Si es martes a sábado, el martes es de la semana siguiente
@@ -83,6 +88,8 @@ def obtener_fecha_martes_semana(fecha: datetime) -> datetime:
         return fecha
     elif dias_semana >= 2:  # Miércoles a Domingo
         # Calcular días hasta el martes siguiente
+        # Esto asegura que los reconocimientos de miércoles a domingo se agrupen
+        # en la semana que comienza el martes siguiente
         dias_hasta_martes = (7 - dias_semana + 1) % 7
         if dias_hasta_martes == 0:
             dias_hasta_martes = 7

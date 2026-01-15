@@ -47,6 +47,7 @@ export function useMVPClassification(
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    // Si no hay grupoId, no tiene sentido hacer la petición.
     if (!grupoId) {
       setData(null);
       setError(null);
@@ -54,6 +55,8 @@ export function useMVPClassification(
       return;
     }
 
+    // Flag para cancelar la petición si el componente se desmonta antes de que termine.
+    // Evita errores de "Can't perform a React state update on an unmounted component".
     let cancelled = false;
 
     async function fetchAccum() {
@@ -61,6 +64,9 @@ export function useMVPClassification(
       setError(null);
 
       try {
+        // Construir parámetros de la petición.
+        // La jornada es opcional: si no se especifica, se obtiene la clasificación acumulada hasta la última jornada.
+        // El parámetro only_porteros permite filtrar solo porteros del ranking.
         const params = new URLSearchParams();
         params.set("grupo_id", String(grupoId));
         if (jornada !== null && jornada !== undefined) {
@@ -70,7 +76,9 @@ export function useMVPClassification(
           params.set("only_porteros", "1");
         }
 
-        // usamos el endpoint de ACUMULADO
+        // Usamos el endpoint de clasificación acumulada (mvp-clasificacion) en lugar del de jornada.
+        // Este endpoint devuelve los puntos totales acumulados hasta la jornada especificada,
+        // permitiendo mostrar la evolución del ranking a lo largo de la temporada.
         const res = await fetch(
           `/api/valoraciones/mvp-clasificacion/?${params.toString()}`,
           { cache: "no-store" }

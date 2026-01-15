@@ -40,6 +40,7 @@ export function useTopScorerMatchday(
   const [error, setError] = React.useState<string | null>(null);
 
   React.useEffect(() => {
+    // Si no hay grupoId, no tiene sentido hacer la petición.
     if (!grupoId) {
       setData(null);
       setError(null);
@@ -47,6 +48,8 @@ export function useTopScorerMatchday(
       return;
     }
 
+    // Flag para cancelar la petición si el componente se desmonta antes de que termine.
+    // Evita errores de "Can't perform a React state update on an unmounted component".
     let cancelled = false;
 
     async function fetchData() {
@@ -54,12 +57,15 @@ export function useTopScorerMatchday(
       setError(null);
 
       try {
+        // Construir parámetros de la petición.
+        // La jornada es opcional: si no se especifica, se obtienen los goleadores de la última jornada jugada.
         const params = new URLSearchParams();
         params.set("grupo_id", String(grupoId));
         if (jornada != null) {
           params.set("jornada", String(jornada));
         }
 
+        // Usamos ruta relativa /api/ para aprovechar el proxy de Nginx.
         const url = `/api/estadisticas/goleadores-jornada/?${params.toString()}`;
 
         const res = await fetch(url, { cache: "no-store" });
@@ -87,6 +93,8 @@ export function useTopScorerMatchday(
     };
   }, [grupoId, jornada]);
 
+  // El primer goleador de la lista ya es el máximo goleador (ordenado por goles descendente).
+  // Esto permite mostrar directamente el top scorer sin procesamiento adicional.
   const topScorer: MatchdayScorer | null =
     data?.goleadores && data.goleadores.length > 0
       ? data.goleadores[0]

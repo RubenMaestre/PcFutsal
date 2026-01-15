@@ -59,7 +59,8 @@ export default function MatchDaySection({
       setError(null);
 
       try {
-        // 1) tu endpoint de SIEMPRE
+        // 1) Obtener partidos de la jornada.
+        // Si no se especifica jornada, el backend devuelve la última jornada jugada.
         let url = `/api/estadisticas/resultados-jornada/?grupo_id=${grupoId}`;
         if (selectedJornada !== null) url += `&jornada=${selectedJornada}`;
 
@@ -71,13 +72,17 @@ export default function MatchDaySection({
         if (!cancelled) {
           setData(json);
 
-          // sincronizar con el padre
+          // Sincronizar con el componente padre: si no había jornada seleccionada
+          // y el backend devuelve una jornada, actualizar el estado del padre.
+          // Esto asegura que el selector de jornada muestre la jornada correcta.
           if (selectedJornada === null && json.jornada !== null) {
             onChangeJornada(json.jornada);
           }
         }
 
-        // 2) pedimos el partido estrella con el mismo grupo y jornada
+        // 2) Obtener el partido estrella de la misma jornada.
+        // El partido estrella se calcula según coeficientes, racha, goles, etc.
+        // Prioridad: jornada seleccionada > jornada de la respuesta > null
         const jornadaParaStar =
           selectedJornada !== null
             ? selectedJornada
