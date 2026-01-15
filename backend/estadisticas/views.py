@@ -34,6 +34,8 @@ class ClasificacionMiniView(APIView):
             .select_related("club")
         )
 
+        # Ordenar por posición actual, usando 9999 para equipos sin posición (van al final)
+        # Si hay empate en posición, ordenar por puntos descendente
         posiciones = sorted(
             posiciones,
             key=lambda row: (

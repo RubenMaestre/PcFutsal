@@ -1,4 +1,14 @@
 # scraping/core/config_temporadas.py
+#
+# Configuración de temporadas y competiciones de FFCV para el scraping.
+# Los IDs (id_temp, id_competicion, id_torneo) son específicos de la plataforma
+# de FFCV y cambian cada temporada. Se obtienen inspeccionando las URLs de FFCV.
+#
+# Estructura:
+# - id_temp: ID de temporada en FFCV (cambia cada año)
+# - id_competicion: ID de la competición (ej: Tercera División)
+# - id_torneo: ID del grupo/torneo específico (ej: Grupo XV, Grupo XIV)
+# - jornadas: Número total de jornadas de la temporada
 
 TEMPORADAS = {
     "2022-2023": {
