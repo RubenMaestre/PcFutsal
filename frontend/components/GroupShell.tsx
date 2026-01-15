@@ -45,6 +45,7 @@ export default function GroupShell({
   );
 
   // Valores por defecto: Tercera División (ID: 4) y Grupo XV (ID: 1)
+  // Se usan cuando no hay grupoId inicial ni selección del usuario
   const DEFAULT_COMPETICION_ID = 4; // Tercera División
   const DEFAULT_GRUPO_ID = 1; // Grupo XV
 
@@ -56,7 +57,8 @@ export default function GroupShell({
     initialJornada
   );
   
-  // Ref para rastrear si ya se establecieron los valores por defecto
+  // Ref para evitar establecer valores por defecto múltiples veces
+  // (el useEffect puede ejecutarse varias veces durante el renderizado)
   const hasDefaultSetRef = React.useRef<boolean>(false);
 
   // si no viene SSR pedimos el filter

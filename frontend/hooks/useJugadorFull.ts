@@ -160,23 +160,26 @@ export function useJugadorFull(params: UseJugadorFullParams) {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
-  // Normaliza include a CSV
+  // Normaliza include a CSV: el backend espera "valoraciones,historial,stats" como string
+  // pero el hook acepta tanto array como string para mayor flexibilidad
   const includeCSV = useMemo(() => {
     if (!include) return undefined;
     if (Array.isArray(include)) return include.join(",");
     return include;
   }, [include]);
 
-  // Construcción segura del URL (server vs browser)
-      const url = useMemo(() => {
-        const qs = new URLSearchParams();
-        if (jugadorId) qs.set("jugador_id", String(jugadorId)); // El backend acepta ID o slug
-        if (temporadaId) qs.set("temporada_id", String(temporadaId));
-        if (includeCSV) qs.set("include", includeCSV);
+  // Construcción del URL: en navegador usa ruta relativa (aprovecha proxy de Nginx),
+  // en SSR usa URL absoluta porque no hay proxy disponible
+  const url = useMemo(() => {
+    const qs = new URLSearchParams();
+    // El backend acepta tanto ID numérico como slug (ej: "daniel-domene-garcia")
+    if (jugadorId) qs.set("jugador_id", String(jugadorId));
+    if (temporadaId) qs.set("temporada_id", String(temporadaId));
+    if (includeCSV) qs.set("include", includeCSV);
 
-        const base = isBrowser ? "" : API_BASE;
-        return `${base}/api/jugadores/full/?${qs.toString()}`;
-      }, [jugadorId, temporadaId, includeCSV]);
+    const base = isBrowser ? "" : API_BASE;
+    return `${base}/api/jugadores/full/?${qs.toString()}`;
+  }, [jugadorId, temporadaId, includeCSV]);
 
   // Clave de dependencia para evitar peticiones con params incompletos
   const canFetch = useMemo(() => {
