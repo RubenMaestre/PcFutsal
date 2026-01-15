@@ -303,7 +303,7 @@ PcFutsal/
 ```bash
 # Desarrollo
 python manage.py runserver              # Iniciar servidor de desarrollo
-python manage.py runserver 0.0.0.0:8000 # Accesible desde red local
+python manage.py runserver 0.0.0.0:PORT # Accesible desde red local (ajustar PORT)
 
 # Base de Datos
 python manage.py migrate                 # Aplicar migraciones
@@ -412,13 +412,13 @@ El proyecto expone una API REST completa organizada por funcionalidad. Todos los
 
 ```bash
 # Obtener clasificación de un grupo
-curl http://localhost:8000/api/estadisticas/clasificacion-mini/?grupo_id=1
+curl http://tu-dominio.com/api/estadisticas/clasificacion-mini/?grupo_id=1
 
 # Obtener información completa de un jugador
-curl http://localhost:8000/api/jugadores/full/?id_or_slug=123&include=valoraciones,historial
+curl http://tu-dominio.com/api/jugadores/full/?id_or_slug=123&include=valoraciones,historial
 
 # Obtener partidos de una jornada
-curl http://localhost:8000/api/partidos/list/?grupo_id=1&jornada=5
+curl http://tu-dominio.com/api/partidos/list/?grupo_id=1&jornada=5
 ```
 
 ### Documentación Completa
