@@ -89,8 +89,9 @@ Crear la **referencia digital del futsal español**, proporcionando datos en tie
 - **Iconos**: Lucide React 0.548.0
 
 ### Infraestructura
-- **Web Server**: Nginx (reverse proxy)
-- **Process Manager**: PM2 (Node.js)
+- **Web Server**: Nginx (reverse proxy) - **Recomendado para producción**
+- **WSGI Server**: Gunicorn (Django) - **Recomendado para producción**
+- **Process Manager**: systemd (systemctl) para gestión de servicios
 - **Deployment**: Script automatizado con bash
 - **Hosting**: DreamHost (producción)
 
@@ -177,7 +178,7 @@ source ../venv/bin/activate
 python manage.py runserver
 ```
 
-El backend estará disponible en `http://localhost:8000`
+El backend estará disponible en la URL configurada (por defecto `http://localhost:8000` en desarrollo)
 
 #### Frontend (Terminal 2)
 
@@ -186,7 +187,7 @@ cd frontend
 npm run dev
 ```
 
-El frontend estará disponible en `http://localhost:3055`
+El frontend estará disponible en la URL configurada (por defecto `http://localhost:3000` en desarrollo)
 
 ---
 
@@ -334,7 +335,7 @@ python manage.py check                  # Verificar configuración
 
 ```bash
 # Desarrollo
-npm run dev          # Servidor de desarrollo (puerto 3055)
+npm run dev          # Servidor de desarrollo
 npm run build        # Build de producción
 npm run start        # Servidor de producción
 npm run lint         # Linting con ESLint
@@ -501,6 +502,10 @@ python manage.py check
 
 # Verificar conexión a base de datos
 python manage.py dbshell
+
+# En producción, verificar servicio Gunicorn
+sudo systemctl status pcfutsal  # Ajustar nombre del servicio según tu configuración
+sudo systemctl restart pcfutsal
 ```
 
 #### Errores de migraciones
@@ -521,6 +526,22 @@ npm run build
 #### Errores de CORS
 - Verificar que `ALLOWED_HOSTS` en `backend/.env` incluya el dominio
 - Verificar configuración de Nginx si estás en producción
+- Verificar que Nginx esté configurado correctamente como reverse proxy
+
+#### Problemas en producción
+```bash
+# Verificar estado de servicios
+sudo systemctl status pcfutsal        # Backend (Gunicorn)
+sudo systemctl status nginx            # Web server
+
+# Ver logs
+sudo journalctl -u pcfutsal -f        # Logs del backend
+sudo tail -f /var/log/nginx/error.log # Logs de Nginx
+
+# Reiniciar servicios
+sudo systemctl restart pcfutsal
+sudo systemctl restart nginx
+```
 
 #### Scraping falla
 - Verificar conexión a internet
@@ -559,10 +580,31 @@ BASE_HEADERS = {
 
 El proyecto está desplegado en producción en `https://pcfutsal.es` usando:
 
-- **Nginx** como reverse proxy
-- **Gunicorn** para el backend Django
-- **PM2** para gestionar el proceso de Next.js
+- **Nginx** como reverse proxy (recomendado para producción)
+- **Gunicorn** como servidor WSGI para Django (recomendado para producción)
+- **systemd (systemctl)** para gestionar servicios del sistema
 - **MySQL** como base de datos
+
+### Configuración Recomendada
+
+#### Nginx
+Nginx actúa como reverse proxy, manejando:
+- SSL/TLS (HTTPS)
+- Balanceo de carga
+- Servir archivos estáticos
+- Proxy de peticiones al backend (Gunicorn) y frontend (Next.js)
+
+#### Gunicorn
+Gunicorn es el servidor WSGI recomendado para Django en producción:
+- Mejor rendimiento que el servidor de desarrollo de Django
+- Soporte para múltiples workers
+- Manejo robusto de peticiones concurrentes
+
+#### systemd
+Los servicios se gestionan con systemd usando `systemctl`:
+- Inicio automático al arrancar el servidor
+- Gestión centralizada de servicios
+- Logs integrados con journald
 
 ### Script de Deployment
 
