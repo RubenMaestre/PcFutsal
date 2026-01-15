@@ -52,26 +52,32 @@ type PartidoHeaderProps = {
   lang: string;
 };
 
+// Formatea la fecha y hora del partido según el locale del usuario.
+// Devuelve formato legible con día de la semana, fecha completa y hora.
+// El locale se determina desde el idioma de la página para mostrar fechas en el idioma correcto.
 function formatDateTime(fecha_hora: string | null, locale: string = "es-ES") {
   if (!fecha_hora) return { fecha: "", hora: "" };
 
   try {
     const d = new Date(fecha_hora);
+    // Formato de fecha con día de la semana y mes completo para mejor legibilidad.
     const fecha = d.toLocaleDateString(locale, {
       weekday: "long",
       day: "numeric",
       month: "long",
       year: "numeric",
     });
+    // Formato de hora en 24h con minutos (ej: "21:15").
     const hora = d.toLocaleTimeString(locale, {
       hour: "2-digit",
       minute: "2-digit",
     });
     return {
-      fecha: fecha.charAt(0).toUpperCase() + fecha.slice(1),
-      hora: `${hora}h`,
+      fecha: fecha.charAt(0).toUpperCase() + fecha.slice(1), // Capitalizamos la primera letra
+      hora: `${hora}h`, // Añadimos 'h' al final para indicar que es hora.
     };
   } catch {
+    // Si hay error al parsear la fecha, devolvemos strings vacíos para evitar crashes.
     return { fecha: "", hora: "" };
   }
 }
@@ -83,6 +89,8 @@ export default function PartidoHeader({
   dict,
   lang,
 }: PartidoHeaderProps) {
+  // Mapeo de códigos de idioma de la app a locales de Intl.DateTimeFormat.
+  // Esto permite mostrar fechas en el formato correcto según el idioma seleccionado.
   const localeMap: Record<string, string> = {
     es: "es-ES",
     en: "en-US",
@@ -92,9 +100,11 @@ export default function PartidoHeader({
     pt: "pt-PT",
     de: "de-DE",
   };
-  const locale = localeMap[lang] || "es-ES";
+  const locale = localeMap[lang] || "es-ES"; // Fallback a español si el idioma no está mapeado.
   const { fecha, hora } = formatDateTime(partido.fecha_hora, locale);
 
+  // Obtenemos los puntos de los equipos desde el objeto puntosEquipos.
+  // Si no están disponibles, usamos null para mostrar un placeholder.
   const puntosLocal = puntosEquipos[partido.local.id] || null;
   const puntosVisitante = puntosEquipos[partido.visitante.id] || null;
 

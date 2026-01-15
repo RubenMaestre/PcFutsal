@@ -46,7 +46,10 @@ export default function PartidosList({
     );
   }
 
-  // Mapear partidos al formato de MatchCard
+  // Mapear partidos del formato de la API al formato esperado por MatchCard.
+  // Esto permite desacoplar la estructura de datos de la API de la estructura
+  // esperada por el componente, facilitando cambios futuros sin afectar ambos.
+  // Nota: pabellon y arbitros no vienen en la lista básica, solo en el detalle completo.
   const matches = partidos.map((p) => ({
     id: p.id,
     identificador_federacion: p.identificador_federacion,

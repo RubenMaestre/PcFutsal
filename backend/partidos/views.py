@@ -26,18 +26,27 @@ class PartidoDetalleView(APIView):
     """
 
     def _norm_media(self, path: str | None) -> str:
-        """Normaliza rutas de media."""
+        """
+        Normaliza rutas de media para asegurar que todas tengan el prefijo /media/ correcto.
+        Esto es necesario porque FFCV a veces devuelve rutas relativas sin prefijo.
+        """
         if not path:
             return ""
         path = path.strip()
+        # Si ya es URL absoluta o tiene /media/, dejarla como está
         if path.startswith("http://") or path.startswith("https://"):
             return path
         if path.startswith("/media/"):
             return path
+        # Añadir prefijo /media/ si falta
         return "/media/" + path.lstrip("/")
 
     def _get_parte(self, minuto: int | None) -> str:
-        """Determina la parte del partido según el minuto."""
+        """
+        Determina la parte del partido según el minuto.
+        En fútbol sala, cada partido tiene dos partes de 20 minutos cada una.
+        Si el minuto es mayor a 40, asumimos que es prórroga.
+        """
         if minuto is None:
             return "desconocida"
         if 1 <= minuto <= 20:
@@ -57,7 +66,10 @@ class PartidoDetalleView(APIView):
                 status=status.HTTP_400_BAD_REQUEST,
             )
 
-        # Obtener partido
+        # Obtener partido. Se puede buscar por ID interno o por identificador_federacion.
+        # El identificador_federacion permite referenciar partidos desde URLs externas
+        # sin depender del ID interno de la BD.
+        # Usamos select_related para optimizar las consultas y evitar N+1 queries.
         try:
             if identificador_federacion:
                 partido = (

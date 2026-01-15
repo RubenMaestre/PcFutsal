@@ -16,7 +16,9 @@ class Competicion(models.Model):
     ambito = models.CharField(max_length=100, blank=True)
     categoria = models.CharField(max_length=100, blank=True)
 
-    # IMPORTANTO: quitamos unique=True por ahora, y permitimos null/blank
+    # Slug para URLs SEO-friendly. No es único porque puede haber competiciones
+    # con el mismo nombre en diferentes contextos (aunque es raro).
+    # Permitimos null/blank para competiciones que aún no tienen slug asignado.
     slug = models.SlugField(
         max_length=120,
         blank=True,
@@ -25,9 +27,10 @@ class Competicion(models.Model):
     )
 
     def save(self, *args, **kwargs):
+        # Generación automática de slug desde el nombre si no existe.
+        # Ejemplo: "Tercera División Nacional Futsal" -> "tercera-division-nacional-futsal"
         if not self.slug:
             base = self.nombre.lower()
-            # ejemplo: "Tercera División Nacional Futsal" -> "tercera-division-nacional-futsal"
             self.slug = slugify(base)
         super().save(*args, **kwargs)
 
@@ -59,14 +62,17 @@ class Grupo(models.Model):
     )
 
     def save(self, *args, **kwargs):
+        # Generación automática de slug desde el nombre si no existe.
+        # Ejemplo: "Grupo XV" -> "grupo-xv"
         if not self.slug:
             base = self.nombre.lower()
-            self.slug = slugify(base)  # "Grupo XV" -> "grupo-xv"
+            self.slug = slugify(base)
         super().save(*args, **kwargs)
 
     def __str__(self):
         return f"{self.competicion.nombre} · {self.nombre} · {self.temporada.nombre}"
 
     class Meta:
-        # mantenemos el unique_together porque tiene sentido lógico
+        # El unique_together asegura que no haya grupos duplicados con el mismo slug
+        # dentro de la misma competición y temporada. Esto es crucial para las URLs.
         unique_together = ("competicion", "temporada", "slug")

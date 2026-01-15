@@ -57,7 +57,9 @@ export function useClasificacionCompleta(
       setError(null);
 
       try {
-        // construimos la URL con los params
+        // Construimos la URL con los parámetros de filtrado.
+        // El scope permite obtener clasificación general, solo local o solo visitante.
+        // La jornada es opcional y permite ver la clasificación en un momento específico.
         const params = new URLSearchParams();
         params.set("grupo_id", String(grupoId));
         params.set("scope", scope);
@@ -65,6 +67,8 @@ export function useClasificacionCompleta(
           params.set("jornada", String(jornada));
         }
 
+        // Usamos ruta relativa /api/ para aprovechar el proxy de Nginx.
+        // cache: "no-store" asegura que siempre obtenemos datos frescos.
         const res = await fetch(
           `/api/estadisticas/clasificacion-completa/?${params.toString()}`,
           {

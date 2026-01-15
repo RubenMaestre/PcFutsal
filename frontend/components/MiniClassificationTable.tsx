@@ -26,6 +26,9 @@ type Props = {
   onSeeAll?: () => void; // override manual
 };
 
+// Componente que muestra la racha reciente de un equipo como puntos de colores.
+// Cada punto representa un resultado: verde (V=Victoria), amarillo (E=Empate), rojo (D=Derrota).
+// Se muestran solo los últimos 5 resultados para mantener la tabla compacta.
 function RachaDots({ racha }: { racha?: string[] }) {
   if (!racha || !Array.isArray(racha) || racha.length === 0) {
     return null;
@@ -36,6 +39,8 @@ function RachaDots({ racha }: { racha?: string[] }) {
       {racha.slice(0, 5).map((res, idx) => {
         const code = (res || "").toUpperCase();
 
+        // Mapeo de códigos de resultado a colores CSS variables.
+        // Esto permite cambiar los colores globalmente desde el tema.
         let bgClass = "bg-[var(--color-error)]"; // derrota
         if (code === "V") bgClass = "bg-[var(--color-success)]"; // victoria
         else if (code === "E") bgClass = "bg-[var(--color-warning)]"; // empate
@@ -62,18 +67,21 @@ export default function MiniClassificationTable({
   const router = useRouter();
   const pathname = usePathname();
 
-  // 1) intentamos deducirlo de la URL si no nos lo pasan
-  // ej: /es/competicion/tercera-division/grupo-xv
+  // Intentamos deducir el idioma, competición y grupo desde la URL si no se pasan explícitamente.
+  // Esto permite que el componente funcione en diferentes contextos sin necesidad
+  // de pasar siempre todos los parámetros.
+  // Ejemplo de URL: /es/competicion/tercera-division/grupo-xv
   let inferredLang = lang || "es";
   let inferredCompetition = competitionSlug;
   let inferredGroup = groupSlug;
 
   if (!competitionSlug || !groupSlug || !lang) {
     const segments = pathname.split("/").filter(Boolean);
-    // segments[0] = es
+    // Estructura esperada de la URL:
+    // segments[0] = es (idioma)
     // segments[1] = competicion
-    // segments[2] = tercera-division
-    // segments[3] = grupo-xv
+    // segments[2] = tercera-division (slug de competición)
+    // segments[3] = grupo-xv (slug de grupo)
     if (segments.length >= 4 && segments[1] === "competicion") {
       inferredLang = segments[0] || inferredLang;
       inferredCompetition = segments[2];

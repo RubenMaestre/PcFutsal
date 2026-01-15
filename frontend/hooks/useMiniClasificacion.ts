@@ -40,8 +40,10 @@ export function useMiniClasificacion(grupoId: number | null) {
       setError(null);
 
       try {
-        // Este fetch sí es CLIENTE → dominio público, así que aquí
-        // podemos usar la ruta /api/ que Nginx sirve.
+        // Usamos ruta relativa /api/ para aprovechar el proxy de Nginx.
+        // Esto evita problemas de CORS y permite que el mismo dominio sirva
+        // tanto el frontend como el backend.
+        // cache: "no-store" asegura que siempre obtenemos la clasificación más reciente.
         const res = await fetch(
           `/api/estadisticas/clasificacion-mini/?grupo_id=${grupoId}`,
           {
