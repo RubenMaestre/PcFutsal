@@ -68,33 +68,36 @@ class CoeficientesClubesView(APIView):
             except ValueError:
                 return Response({"detail": "jornada debe ser número"}, status=status.HTTP_400_BAD_REQUEST)
 
-        # construimos lookup:
-        # - si hay jornada concreta: lookup_j[club_id] = coef de esa jornada
-        # - sino: lookup_last[club_id] = último coef de ese club en esa temporada
+        # Construimos dos lookups para manejar la prioridad de coeficientes:
+        # 1. coef_por_club_jornada: coeficiente de una jornada específica (si se solicita)
+        # 2. coef_por_club_ultimo: último coeficiente calculado (fallback si no hay de esa jornada)
         coef_por_club_jornada = {}
         coef_por_club_ultimo = {}
 
         for c in qs_coef:
-            # ultimo
+            # Guardar el último coeficiente por fecha de actualización (más reciente)
             prev = coef_por_club_ultimo.get(c.club_id)
             if not prev or c.actualizado_en > prev.actualizado_en:
                 coef_por_club_ultimo[c.club_id] = c
 
-            # específico jornada
+            # Si se solicita una jornada específica, guardar el coeficiente de esa jornada
             if jref is not None and c.jornada_referencia == jref:
                 coef_por_club_jornada[c.club_id] = c
 
-        # 4. montar respuesta club por club
+        # 4. Montar respuesta club por club con prioridad:
+        # - Si hay jornada solicitada y existe coef de esa jornada → usar ese
+        # - Si no, usar el último coeficiente disponible
+        # - Si no hay ninguno → 0.5 (valor por defecto neutral)
         resultados = []
         for f in filas:
             cid = f.club_id
 
-            # prioridad 1: coef de esa jornada
+            # Prioridad 1: coeficiente de la jornada específica solicitada
             if jref is not None and cid in coef_por_club_jornada:
                 obj = coef_por_club_jornada[cid]
                 valor = obj.valor
                 j_used = obj.jornada_referencia
-            # prioridad 2: último coef
+            # Prioridad 2: último coeficiente disponible (más reciente)
             elif cid in coef_por_club_ultimo:
                 obj = coef_por_club_ultimo[cid]
                 valor = obj.valor

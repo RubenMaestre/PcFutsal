@@ -3,6 +3,9 @@
 
 import { useEffect, useState } from "react";
 
+// Determina la base de la URL de la API según el contexto (navegador vs servidor).
+// En el navegador, se usa window.location.origin para aprovechar el proxy de Nginx.
+// En SSR, se usa la variable de entorno o un fallback.
 const API_BASE =
   typeof window !== "undefined"
     ? window.location.origin
@@ -68,6 +71,8 @@ export function usePartidosList(
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    // Flag para cancelar la petición si el componente se desmonta antes de que termine.
+    // Evita errores de "Can't perform a React state update on an unmounted component".
     let cancelled = false;
 
     async function fetchData() {
@@ -78,6 +83,8 @@ export function usePartidosList(
         const params = new URLSearchParams();
         params.set("scope", scope);
         
+        // Los filtros de competición/grupo/jornada solo se aplican cuando el scope es "COMPETICIONES".
+        // En scope "GLOBAL", se ignoran estos filtros para mostrar partidos de todas las competiciones.
         if (scope === "COMPETICIONES") {
           if (competicionId) {
             params.set("competicion_id", String(competicionId));
@@ -90,10 +97,13 @@ export function usePartidosList(
           }
         }
         
+        // El parámetro 'random' permite obtener partidos aleatorios, útil para destacados en la home.
         if (random) {
           params.set("random", "true");
         }
         
+        // El parámetro 'week' permite filtrar por semana (fecha del martes en formato YYYY-MM-DD).
+        // Esto es útil para mostrar partidos de una semana específica en la home.
         if (week) {
           params.set("week", week);
         }

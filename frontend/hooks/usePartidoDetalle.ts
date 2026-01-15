@@ -3,6 +3,9 @@
 
 import { useEffect, useState } from "react";
 
+// Determina la base de la URL de la API según el contexto (navegador vs servidor).
+// En el navegador, se usa window.location.origin para aprovechar el proxy de Nginx.
+// En SSR, se usa la variable de entorno o un fallback.
 const API_BASE =
   typeof window !== "undefined"
     ? window.location.origin

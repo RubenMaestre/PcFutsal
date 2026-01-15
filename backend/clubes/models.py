@@ -21,7 +21,10 @@ class Club(models.Model):
     siglas           = models.CharField(max_length=16, blank=True, default="")
     slug             = models.SlugField(max_length=180, unique=True, blank=True, null=True)
 
-    # Identificador oficial para scraping / federación
+    # Identificador oficial para scraping / federación.
+    # Este ID permite referenciar un club específico en la web de FFCV
+    # y es crucial para el proceso de scraping y normalización de datos.
+    # Se permite NULL para evitar problemas de unicidad con "" en MySQL.
     identificador_federacion = models.CharField(
         max_length=100,
         blank=True,
@@ -76,11 +79,14 @@ class Club(models.Model):
         return self.nombre_corto or self.nombre_oficial
 
     def save(self, *args, **kwargs):
+        # Generación automática de slug para URLs SEO-friendly.
+        # Se usa nombre_corto si está disponible, sino nombre_oficial.
+        # Si el slug ya existe, se añade un contador numérico para garantizar unicidad.
         if not self.slug:
             base = self.nombre_corto or self.nombre_oficial
             if base:
                 slug_base = slugify(base)[:175]
-                # Verificar que el slug no esté duplicado
+                # Verificar que el slug no esté duplicado y añadir contador si es necesario
                 slug_final = slug_base
                 contador = 1
                 while Club.objects.filter(slug=slug_final).exclude(id=self.id).exists():

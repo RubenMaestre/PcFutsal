@@ -27,18 +27,22 @@ function capFirst(s: string) {
   return s.charAt(0).toUpperCase() + s.slice(1);
 }
 
-// Formato: "Jueves, 23 de octubre", "21:15h"
+// Formatea la fecha y hora del partido según el locale del usuario.
+// Devuelve formato legible: "Jueves, 23 de octubre", "21:15h"
+// El locale se determina desde el idioma de la página para mostrar fechas en el idioma correcto.
 function formatDateTime(fecha_hora: string | null, locale: string = "es-ES") {
   if (!fecha_hora) return { fechaLinea: "", horaLinea: "" };
 
   try {
     const d = new Date(fecha_hora);
 
+    // Formato de fecha con día de la semana y mes completo para mejor legibilidad.
     const fechaStr = d.toLocaleDateString(locale, {
       weekday: "long",
       day: "numeric",
       month: "long",
     });
+    // Formato de hora en 24h con minutos (ej: "21:15").
     const horaStr = d.toLocaleTimeString(locale, {
       hour: "2-digit",
       minute: "2-digit",
@@ -46,9 +50,10 @@ function formatDateTime(fecha_hora: string | null, locale: string = "es-ES") {
 
     return {
       fechaLinea: capFirst(fechaStr),
-      horaLinea: `${horaStr}h`,
+      horaLinea: `${horaStr}h`, // Añadimos 'h' al final para indicar que es hora.
     };
   } catch {
+    // Si hay error al parsear la fecha, devolvemos strings vacíos para evitar crashes.
     return { fechaLinea: "", horaLinea: "" };
   }
 }
@@ -73,7 +78,8 @@ export default function MatchCard({
   const starLabel =
     labels.star_match_label || dict?.match?.star_match_label || "PARTIDO ESTRELLA DE LA JORNADA";
 
-  // Mapeo de idiomas a locales
+  // Mapeo de códigos de idioma de la app a locales de Intl.DateTimeFormat.
+  // Esto permite mostrar fechas en el formato correcto según el idioma seleccionado.
   const localeMap: Record<string, string> = {
     es: "es-ES",
     en: "en-US",
@@ -83,7 +89,7 @@ export default function MatchCard({
     pt: "pt-PT",
     de: "de-DE",
   };
-  const locale = localeMap[lang] || "es-ES";
+  const locale = localeMap[lang] || "es-ES"; // Fallback a español si el idioma no está mapeado.
 
   const { fechaLinea, horaLinea } = formatDateTime(match.fecha_hora, locale);
 

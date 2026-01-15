@@ -40,6 +40,13 @@ class Jugador(models.Model):
     )
 
     # =============== GESTIÓN DE EDAD ==================
+    # Sistema para manejar la edad cuando no tenemos fecha_nacimiento exacta.
+    # FFCV no siempre proporciona la fecha de nacimiento, solo la edad en la ficha.
+    # Este sistema permite:
+    # 1. Guardar la edad scrapeada inicialmente
+    # 2. Auto-incrementarla cada 1 de enero
+    # 3. Bloquearla si el jugador corrige manualmente su edad
+    
     # Edad que tenemos ahora mismo para mostrar públicamente
     # cuando NO conocemos fecha_nacimiento exacta.
     # Ej: "29" tal cual aparece en la ficha federativa.
@@ -52,7 +59,7 @@ class Jugador(models.Model):
     # Año natural en el que guardamos por primera vez esa edad estimada.
     # Ej: si en la temporada 2025-2026 la ficha dice que tiene 29,
     # guardamos edad_estimacion=29 y edad_estimacion_base_year=2025.
-    # Esto nos permite luego incrementarla +1 cada 1 de enero.
+    # Esto nos permite luego incrementarla +1 cada 1 de enero automáticamente.
     edad_estimacion_base_year = models.IntegerField(
         null=True,
         blank=True,
@@ -62,6 +69,7 @@ class Jugador(models.Model):
     # Si el jugador entra en el futuro y corrige su edad manualmente
     # (o nos da la fecha_nacimiento real),
     # marcamos esto a True para que dejemos de tocar automáticamente su edad.
+    # Esto evita sobrescribir correcciones manuales con auto-incrementos.
     edad_estimacion_bloqueada = models.BooleanField(
         default=False,
         help_text="Si True, NO autoincrementar edad_estimacion en enero.",
@@ -71,11 +79,13 @@ class Jugador(models.Model):
     activo = models.BooleanField(default=True)
 
     def save(self, *args, **kwargs):
+        # Generación automática de slug para URLs SEO-friendly.
+        # Si no hay slug, se genera desde el nombre del jugador.
+        # Si el slug ya existe, se añade el ID para garantizar unicidad.
         if not self.slug and self.nombre:
-            # Generar slug desde nombre (ej: "Daniel Domene Garcia" -> "daniel-domene-garcia")
             base = self.nombre.strip()
             self.slug = slugify(base)[:195]
-            # Si el slug ya existe, añadir el ID
+            # Si el slug ya existe, añadir el ID para evitar colisiones
             if Jugador.objects.filter(slug=self.slug).exclude(id=self.id).exists():
                 self.slug = f"{self.slug}-{self.id}" if self.id else slugify(base)[:190]
         super().save(*args, **kwargs)

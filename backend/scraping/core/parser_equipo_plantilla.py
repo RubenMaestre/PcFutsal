@@ -11,8 +11,9 @@ def _safe_text(el):
 
 def _get_equipo_metadata(soup):
     """
-    Extrae:
-    - id_equipo (del parámetro en la URL activa del tab o del hidden id_club ya que coincide en tu ejemplo)
+    Extrae los metadatos del equipo desde la página de plantilla de FFCV.
+    Esta función parsea la estructura HTML específica de FFCV para obtener:
+    - id_equipo (del parámetro en la URL activa del tab)
     - nombre_equipo (h1.titulo_card_club)
     - pabellon (span.nombre_estadio dentro del <a class='datos_clubs_info'> con icono-estadio)
     - telefono (fa-phone)
@@ -20,9 +21,8 @@ def _get_equipo_metadata(soup):
     - escudo_url (div.bloque_club_logo img[src=...])
     """
 
-    # id_equipo
-    # Lo tenemos fácil en los <a> del menú_clubs, ej:
-    # <a href="equipo_plantilla.php?...&id_equipo=297544&..."
+    # El id_equipo se extrae de la URL de las pestañas del menú de clubes.
+    # FFCV usa pestañas con URLs que contienen el parámetro id_equipo.
     id_equipo = None
     pestañas = soup.select("div.menu_clubs a.tab_menu_club[href*='equipo_plantilla.php']")
     if pestañas:
@@ -32,6 +32,7 @@ def _get_equipo_metadata(soup):
             try:
                 id_equipo = int(qs["id_equipo"][0])
             except (ValueError, IndexError):
+                # Si el parámetro no es un número válido, dejamos id_equipo como None
                 id_equipo = None
 
     # escudo
@@ -51,17 +52,20 @@ def _get_equipo_metadata(soup):
             pabellon = _safe_text(pabellon_span)
             break
 
-    # teléfono: <i class="fa-solid fa-phone"></i> 686903936
+    # Teléfono: se busca el icono fa-phone y se extrae el número.
+    # Usamos regex para limpiar cualquier texto que no sea numérico al inicio,
+    # ya que el icono puede estar pegado al número en el HTML.
     telefono = ""
     for datos_div in soup.select(".card_info_club .datos_clubs_info"):
         phone_i = datos_div.find("i", class_=re.compile("fa-phone"))
         if phone_i:
             telefono = datos_div.get_text(" ", strip=True)
-            # nos quedamos sólo con el número, quitando el icono si va pegado
+            # Eliminamos cualquier carácter no numérico al inicio (incluyendo el icono si está pegado).
             telefono = re.sub(r"^[^0-9+]*", "", telefono)
             break
 
-    # email: está en el siguiente bloque .datos_clubs_info con fa-envelope
+    # Email: se busca el icono fa-envelope en los bloques de datos del club.
+    # También se buscan divs con estilo inline que puedan contener el email.
     email = ""
     for datos_div in soup.select(".card_info_club .datos_clubs_info, .card_info_club div[style*='color:white']"):
         mail_i = datos_div.find("i", class_=re.compile("fa-envelope"))

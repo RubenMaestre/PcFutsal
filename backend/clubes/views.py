@@ -19,6 +19,8 @@ from partidos.models import Partido
 def _calcular_goles_desde_partidos(grupo_id: int, club_ids: list[int]) -> dict[int, dict[str, int]]:
     """
     Calcula goles_favor y goles_contra para cada club desde los partidos jugados.
+    Esta función es útil cuando los datos de clasificación no están sincronizados
+    o cuando necesitamos recalcular estadísticas desde los partidos reales.
     Retorna un diccionario: {club_id: {"goles_favor": X, "goles_contra": Y}}
     """
     partidos = Partido.objects.filter(
@@ -32,16 +34,20 @@ def _calcular_goles_desde_partidos(grupo_id: int, club_ids: list[int]) -> dict[i
     for club_id in club_ids:
         goles_por_club[club_id] = {"goles_favor": 0, "goles_contra": 0}
     
+    # Recorremos todos los partidos y acumulamos goles a favor y en contra
+    # según si el club jugó como local o visitante
     for p in partidos:
         local_id = p["local_id"]
         visitante_id = p["visitante_id"]
         goles_local = p["goles_local"] or 0
         goles_visitante = p["goles_visitante"] or 0
         
+        # Goles del equipo local: a favor = goles_local, en contra = goles_visitante
         if local_id in goles_por_club:
             goles_por_club[local_id]["goles_favor"] += goles_local
             goles_por_club[local_id]["goles_contra"] += goles_visitante
         
+        # Goles del equipo visitante: a favor = goles_visitante, en contra = goles_local
         if visitante_id in goles_por_club:
             goles_por_club[visitante_id]["goles_favor"] += goles_visitante
             goles_por_club[visitante_id]["goles_contra"] += goles_local

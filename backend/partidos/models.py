@@ -32,7 +32,9 @@ class Partido(models.Model):
 
     jugado = models.BooleanField(default=False)
 
-    # NUEVO: ID oficial para poder hacer rescrape por partido concreto
+    # ID oficial de la federación para poder hacer rescrape por partido concreto.
+    # Este identificador permite referenciar un partido específico en la web de FFCV
+    # sin depender de la relación local/visitante/jornada.
     identificador_federacion = models.CharField(
         max_length=50,
         blank=True,
@@ -41,18 +43,25 @@ class Partido(models.Model):
         help_text="ID del partido en federación (ej. 26318901)",
     )
 
-    # NUEVO: pabellón específico del partido (puede diferir del del club si cambian pista)
+    # Pabellón específico del partido. Puede diferir del pabellón del club
+    # si el equipo juega en una pista alternativa o si cambia de sede.
     pabellon = models.CharField(max_length=200, blank=True)
 
-    # NUEVO: árbitros del partido (lo guardamos como texto libre, ej. 'Fernández Barba, Sergio | ...')
+    # Árbitros del partido guardados como texto libre.
+    # Se almacena como texto porque FFCV puede listar varios árbitros separados por '|'.
     arbitros = models.TextField(blank=True)
 
+    # Índice de intensidad del partido (0-100).
+    # Mide qué tan "caliente" fue el partido basándose en goles, tarjetas, etc.
+    # Útil para destacar partidos emocionantes en la interfaz.
     indice_intensidad = models.IntegerField(
         null=True, blank=True,
         help_text="0-100: partido caliente/loco (muchos goles, muchas tarjetas...)",
     )
 
-    # Score de interés del partido (calculado una vez y fijo)
+    # Score de interés del partido calculado una vez y fijado.
+    # Se calcula en función de clasificación, racha, goles potenciales, etc.
+    # No cambia después de calcularse para mantener consistencia histórica.
     score_interes = models.FloatField(
         null=True, blank=True,
         help_text="Score de interés del partido calculado en función de clasificación, racha, goles, etc. Se calcula una vez y no cambia.",
@@ -114,14 +123,15 @@ class EventoPartido(models.Model):
         return f"{self.partido} -> {self.tipo_evento}"
 
 
-# NUEVO
 class AlineacionPartidoJugador(models.Model):
     """
-    Titulares y suplentes de cada equipo en un partido concreto.
-    Nos viene del scrape del acta:
+    Almacena las alineaciones (titulares y suplentes) de cada equipo en un partido concreto.
+    Los datos provienen del scraping del acta de FFCV y permiten mostrar:
     - titular/suplente
     - dorsal
     - etiqueta: 'Pt' (portero), 'Ps' (portero suplente), 'C' (capitán)...
+    
+    Este modelo es crucial para mostrar las alineaciones en la página de detalle del partido.
     """
     partido = models.ForeignKey(
         Partido,

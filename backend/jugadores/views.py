@@ -18,25 +18,28 @@ from valoraciones.models import ValoracionJugador, VotoValoracionJugador
 from partidos.models import Partido, EventoPartido, AlineacionPartidoJugador
 
 
-# Helper para normalizar media URLs
+# Helper para normalizar URLs de media
+# Asegura que todas las URLs de imágenes/escudos tengan el prefijo /media/ correcto
+# Esto es necesario porque FFCV a veces devuelve rutas relativas sin prefijo
 def _norm_media(url: str | None) -> str:
     if not url:
         return ""
     u = url.strip()
+    # Si ya es URL absoluta o tiene /media/, dejarla como está
     if u.startswith("http://") or u.startswith("https://"):
         return u
     if u.startswith("/media/"):
         return u
+    # Añadir prefijo /media/ si falta
     return "/media/" + u.lstrip("/")
 
 
-# Helper para obtener jugador por ID o slug
+# Helper para obtener jugador por ID numérico o slug
+# Permite URLs SEO-friendly: /jugadores/daniel-domene-garcia en lugar de /jugadores/12345
 def _get_jugador_by_id_or_slug(id_or_slug: str | None = None, slug: str | None = None):
     """
-    Si llega slug explícito -> por slug.
-    Si llega id_or_slug:
-       - si es dígito -> por id (int)
-       - si no es dígito -> por slug
+    Busca jugador por slug explícito o por id_or_slug (que puede ser ID o slug).
+    Si id_or_slug es numérico → busca por ID, si no → busca por slug.
     Lanza Jugador.DoesNotExist si no lo encuentra.
     """
     if slug:
@@ -44,9 +47,9 @@ def _get_jugador_by_id_or_slug(id_or_slug: str | None = None, slug: str | None =
 
     if id_or_slug:
         s = str(id_or_slug).strip()
+        # Si es numérico, es un ID; si no, es un slug
         if s.isdigit():
             return Jugador.objects.get(id=int(s))
-        # si llega algo no numérico en 'jugador_id', lo tomamos como slug
         return Jugador.objects.get(slug=s)
 
     raise Jugador.DoesNotExist
