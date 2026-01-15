@@ -23,6 +23,8 @@ from staff.models import StaffClub, StaffEnPartido
 # HELPERS DE NOMBRE DE COMPETICIÓN (BD)
 # ======================================
 
+# Mapeo de claves de competición usadas en FFCV a nombres normalizados en nuestra BD.
+# Esto permite mantener consistencia en los nombres aunque FFCV use abreviaciones diferentes.
 COMPETICION_NAME_MAP = {
     "TERCERA": "Tercera División",
     "PREFERENTE": "Preferente",
@@ -32,6 +34,8 @@ COMPETICION_NAME_MAP = {
 
 
 def _competicion_nombre_for_bd(competicion_key: str) -> str:
+    # Normaliza el nombre de la competición para almacenarlo en BD.
+    # Si la clave no está en el mapa, usa "Tercera División" como fallback.
     return COMPETICION_NAME_MAP.get(competicion_key.upper(), "Tercera División")
 
 
@@ -77,6 +81,9 @@ class Command(BaseCommand):
     # ------------------------
 
     def _build_url_jornada(self, cfg_sel, jornada_num: int) -> str:
+        # Construye la URL para obtener el listado de partidos de una jornada.
+        # FFCV requiere múltiples parámetros (torneo, temporada, modalidad, competición)
+        # para identificar correctamente la jornada en su sistema.
         params = {
             "id_torneo": cfg_sel["id_torneo"],
             "jornada": jornada_num,
@@ -87,6 +94,8 @@ class Command(BaseCommand):
         return "https://resultadosffcv.isquad.es/total_partidos.php?" + urlencode(params)
 
     def _build_url_partido(self, cfg_sel, jornada_num: int, id_partido: int) -> str:
+        # Construye la URL para obtener el detalle completo de un partido (acta).
+        # Requiere el id_partido específico además de los parámetros de temporada/competición.
         params = {
             "id_temp": cfg_sel["id_temp"],
             "id_modalidad": cfg_sel["id_modalidad"],
@@ -139,19 +148,26 @@ class Command(BaseCommand):
 
     def _get_or_create_club_from_equipo_data(self, equipo_dict: dict):
         """
-        Reutiliza/crea Club por identificador_federacion o nombre_oficial.
+        Reutiliza o crea un Club desde los datos scrapeados del equipo.
+        
+        Estrategia de búsqueda en orden de prioridad:
+        1. Por identificador_federacion (más fiable, evita duplicados)
+        2. Por nombre_oficial (fallback si no hay ID)
+        
+        Si el club ya existe pero le faltan campos, los rellena para mantener
+        la BD actualizada con la información más reciente del scraping.
         """
         club_id_fed = equipo_dict.get("id_equipo")
         nombre_equipo = (equipo_dict.get("nombre") or "").strip() or "DESCONOCIDO"
 
-        # 1) buscar por identificador_federacion
+        # 1) Buscar por identificador_federacion (más fiable)
         club_obj = None
         if club_id_fed:
             club_obj = Club.objects.filter(
                 identificador_federacion=str(club_id_fed)
             ).first()
 
-        # 2) fallback por nombre_oficial
+        # 2) Fallback por nombre_oficial si no se encontró por ID
         if club_obj is None:
             club_obj, created = Club.objects.get_or_create(
                 nombre_oficial=nombre_equipo,
@@ -164,7 +180,8 @@ class Command(BaseCommand):
         else:
             created = False
 
-        # 3) rellenar campos faltantes
+        # 3) Rellenar campos faltantes si el club ya existía
+        # Esto asegura que los datos se actualicen con información más reciente del scraping.
         dirty_fields = []
         if not club_obj.nombre_corto:
             club_obj.nombre_corto = nombre_equipo[:100]
@@ -207,14 +224,18 @@ class Command(BaseCommand):
 
     def _calcular_indice_intensidad(self, partido_data):
         """
-        Métrica rápida: nº de eventos escalado a 0-100.
+        Calcula un índice de intensidad del partido (0-100) basado en el número de eventos.
+        
+        Un partido con muchos eventos (goles, tarjetas, etc.) se considera más "intenso"
+        y puede ser más interesante para destacar en la interfaz.
+        La escala es lineal hasta 50 eventos (máximo 100).
         """
         eventos = partido_data.get("eventos", [])
         total_ev = len(eventos)
         if total_ev == 0:
             return 0
         if total_ev >= 50:
-            return 100
+            return 100  # Cap a 100 para partidos muy intensos
         return int((total_ev / 50) * 100)
 
     # -------------------------
@@ -222,16 +243,29 @@ class Command(BaseCommand):
     # -------------------------
 
     def _upsert_jugador(self, jugador_nombre: str, jugador_id: int | None):
+        """
+        Crea o actualiza un jugador desde los datos scrapeados.
+        
+        Prioridad de búsqueda:
+        1. Por identificador_federacion (más fiable)
+        2. Por nombre (fallback)
+        
+        Si el jugador existe pero le falta el nombre, lo actualiza.
+        Si le falta el identificador_federacion, lo añade para futuras búsquedas más rápidas.
+        """
         clean_name = (jugador_nombre or "").strip() or "DESCONOCIDO"
 
+        # Buscar primero por ID de federación (más fiable)
         if jugador_id is not None:
             j = Jugador.objects.filter(identificador_federacion=str(jugador_id)).first()
             if j:
+                # Actualizar nombre si falta
                 if not j.nombre:
                     j.nombre = clean_name
                     j.save(update_fields=["nombre"])
                 return j
 
+        # Si no se encontró por ID, buscar/crear por nombre
         j, _ = Jugador.objects.get_or_create(
             nombre=clean_name,
             defaults={
@@ -239,6 +273,7 @@ class Command(BaseCommand):
                 "activo": True,
             },
         )
+        # Si el jugador ya existía pero le faltaba el ID, añadirlo
         if not j.identificador_federacion and jugador_id is not None:
             j.identificador_federacion = str(jugador_id)
             j.save(update_fields=["identificador_federacion"])
