@@ -38,7 +38,7 @@ Este documento define el plan completo para subir el proyecto PC FUTSAL a GitHub
 #### 🟡 CONFIGURACIÓN (Revisar antes de subir)
 
 - `/deploy_pcfutsal.sh` - Crear versión `.example` sin rutas hardcodeadas
-- `.cursor/DIARIO/` - Información interna, no subir
+- `DOCUMENTACION/DIARIO/` - Información interna, no subir
 - Configuraciones con rutas absolutas
 
 ### 1.2. Archivos que SÍ deben subirse
@@ -46,7 +46,7 @@ Este documento define el plan completo para subir el proyecto PC FUTSAL a GitHub
 ✅ Todo el código fuente (`.py`, `.ts`, `.tsx`)
 ✅ `requirements.txt`, `package.json`
 ✅ Archivos de configuración (sin secretos)
-✅ Documentación técnica de `.cursor/`
+✅ Documentación técnica de `DOCUMENTACION/`
 ✅ `README.md` (crear)
 
 ---

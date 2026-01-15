@@ -87,3 +87,6 @@ data_clean/
 .Trashes
 ehthumbs.db
 Desktop.ini
+
+# Cursor documentation (moved to DOCUMENTACION/)
+.cursor/

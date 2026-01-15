@@ -145,7 +145,7 @@ pcfutsal/
 │   ├── lib/                 # Utilidades
 │   └── public/             # Assets estáticos
 │
-└── .cursor/                 # Documentación técnica
+└── DOCUMENTACION/                 # Documentación técnica
     ├── PROJECT_SPEC.md     # Especificación completa
     ├── AGENT_GLOBAL_PLAYBOOK.md
     └── DOCUMENTACION/       # Documentación de APIs y hooks
@@ -207,7 +207,7 @@ El proyecto expone múltiples endpoints REST organizados por funcionalidad:
 - **Valoraciones**: `/api/valoraciones/*` (8 endpoints)
 - **Jugadores**: `/api/jugadores/*` (5 endpoints)
 
-Ver documentación completa en `.cursor/DOCUMENTACION/APIS.md`
+Ver documentación completa en `DOCUMENTACION/DOCUMENTACION/APIS.md`
 
 ## 🧪 Desarrollo
 
@@ -221,11 +221,11 @@ El frontend incluye 20+ hooks personalizados para data-fetching:
 - Clubes: `useClubFull`, `useClubHistorico`
 - Jugadores: `useJugadorFull`
 
-Ver documentación completa en `.cursor/DOCUMENTACION/HOOKS.md`
+Ver documentación completa en `DOCUMENTACION/DOCUMENTACION/HOOKS.md`
 
 ## 📝 Estilo de Código
 
-El proyecto sigue una guía de estilo específica para comentarios. Ver `.cursor/TONO_Y_ESTILO_COMMENTS.md` para más detalles.
+El proyecto sigue una guía de estilo específica para comentarios. Ver `DOCUMENTACION/TONO_Y_ESTILO_COMMENTS.md` para más detalles.
 
 **Principios:**
 - Comentar el **por qué**, no el qué

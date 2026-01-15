@@ -256,7 +256,7 @@ pcfutsal.es/
 │   ├── next.config.js
 │   └── tsconfig.json
 │
-├── .cursor/
+├── DOCUMENTACION/
 │   ├── AGENT_GLOBAL_PLAYBOOK.md
 │   ├── DECISIONS.md
 │   ├── DIARIO/
@@ -785,27 +785,27 @@ Añadir endpoints (si no requieren modelos nuevos).
 
 El agente SIEMPRE debe leer antes de actuar:
 
-.cursor/AGENT_GLOBAL_PLAYBOOK.md (guía principal de trabajo)
+DOCUMENTACION/AGENT_GLOBAL_PLAYBOOK.md (guía principal de trabajo)
 
-.cursor/PROJECT_SPEC.md (este archivo)
+DOCUMENTACION/PROJECT_SPEC.md (este archivo)
 
-.cursor/PROJECT_VISION.md (visión y objetivos del proyecto)
+DOCUMENTACION/PROJECT_VISION.md (visión y objetivos del proyecto)
 
-.cursor/DECISIONS.md (decisiones técnicas registradas)
+DOCUMENTACION/DECISIONS.md (decisiones técnicas registradas)
 
-.cursor/TASK.md (tareas activas, siguientes y completadas)
+DOCUMENTACION/TASK.md (tareas activas, siguientes y completadas)
 
-.cursor/PROJECT_TREE.md (estructura actual del proyecto)
+DOCUMENTACION/PROJECT_TREE.md (estructura actual del proyecto)
 
-.cursor/DIARIO/YYYY-MM-DD.txt (registro diario de cambios)
+DOCUMENTACION/DIARIO/YYYY-MM-DD.txt (registro diario de cambios)
 
-11) Diario de trabajo (.cursor/DIARIO/)
+11) Diario de trabajo (DOCUMENTACION/DIARIO/)
 
 Reglas:
 
 Un archivo por día: YYYY-MM-DD.txt
 
-Ubicación: /home/rubenmaestre/pcfutsal.es/.cursor/DIARIO/
+Ubicación: /home/rubenmaestre/pcfutsal.es/DOCUMENTACION/DIARIO/
 
 Registrar:
 
