@@ -90,3 +90,9 @@ Desktop.ini
 
 # Cursor documentation (moved to DOCUMENTACION/)
 .cursor/
+
+# DreamHost diagnostics
+.dh-diag
+
+# Deployment scripts (use .example versions)
+deploy_pcfutsal.sh
