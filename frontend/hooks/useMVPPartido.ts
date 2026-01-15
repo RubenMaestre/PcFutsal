@@ -3,6 +3,9 @@
 
 import { useEffect, useState } from "react";
 
+// Determina la base de la URL de la API según el contexto (navegador vs servidor).
+// En el navegador, se usa una URL relativa para aprovechar el proxy de Nginx.
+// En SSR, se usa la variable de entorno NEXT_PUBLIC_API_BASE_URL.
 const isBrowser = typeof window !== "undefined";
 const API_BASE = !isBrowser
   ? process.env.NEXT_PUBLIC_API_BASE_URL || "https://pcfutsal.es"
@@ -42,6 +45,7 @@ export function useMVPPartido(
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    // Si el hook está deshabilitado o no hay partidoId, no hacer la petición.
     if (!enabled || !partidoId) {
       setData(null);
       setError(null);
@@ -49,6 +53,8 @@ export function useMVPPartido(
       return;
     }
 
+    // Flag para cancelar la petición si el componente se desmonta antes de que termine.
+    // Evita errores de "Can't perform a React state update on an unmounted component".
     let cancelled = false;
 
     async function fetchData() {

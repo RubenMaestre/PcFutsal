@@ -79,7 +79,8 @@ export default function MVPClassificationTable({
   const jornadaEffective =
     selectedJornada ?? internalJornada ?? jornadaAplicadaBackend ?? null;
 
-  // Mapa jugador_id → posición previa (para flechitas)
+  // Mapa jugador_id → posición previa (para mostrar flechitas de subida/bajada).
+  // Esto permite indicar visualmente si un jugador subió o bajó en el ranking.
   const prevPosByJugador = React.useMemo(() => {
     const map: Record<number, number> = {};
     (data?.prev_ranking || []).forEach((r) => {
@@ -88,7 +89,9 @@ export default function MVPClassificationTable({
     return map;
   }, [data?.prev_ranking]);
 
-  // Ordenamos según modo
+  // Ordenamos según el modo seleccionado.
+  // "general" = ranking acumulado (más útil para ver evolución)
+  // "by_matchday" = top de esa jornada específica (más útil para destacados)
   const sortedRows: MVPRankingRow[] = React.useMemo(() => {
     const base = data?.ranking ?? [];
     const copy = [...base];

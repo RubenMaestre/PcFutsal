@@ -9,14 +9,19 @@ from staff.models import StaffClub
 # --------------------------------------------
 # Helpers
 # --------------------------------------------
+# Helper para normalizar URLs de media.
+# Asegura que todas las URLs de imágenes tengan el prefijo /media/ correcto.
+# Esto es necesario porque FFCV a veces devuelve rutas relativas sin prefijo.
 def _norm_media(url: str | None) -> str:
     if not url:
         return ""
     u = url.strip()
+    # Si ya es URL absoluta o tiene /media/, dejarla como está
     if u.startswith("http://") or u.startswith("https://"):
         return u
     if u.startswith("/media/"):
         return u
+    # Añadir prefijo /media/ si falta
     return "/media/" + u.lstrip("/")
 
 
@@ -24,7 +29,8 @@ def _norm_media(url: str | None) -> str:
 # Clubes (compat con modelo nuevo)
 # --------------------------------------------
 class ClubLiteSerializer(serializers.ModelSerializer):
-    # localidad en el front → ciudad en el modelo
+    # Campo alias: el frontend usa "localidad" pero el modelo tiene "ciudad".
+    # Esto permite mantener compatibilidad con el frontend sin cambiar el modelo.
     localidad = serializers.CharField(source="ciudad", allow_blank=True, required=False)
     escudo_url = serializers.SerializerMethodField()
 
@@ -47,7 +53,8 @@ class ClubLiteSerializer(serializers.ModelSerializer):
 class ClubEnGrupoSerializer(serializers.ModelSerializer):
     club = ClubLiteSerializer()
 
-    # 👇 Campos legacy que usa el frontend
+    # Campos legacy: el frontend usa estos nombres pero el modelo tiene otros.
+    # Esto permite mantener compatibilidad con el frontend sin cambiar el modelo.
     partidos_ganados = serializers.IntegerField(source="victorias", read_only=True)
     partidos_empatados = serializers.IntegerField(source="empates", read_only=True)
     partidos_perdidos = serializers.IntegerField(source="derrotas", read_only=True)

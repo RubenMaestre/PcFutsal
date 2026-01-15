@@ -78,6 +78,8 @@ export function useTopJugadoresJornada(
         const json: ApiResponse = await res.json();
         if (cancelled) return;
 
+        // Aplicar límite si se especifica. Esto permite mostrar solo los top N jugadores
+        // en lugar de toda la lista, útil para componentes compactos o destacados.
         let lista = json.ranking_jugadores || [];
         if (limit && limit > 0) {
           lista = lista.slice(0, limit);

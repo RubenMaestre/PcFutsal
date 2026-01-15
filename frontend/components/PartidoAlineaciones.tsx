@@ -47,6 +47,9 @@ type PartidoAlineacionesProps = {
   lang: string;
 };
 
+// Renderiza un jugador individual en la alineación.
+// Muestra foto (o inicial si no hay foto), dorsal, etiquetas (Pt, C, etc.),
+// nombre con enlace al perfil, estadísticas del partido y puntos MVP.
 function renderJugador(
   jugador: JugadorAlineacion,
   puntos: number | null,
@@ -58,7 +61,7 @@ function renderJugador(
       key={jugador.jugador_id || jugador.nombre}
       className="flex items-center gap-3 p-3 bg-[var(--color-navy)] rounded-lg border border-[var(--color-navy)]/50 hover:border-[var(--color-accent)]/50 transition-all group"
     >
-      {/* Foto */}
+      {/* Foto del jugador. Si no hay foto, muestra la inicial del nombre como fallback. */}
       <div className="w-12 h-12 bg-brand-card border-2 border-[var(--color-accent)] rounded-full flex items-center justify-center overflow-hidden flex-shrink-0">
         {jugador.foto ? (
           // eslint-disable-next-line @next/next/no-img-element
@@ -68,6 +71,7 @@ function renderJugador(
             className="w-full h-full object-cover"
           />
         ) : (
+          // Fallback: mostrar inicial del nombre si no hay foto
           <span className="text-sm text-white/60 font-bold">
             {jugador.nombre.charAt(0).toUpperCase()}
           </span>

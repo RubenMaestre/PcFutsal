@@ -42,39 +42,43 @@ type PartidoTimelineProps = {
   lang: string;
 };
 
+// Mapea el tipo de evento a un color CSS variable.
+// Los colores se definen en el tema global, permitiendo cambiar la paleta fácilmente.
 function getEventoColor(tipo: string) {
   switch (tipo) {
     case "gol":
     case "gol_pp":
-      return "bg-[var(--color-success)]";
+      return "bg-[var(--color-success)]"; // Verde para goles (positivo)
     case "amarilla":
-      return "bg-[var(--color-warning)]";
+      return "bg-[var(--color-warning)]"; // Amarillo para tarjetas (advertencia)
     case "doble_amarilla":
-      return "bg-[var(--color-warning)]";
+      return "bg-[var(--color-warning)]"; // Mismo color que amarilla simple
     case "roja":
-      return "bg-[var(--color-error)]";
+      return "bg-[var(--color-error)]"; // Rojo para tarjetas rojas (negativo)
     case "mvp":
-      return "bg-[var(--color-gold)]";
+      return "bg-[var(--color-gold)]"; // Dorado para MVP (destacado)
     default:
-      return "bg-[var(--color-text-secondary)]";
+      return "bg-[var(--color-text-secondary)]"; // Gris para eventos desconocidos
   }
 }
 
+// Mapea el tipo de evento a un emoji/icono para mejor identificación visual.
+// Los emojis son universales y no requieren carga de iconos externos.
 function getEventoIcon(tipo: string) {
   switch (tipo) {
     case "gol":
     case "gol_pp":
-      return "⚽";
+      return "⚽"; // Balón para goles
     case "amarilla":
-      return "🟨";
+      return "🟨"; // Cuadrado amarillo para tarjeta amarilla
     case "doble_amarilla":
-      return "🟨🟨";
+      return "🟨🟨"; // Dos cuadrados para doble amarilla
     case "roja":
-      return "🟥";
+      return "🟥"; // Cuadrado rojo para tarjeta roja
     case "mvp":
-      return "⭐";
+      return "⭐"; // Estrella para MVP
     default:
-      return "•";
+      return "•"; // Punto genérico para eventos desconocidos
   }
 }
 
