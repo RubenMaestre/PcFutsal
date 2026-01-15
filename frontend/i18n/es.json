@@ -1,0 +1,1473 @@
+{
+  "topbar": {
+    "last_update_label": "Última actualización",
+    "info_links": {
+      "home": "Inicio",
+      "que_es": "¿Qué es PC Futsal?",
+      "about": "¿Quiénes somos?",
+      "collaborate": "¿Cómo colaborar?",
+      "request_profile": "Solicitar mi perfil",
+      "contact": "Contacto"
+    },
+    "cta_register": "Regístrate / Inicia sesión"
+  },
+  "nav": {
+    "pilot_label": "Futsal & Data",
+    "brand": "PC FUTSAL",
+    "brand_subtitle": "Donde los goles valen… y los datos también.",
+    "menu": {
+      "table": "Clasificación",
+      "matches": "Partidos",
+      "players": "Jugadores",
+      "rankings": "Rankings",
+      "fantasy": "Fantasy",
+      "clubs": "Clubes"
+    },
+    "potw": "Jugador de la Jornada",
+    "web_club": "Web para tu club"
+  },
+  "language_label": "Idioma",
+  "home": {
+    "classification_title": "Clasificación",
+    "classification_desc": "Tabla rápida: PTS · GF · GC · Racha.",
+    "team_of_the_week": "Equipo de la jornada",
+    "team_of_the_week_desc": "Jornada perfecta: goles, puntos y egos por las nubes.",
+    "player_of_the_week": "Jugador de la jornada",
+    "player_of_the_week_desc": "Foto, nombre, club, valoración y mini informe de scouting.",
+    "top_scorer_of_the_week": "Máximo goleador de la jornada",
+    "top_scorer_of_the_week_desc": "Quién la está enchufando sin piedad.",
+    "highlight_players_matchday_title": "Jugadores destacados de la jornada",
+    "highlight_players_matchday_desc": "Actuaciones que han cambiado partidos.",
+    "top_players_title": "Top 5 ahora mismo",
+    "top_players_desc": "Lista rápida de los jugadores mejor valorados.",
+    "table_title": "Clasificación",
+    "table_desc": "Tabla rápida: PTS · GF · GC · Racha.",
+    "highlights_players_title": "Jugadores destacados",
+    "highlights_players_desc": "Rendimientos que no se pueden ignorar.",
+    "goalscorers_title": "Goleadores",
+    "goalscorers_desc": "Quién manda ahora mismo en la tabla de goles.",
+    "team_goals_title": "Goles por equipo",
+    "team_goals_desc": "Producción ofensiva total por club",
+    "suspended_title": "Sanciones jornada",
+    "suspended_desc": "Bajas por tarjeta roja o acumulación para la próxima jornada.",
+    "most_booked_title": "Jugadores más sancionados",
+    "most_booked_desc": "Ranking acumulado por puntos de sanción.",
+    "fair_play_title": "Deportividad equipos",
+    "fair_play_desc": "Fair play, disciplina, control emocional. Menos tarjetas = más limpio.",
+    "star_matches_of_the_week": "Partidos destacados de la semana",
+    "star_matches_of_the_week_desc": "Los 3 partidos más interesantes entre todas las divisiones",
+    "goalkeepers_of_the_week": "Porteros de la jornada",
+    "goalkeeper_of_the_week_desc": "Top porteros ponderado por división"
+  },
+  "filters": {
+    "season_label": "Temporada",
+    "scope_label": "Datos",
+    "scope_global": "GLOBAL",
+    "scope_competitions": "COMPETICIONES",
+    "competition_label": "Competición",
+    "group_label": "Grupo",
+    "placeholder_competition": "-- Selecciona competición --",
+    "placeholder_group": "-- Selecciona grupo --"
+  },
+  "home_table_labels": {
+    "title": "Clasificación",
+    "desc": "Tabla rápida: PTS · GF · GC · Racha.",
+    "title_full": "Clasificación completa",
+    "desc_full": "Todos los equipos del grupo con puntos, goles y racha.",
+    "see_all": "VER TODO",
+    "pj": "PJ",
+    "pt": "PT",
+    "no_data": "Sin datos de clasificación todavía.",
+    "loading": "Cargando…",
+    "error": "Error al cargar la clasificación.",
+    "hint_select_group": "Selecciona un grupo para ver la clasificación"
+  },
+  "home_matches_labels": {
+    "section_competition_fallback": "Competición",
+    "section_group_fallback": "Grupo / Temporada",
+    "matchday_label": "Jornada",
+    "select_matchday_label": "Jornada",
+    "loading": "Cargando resultados...",
+    "error": "Error al cargar los resultados.",
+    "no_matches": "No hay partidos en esta jornada.",
+    "cta_match_sheet": "Ficha del partido",
+    "field_referees": "Árbitros:",
+    "field_venue": "Pabellón",
+    "date_weekday_day_month_format_hint": "Usar formato 'jueves, 23 de octubre'",
+    "time_format_suffix_h_hint": "Usar formato '20:30h'"
+  },
+  "home_matchday_scorer_labels": {
+    "hint_select_group": "Selecciona un grupo para ver el máximo goleador de la jornada.",
+    "loading": "Cargando goleadores de la jornada...",
+    "error": "Error al cargar el goleador de la jornada.",
+    "no_data": "Todavía no hay goles registrados en esta jornada.",
+    "no_photo": "Sin foto",
+    "league_position": "Pos.",
+    "matchday_prefix": "Jornada",
+    "goals_label": "Goles"
+  },
+  "home_season_scorers_labels": {
+    "hint_select_group": "Selecciona un grupo para ver los máximos goleadores.",
+    "loading": "Cargando goleadores...",
+    "error": "Error al cargar los goleadores.",
+    "no_data": "Todavía no hay goles registrados en esta competición.",
+    "col_rank": "R",
+    "col_player": "Jugador",
+    "col_team": "Equipo",
+    "col_goals_block": "Goles jugador / Total del equipo",
+    "col_contrib": "Impacto",
+    "col_player_short": "JUG.",
+    "col_goals_block_short": "GOLES / T. EQUIPO",
+    "col_contrib_short": "IMPACTO"
+  },
+  "home_matchday_stats_labels": {
+    "hint_select_group": "Selecciona un grupo para ver las estadísticas de la jornada.",
+    "loading": "Cargando estadísticas de la jornada...",
+    "error": "Error al cargar las estadísticas.",
+    "no_data": "Sin datos de esta jornada todavía.",
+    "goals_card_title": "Goles jornada",
+    "goals_card_desc": "Total de goles en esta jornada",
+    "yellows_card_title": "Amarillas",
+    "yellows_card_desc": "Tarjetas amarillas totales",
+    "reds_card_title": "Rojas",
+    "reds_card_desc": "Expulsiones directas / doble amarilla",
+    "results_card_title": "Resultados jornada",
+    "results_card_desc": "Balance local / empate / visitante",
+    "home_wins_label": "Victorias local",
+    "draws_label": "Empates",
+    "away_wins_label": "Victorias visitante"
+  },
+  "home_team_goals_labels": {
+    "hint_select_group": "Selecciona un grupo para ver los goles por equipo.",
+    "loading": "Cargando datos ofensivos...",
+    "error": "Error al cargar los datos ofensivos.",
+    "no_data": "Sin goles registrados todavía.",
+    "col_rank": "R",
+    "col_team": "Equipo",
+    "col_team_short": "EQ.",
+    "col_goals_avg": "Goles (media)",
+    "col_goals_avg_short": "GF (med.)",
+    "col_home_away": "Local / Visitante",
+    "col_halves": "1ª / 2ª parte",
+    "col_halves_short": "1P / 2P",
+    "matches_played_short": "PJ",
+    "per_match_suffix": "g/p",
+    "home_short": "LOC",
+    "away_short": "VIS",
+    "home_away_block": "Loc / Vis",
+    "first_half_short": "1P",
+    "second_half_short": "2P",
+    "halves_block": "1P / 2P"
+  },
+  "home_discipline_labels": {
+    "hint_select_group": "Selecciona un grupo para ver las sanciones.",
+    "loading_jornada": "Cargando sancionados...",
+    "loading_acumulado": "Cargando jugadores...",
+    "loading_fairplay": "Cargando equipos...",
+    "error_generic": "Error al cargar los datos.",
+    "no_data_jornada": "Sin sancionados esta jornada.",
+    "no_data_jugadores": "Sin datos todavía.",
+    "no_data_equipos": "Sin datos todavía.",
+    "suspended_card_title": "Tarjetas jugadores",
+    "suspended_card_desc": "Jugadores con tarjeta en la jornada seleccionada.",
+    "most_booked_card_title": "Jugadores más sancionados",
+    "most_booked_card_desc": "Ranking acumulado por puntos de sanción.",
+    "fair_play_card_title": "Deportividad equipos",
+    "fair_play_card_desc": "Fair play, disciplina, control emocional. Menos tarjetas = más limpio."
+  },
+  "footer": {
+    "links_title": "PC FUTSAL",
+    "copyright": "© PC FUTSAL",
+    "claim": "Donde los goles valen… y los datos también.",
+    "author_line": "Diseñado y creado por",
+    "author_role": "Científico y Analista de Datos, Inteligencia Artificial, Python – Proyectos Digitales",
+    "cta_author": "Rubén Maestre",
+    "made_with": "Hecho con futsal real, datos y un poco de mala leche deportiva.",
+    "company_info": "RUMAZA SYSTEMS S.L. - RUMAZA STUDIO - www.rumaza.io"
+  },
+  "classification_labels": {
+    "title": "Clasificación completa",
+    "desc": "Todos los equipos del grupo con puntos, goles y racha.",
+    "no_data": "Sin datos disponibles",
+    "loading": "Cargando clasificación...",
+    "error": "Error al cargar la clasificación.",
+    "hint_select_group": "Selecciona una competición y un grupo para ver la clasificación.",
+    "matchday_select_label": "Jornada",
+    "matchday_option_prefix": "Jornada",
+    "scope_overall": "General",
+    "scope_home": "Casa",
+    "scope_away": "Fuera",
+    "col_position": "#",
+    "col_variation": "Var.",
+    "col_team": "Equipo",
+    "col_played": "PJ",
+    "col_wins": "PG",
+    "col_draws": "PE",
+    "col_losses": "PP",
+    "col_goals_for": "GF",
+    "col_goals_against": "GC",
+    "col_goal_diff": "DG",
+    "col_points": "PTS"
+  },
+  "home_matchday_team_labels": {
+    "hint_select_group": "Selecciona un grupo para ver el equipo de la jornada.",
+    "loading": "Cargando equipo de la jornada...",
+    "error": "Error al cargar el equipo de la jornada.",
+    "no_data": "Todavía no hay equipo de la jornada para esta jornada.",
+    "default_comment": "Jornada muy completa, puntos fantasy y solidez.",
+    "score_label": "score"
+  },
+  "clubs_page": {
+    "title": "Clubes del grupo",
+    "desc": "Listado de clubes de la competición / grupo seleccionado.",
+    "desc_random": "Clubes destacados de todas las competiciones.",
+    "loading": "Cargando…",
+    "error": "Error al cargar los clubes.",
+    "no_data": "No hay clubes en este grupo.",
+    "random_clubs": "Clubes destacados",
+    "clubs": "clubes",
+    "avg_points": "media puntos",
+    "search": "Buscar…",
+    "sort_pos": "Ordenar: Posición",
+    "sort_pts": "Ordenar: Puntos",
+    "sort_name": "Ordenar: Nombre",
+    "compact": "Vista compacta",
+    "see_more": "ver club"
+  },
+  "jugadores_page": {
+    "title": "Jugadores",
+    "title_club": "Jugadores del club",
+    "desc": "Selecciona una división y un club para ver sus jugadores.",
+    "desc_random": "Jugadores destacados de todas las competiciones.",
+    "desc_club": "Listado de jugadores del club seleccionado.",
+    "loading": "Cargando…",
+    "error": "Error al cargar los jugadores.",
+    "no_data": "No hay jugadores disponibles.",
+    "random_players": "Jugadores destacados",
+    "players": "jugadores",
+    "total_goals": "goles totales",
+    "select_club": "Selecciona un club",
+    "select_club_desc": "Elige un club para ver sus jugadores",
+    "sort_name": "Ordenar: Nombre",
+    "sort_goals": "Ordenar: Goles",
+    "sort_matches": "Ordenar: Partidos",
+    "compact": "Vista compacta",
+    "see_more": "ver jugador",
+    "age": "EDAD",
+    "goals": "GOLES",
+    "matches": "PJ"
+  },
+  "club_detail": {
+    "loading": "Cargando club...",
+    "error": "Error al cargar el club",
+    "not_found": "Club no encontrado.",
+    "invalid_id": "ID de club no válido",
+    "error_loading": "Error cargando la ficha del club",
+    "invalid_response": "Respuesta del servidor inválida: no se encontró el club",
+    "club_fallback": "Club",
+    "info_title": "Información del club",
+    "contact_title": "Contacto",
+    "classification_title": "Clasificación",
+    "social_media_title": "Redes sociales",
+    "historical_title": "Histórico de temporadas",
+    "colors_title": "Colores del club",
+    "primary_color": "Color primario",
+    "secondary_color": "Color secundario",
+    "labels": {
+      "pabellon": "Pabellón",
+      "fundado": "Fundado",
+      "aforo": "Aforo",
+      "ciudad": "Ciudad",
+      "provincia": "Provincia",
+      "direccion": "Dirección",
+      "web": "Web oficial",
+      "email": "Email",
+      "telefono": "Teléfono",
+      "posicion": "Posición",
+      "puntos": "Puntos",
+      "ganados": "Ganados",
+      "empatados": "Empatados",
+      "perdidos": "Perdidos",
+      "goles_favor": "Goles a favor",
+      "goles_contra": "Goles en contra",
+      "tarjetas_temporada": "Tarjetas esta temporada",
+      "amarillas": "Amarillas",
+      "dobles_amarillas": "Dobles Amarillas",
+      "rojas": "Rojas",
+      "ver_clasificacion": "Ver clasificación completa"
+    },
+    "historical": {
+      "loading": "Cargando histórico...",
+      "error": "Error al cargar el histórico",
+      "no_data": "No hay temporadas históricas disponibles",
+      "col_temporadas": "TEMPORADAS",
+      "col_division": "DIVISIÓN",
+      "col_posicion": "POSICIÓN",
+      "col_puntos": "PUNTOS"
+    },
+    "racha": {
+      "victoria": "Victoria",
+      "empate": "Empate",
+      "derrota": "Derrota",
+      "partido_prefix": "Partido"
+    },
+    "aforo_suffix": "personas"
+  },
+  "jugador_detail": {
+    "loading": "Cargando jugador...",
+    "error": "Error al cargar el jugador",
+    "not_found": "Jugador no encontrado.",
+    "invalid_id": "ID de jugador no válido",
+    "error_loading": "Error cargando la ficha del jugador",
+    "invalid_response": "Respuesta del servidor inválida: no se encontró el jugador",
+    "jugador_fallback": "Jugador",
+    "header": {
+      "edad": "Edad",
+      "posicion": "Posición",
+      "club_actual": "Club actual",
+      "dorsal": "Dorsal"
+    },
+    "fifa_card": {
+      "title": "Valoración FIFA",
+      "media_global": "Media Global",
+      "atributos": {
+        "ataque": "Ataque",
+        "defensa": "Defensa",
+        "pase": "Pase",
+        "regate": "Regate",
+        "potencia": "Potencia",
+        "intensidad": "Intensidad",
+        "vision": "Visión",
+        "regularidad": "Regularidad",
+        "carisma": "Carisma"
+      },
+      "sin_valoracion": "Sin valoración disponible",
+      "total_votos": "Votos"
+    },
+    "stats": {
+      "title": "Estadísticas actuales",
+      "partidos_jugados": "Partidos jugados",
+      "goles": "Goles",
+      "tarjetas_amarillas": "Tarjetas amarillas",
+      "tarjetas_rojas": "Tarjetas rojas",
+      "convocados": "Convocados",
+      "titular": "Titular",
+      "suplente": "Suplente"
+    },
+    "historial": {
+      "title": "Historial",
+      "temporada": "Temporada",
+      "competicion": "Competición",
+      "grupo": "Grupo",
+      "club": "Club",
+      "dorsal": "Dorsal",
+      "partidos": "PJ",
+      "goles": "Goles",
+      "sin_datos": "No hay historial disponible"
+    },
+    "partidos": {
+      "title": "Partidos recientes",
+      "fecha": "Fecha",
+      "jornada": "Jornada",
+      "local": "Local",
+      "visitante": "Visitante",
+      "resultado": "Resultado",
+      "goles_jugador": "Goles",
+      "tarjetas": "Tarjetas",
+      "titular": "Titular",
+      "mvp": "MVP",
+      "totales": {
+        "title": "Totales",
+        "partidos_jugados": "Partidos jugados",
+        "goles": "Goles",
+        "tarjetas_amarillas": "Amarillas",
+        "tarjetas_rojas": "Rojas",
+        "partidos_titular": "Como titular",
+        "mvps": "MVPs"
+      },
+      "sin_datos": "No hay partidos disponibles"
+    },
+    "fantasy": {
+      "title": "Puntos Fantasy MVP",
+      "temporada": "Temporada",
+      "puntos_total": "Puntos totales",
+      "puntos_base": "Puntos base",
+      "puntos_con_coef": "Puntos con coeficiente",
+      "goles_total": "Goles totales",
+      "partidos_total": "Partidos totales",
+      "por_jornada": {
+        "title": "Puntos por jornada",
+        "jornada": "Jornada",
+        "grupo": "Grupo",
+        "puntos_base": "Puntos base",
+        "puntos_con_coef": "Puntos con coef.",
+        "goles": "Goles",
+        "partidos": "PJ"
+      },
+      "sin_datos": "No hay puntos fantasy disponibles"
+    },
+    "botones": {
+      "votar": "Votar",
+      "verificar_perfil": "¿Eres tú? Verifica el perfil"
+    },
+    "sin_datos": "No hay datos disponibles para este jugador"
+  },
+  "reconocimientos": {
+    "title": "Reconocimientos",
+    "title_equipo": "Reconocimientos del Equipo",
+    "loading": "Cargando reconocimientos...",
+    "total": "reconocimientos",
+    "mvp_partidos": "MVP del Partido",
+    "mvp_jornada_division": "MVP de Jornada",
+    "mvp_global": "MVP Global",
+    "goleador_jornada": "Goleador de Jornada",
+    "mejor_equipo_jornada": "Mejor Equipo de Jornada",
+    "mejor_equipo_global": "Mejor Equipo Global",
+    "jornada": "J",
+    "goles": "goles"
+  },
+  "partido_mvp": {
+    "title": "MVP del Partido",
+    "subtitle": "Jugador destacado del encuentro",
+    "badge": "Estrella",
+    "loading": "Cargando MVP del partido...",
+    "puntos": "Puntos",
+    "goles": "Goles",
+    "equipo_ganador": "Equipo ganador",
+    "mvp_evento": "Evento MVP",
+    "tarjetas_amarillas": "amarillas",
+    "tarjetas_rojas": "rojas"
+  },
+  "common": {
+    "search": "Buscar…"
+  },
+  "team_global_labels": {
+    "global_title": "Ranking Global de Equipos",
+    "global_desc": "Clasificación global de los equipos con puntuación ponderada por nivel de división.",
+    "title": "Ranking global de equipos",
+    "no_data": "No hay datos disponibles.",
+    "error": "Error al cargar los datos."
+  },
+  "mvp_labels": {
+    "page_title": "Clasificación MVP PC FUTSAL",
+    "page_desc": "Elige competición y grupo para ver la clasificación MVP por jornada.",
+    "global_title": "Ranking Global MVP",
+    "global_desc": "Clasificación global de los mejores jugadores ponderada por nivel de división.",
+    "filter_all": "Todos",
+    "filter_gk": "Porteros",
+    "select_matchday": "Jornada",
+    "matchday_label": "Jornada",
+    "no_matchdays": "Sin jornadas",
+    "loading": "Cargando clasificación MVP…",
+    "select_group": "Selecciona competición y grupo para ver la clasificación MVP."
+  },
+  "goleadores_global_labels": {
+    "title": "Ranking global de goleadores",
+    "global_title": "Ranking Global de Goleadores",
+    "global_desc": "Clasificación global de los máximos goleadores con puntuación ponderada por nivel de división.",
+    "meta_title": "Ranking Global de Goleadores — Máximos Goleadores de Fútbol Sala",
+    "meta_desc": "Ranking global de los máximos goleadores de fútbol sala amateur en España. Compara goleadores de todas las competiciones y categorías.",
+    "no_data": "No hay datos disponibles.",
+    "error": "Error al cargar los datos."
+  },
+  "sanciones_global_labels": {
+    "title": "Ranking global de sanciones",
+    "global_title": "Ranking Global de Sanciones",
+    "global_desc": "Clasificación global de los jugadores más sancionados con sistema de puntos de disciplina.",
+    "meta_title": "Ranking Global de Sanciones — Jugadores Más Sancionados de Fútbol Sala",
+    "meta_desc": "Ranking global de los jugadores más sancionados de fútbol sala amateur en España. Compara sanciones (amarillas, rojas) de todas las competiciones y categorías.",
+    "no_data": "No hay datos disponibles.",
+    "error": "Error al cargar los datos."
+  },
+  "tarjetas_global_labels": {
+    "global_title": "Ranking Global de Tarjetas",
+    "global_desc": "Clasificación global de los jugadores más sancionados con sistema de puntos de disciplina.",
+    "meta_title": "Ranking Global de Tarjetas — Jugadores Más Sancionados de Fútbol Sala",
+    "meta_desc": "Ranking global de los jugadores más sancionados de fútbol sala amateur en España. Compara tarjetas (amarillas, rojas) de todas las competiciones y categorías."
+  },
+  "competicion": {
+    "error_loading": "Error al cargar datos del grupo",
+    "fallback_title": "Competición — Resultados y Clasificación",
+    "fallback_desc": "Jornadas, resultados, clasificación, clubs, goleadores y ranking de jugadores.",
+    "breadcrumb_home": "Home",
+    "random_selected": "Competición seleccionada aleatoriamente",
+    "favorite_selected": "Competición favorita",
+    "set_as_favorite": "Marcar como favorita",
+    "remove_favorite": "Quitar favorito"
+  },
+  "mvp_group": {
+    "filter_all": "Todos",
+    "filter_gk": "Portero",
+    "filter_cierre": "Cierre",
+    "filter_ala": "Ala",
+    "filter_ala_cierre": "Ala-cierre",
+    "filter_ala_pivot": "Ala-pívot",
+    "filter_pivot": "Pívot",
+    "select_matchday": "Jornada",
+    "matchday_label": "Jornada",
+    "no_matchdays": "Sin jornadas"
+  },
+  "clasificacion": {
+    "error_loading": "Error al cargar datos del grupo",
+    "fallback_title": "Clasificación — Resultados y Posiciones",
+    "fallback_desc": "Clasificación completa con posiciones, puntos, goles y estadísticas.",
+    "meta_title": "Clasificaciones de Fútbol Sala — Resultados y Posiciones",
+    "meta_desc": "Consulta las clasificaciones de todas las competiciones de fútbol sala amateur en España. Resultados, posiciones y estadísticas en tiempo real.",
+    "random_selected": "Clasificación seleccionada aleatoriamente",
+    "favorite_selected": "Clasificación favorita",
+    "set_as_favorite": "Marcar como favorita",
+    "remove_favorite": "Quitar de favoritos",
+    "no_favorite": "No hay clasificación favorita guardada"
+  },
+  "clasificacion_evolucion": {
+    "title": "Evolución de Posiciones",
+    "subtitle": "Seguimiento de la posición en la clasificación jornada a jornada",
+    "loading": "Cargando evolución de clasificación...",
+    "jornada_label": "Jornada",
+    "posicion_label": "Posición",
+    "note": "Haz clic en los equipos arriba para activar o desactivar sus líneas en la gráfica",
+    "error": "Error al cargar la evolución de clasificación",
+    "no_data": "No hay datos históricos de evolución disponibles para este grupo. La gráfica aparecerá cuando se generen los datos históricos de posiciones por jornada."
+  },
+  "mvp_page": {
+    "fallback_title": "MVP — Mejores Jugadores por Jornada",
+    "fallback_desc": "Clasificación MVP con los mejores jugadores por jornada.",
+    "page_group_desc": "Clasificación MVP de la jornada para este grupo."
+  },
+  "tables": {
+    "loading": "Cargando...",
+    "error": "Error al cargar datos.",
+    "no_data": "Sin datos disponibles.",
+    "player": "Jugador",
+    "team": "Equipo",
+    "club": "Club",
+    "division": "División",
+    "week_goals": "Goles última semana",
+    "total_goals": "Goles totales",
+    "total_points": "Puntos totales",
+    "week_sanctions": "Sanciones última semana",
+    "total_sanctions": "Sanciones totales",
+    "week_score": "Puntos última semana",
+    "week_points": "Pts semana",
+    "total_score": "Puntos totales",
+    "total_points_short": "Pts totales",
+    "mvp_alt": "MVP de la jornada",
+    "click_racha": "Click racha"
+  },
+  "mvp_table": {
+    "variation_up": "Mejora",
+    "variation_down": "Empeora",
+    "variation_same": "Mantiene",
+    "select_matchday_title": "Selecciona jornada",
+    "mode_general": "General",
+    "mode_by_matchday": "Por jornada",
+    "col_player": "Jugador",
+    "col_club": "Club",
+    "col_total_points": "Total",
+    "role_gk": "Portero"
+  },
+  "header": {
+    "rankings_mvp": "MVP",
+    "rankings_equipos": "Equipos",
+    "rankings_goleadores": "Goleadores",
+    "rankings_tarjetas": "Tarjetas",
+    "logo_alt": "PC FUTSAL Logo"
+  },
+  "match": {
+    "competition_alt": "Competición",
+    "matchday_alt": "Jornada",
+    "venue_alt": "Pabellón",
+    "star_match_label": "PARTIDO ESTRELLA DE LA JORNADA"
+  },
+  "global": {
+    "mvp_alt": "MVP global",
+    "highlights_title": "Destacados",
+    "highlights_desc": "Top jugadores ponderados por división",
+    "select_context": "Selecciona contexto para ver destacados.",
+    "no_data_jornada": "Sin datos para esta jornada.",
+    "star_matches_title": "Partidos destacados de la semana",
+    "star_matches_desc": "Los 3 partidos más interesantes entre todas las divisiones",
+    "no_star_matches": "No hay partidos destacados en esta semana."
+  },
+  "week_selector": {
+    "label": "Selecciona semana:",
+    "week_prefix": "Semana"
+  },
+  "goalkeeper_matchday": {
+    "title": "Portero de la jornada",
+    "title_global": "Portero de la jornada",
+    "hint_select_group": "Selecciona un grupo para ver al portero.",
+    "hint_select_context": "Selecciona contexto para ver porteros.",
+    "loading": "Cargando portero de la jornada...",
+    "loading_global": "Cargando porteros de la jornada...",
+    "no_data": "No hay porteros valorados en esta jornada.",
+    "no_data_global": "No hay porteros valorados en esta jornada.",
+    "error": "Error al cargar.",
+    "list_desc": "Top porteros ponderados por división en la jornada.",
+    "points_label": "pts"
+  },
+  "most_booked": {
+    "title": "Jugadores más sancionados",
+    "desc": "Ranking acumulado por puntos de sanción.",
+    "loading": "Cargando jugadores...",
+    "no_data": "Sin datos todavía."
+  },
+  "seo": {
+    "default": {
+      "og_title": "PC FUTSAL — Datos, Rankings y Fantasy del Fútbol Sala Amateur",
+      "og_description": "Resultados reales, clasificaciones, jugadores, clubes y rankings tipo FIFA. Fantasy semanal y estadísticas del futsal amateur en España.",
+      "site_name": "PC FUTSAL"
+    },
+    "home": {
+      "title": "PC FUTSAL — Resultados, Estadísticas y Rankings de Fútbol Sala en España",
+      "description": "Resultados oficiales, clasificaciones, jugadores, clubes y rankings tipo FIFA del fútbol sala amateur en España. Datos actualizados y Fantasy semanal."
+    },
+    "competicion": {
+      "title_template": "{competicion} · {grupo} · {temporada} — Resultados y Clasificación",
+      "description_template": "Jornadas, resultados, clasificación, clubs, goleadores y ranking de jugadores del {grupo} de {competicion} en {temporada}.",
+      "fallback_title": "Competición — Resultados y Clasificación",
+      "fallback_desc": "Jornadas, resultados, clasificación, clubs, goleadores y ranking de jugadores."
+    },
+    "club": {
+      "title_template": "{nombre} — Resultados, Plantilla y Estadísticas",
+      "description_template": "Plantilla completa, últimos resultados, clasificación, racha y estadísticas del {nombre}.",
+      "fallback_title": "Club — Resultados, Plantilla y Estadísticas",
+      "fallback_desc": "Plantilla completa, últimos resultados, clasificación, racha y estadísticas del club."
+    },
+    "jugadores": {
+      "title": "Jugadores de Fútbol Sala — Directorio Completo",
+      "description": "Explora todos los jugadores de fútbol sala amateur en España. Perfiles, estadísticas y trayectoria de cada jugador."
+    },
+    "rankings": {
+      "equipos": {
+        "title": "Ranking Global de Equipos — Mejores Equipos de Fútbol Sala",
+        "description": "Ranking global de los mejores equipos de fútbol sala amateur en España. Compara equipos de todas las competiciones y categorías."
+      },
+      "mvp": {
+        "title": "Ranking Global MVP — Mejores Jugadores de Fútbol Sala",
+        "description": "Ranking global de los mejores jugadores de fútbol sala amateur. Valoraciones tipo FIFA, goles, asistencias y estadísticas completas."
+      },
+      "goleadores": {
+        "title": "Ranking Global de Goleadores — Máximos Goleadores de Fútbol Sala",
+        "description": "Ranking global de los máximos goleadores de fútbol sala amateur en España. Compara goleadores de todas las competiciones y categorías."
+      },
+      "sanciones": {
+        "title": "Ranking Global de Sanciones — Jugadores Más Sancionados de Fútbol Sala",
+        "description": "Ranking global de los jugadores más sancionados de fútbol sala amateur en España. Compara sanciones (amarillas, rojas) de todas las competiciones y categorías."
+      },
+      "tarjetas": {
+        "title": "Ranking Global de Tarjetas — Jugadores Más Sancionados de Fútbol Sala",
+        "description": "Ranking global de los jugadores más sancionados de fútbol sala amateur en España. Compara tarjetas (amarillas, rojas) de todas las competiciones y categorías."
+      }
+    },
+    "mvp": {
+      "title": "Clasificación MVP — Mejores Jugadores por Jornada",
+      "description": "Sistema de valoración tipo FIFA para jugadores de fútbol sala. Descubre los mejores jugadores de cada jornada y competición."
+    },
+    "clasificacion": {
+      "title": "Clasificaciones de Fútbol Sala — Resultados y Posiciones",
+      "description": "Consulta las clasificaciones de todas las competiciones de fútbol sala amateur en España. Resultados, posiciones y estadísticas en tiempo real."
+    },
+    "clubes": {
+      "title": "Clubes de Fútbol Sala — Directorio Completo",
+      "description": "Explora todos los clubes de fútbol sala amateur en España. Perfiles, plantillas, estadísticas y resultados de cada club."
+    },
+    "jugador": {
+      "title_template": "{nombre} — Estadísticas y Media Tipo FIFA | PC FUTSAL",
+      "description_template": "Ficha completa de {nombre} con estadísticas, valoraciones FIFA, historial y más en PC FUTSAL.",
+      "fallback_title": "Jugador — Estadísticas y Media Tipo FIFA | PC FUTSAL",
+      "fallback_desc": "Ficha completa del jugador con estadísticas, valoraciones FIFA, historial y más en PC FUTSAL."
+    },
+    "partidos": {
+      "title": "Partidos de Fútbol Sala — Resultados y Calendario",
+      "description": "Consulta todos los partidos de fútbol sala amateur en España. Resultados, calendario y detalles de cada encuentro.",
+      "detail_title": "Partido — Detalle Completo",
+      "detail_description": "Detalle completo del partido con eventos, alineaciones y estadísticas."
+    }
+  },
+  "legal": {
+    "aviso_legal": {
+      "title": "Aviso Legal",
+      "meta_title": "Aviso Legal — PC FUTSAL",
+      "meta_desc": "Aviso legal de PC FUTSAL. Información sobre el titular, objeto del sitio, propiedad intelectual y responsabilidades.",
+      "section1_title": "1. AVISO LEGAL — PC FUTSAL (pcfutsal.es)",
+      "section1_titular": "Titular del sitio web:",
+      "section1_company": "RUMAZA SYSTEMS S.L.",
+      "section1_commercial": "Nombre comercial: RUMAZA STUDIO",
+      "section1_project": "Proyecto: PC FUTSAL",
+      "section1_address": "Domicilio: C/ Antonio Moya Albadalejo nº13 bajo, 03204, Elche (Alicante), España",
+      "section1_email": "Email de contacto:",
+      "section1_acceptance": "El acceso y uso del sitio web pcfutsal.es atribuye la condición de usuario e implica la aceptación plena de este Aviso Legal.",
+      "section2_title": "2. Objeto del sitio web",
+      "section2_intro": "El proyecto PC FUTSAL es una plataforma desarrollada por RUMAZA SYSTEMS S.L. cuyo propósito es:",
+      "section2_item1": "Mostrar información pública sobre resultados, clasificaciones y datos deportivos.",
+      "section2_item2": "Generar estadísticas, visualizaciones y contenido analítico.",
+      "section2_item3": "Crear juegos de entretenimiento como \"fantasy futsal\" basados en datos públicos.",
+      "section2_item4": "Producir rankings, tarjetas de jugadores y contenido deportivo informativo.",
+      "section2_footer": "El sitio pcfutsal.es no es oficial ni está vinculado a ninguna federación deportiva, y utiliza exclusivamente información pública disponible en fuentes oficiales.",
+      "section3_title": "3. Obtención de datos (Scraping)",
+      "section3_intro": "PC FUTSAL recopila información deportiva exclusivamente pública procedente de:",
+      "section3_item1": "Webs oficiales de federaciones deportivas.",
+      "section3_item2": "Páginas con resultados, clasificaciones y datos públicos sobre partidos y jugadores.",
+      "section3_purpose": "El scraping se realiza solo con fines informativos, estadísticos y recreativos, incluyendo visualizaciones, rankings, tarjetas tipo \"FIFA\" y juegos fantasy.",
+      "section3_no_commercial": "No utilizamos los datos para fines comerciales, segmentación publicitaria o creación de perfiles personales con efecto legal.",
+      "section4_title": "4. Propiedad intelectual e industrial",
+      "section4_item1": "Todos los contenidos propios (diseño, visualizaciones, textos, código, gráficos, rankings, logos y materiales creados) pertenecen a RUMAZA SYSTEMS S.L.",
+      "section4_item2": "Los datos públicos extraídos pertenecen a sus respectivas fuentes oficiales.",
+      "section4_item3": "Está prohibido reproducir, distribuir o modificar contenidos sin autorización previa.",
+      "section5_title": "5. Responsabilidad del usuario",
+      "section5_intro": "El usuario se compromete a:",
+      "section5_item1": "Hacer un uso adecuado y lícito del sitio.",
+      "section5_item2": "No realizar actividades que afecten al funcionamiento de la web.",
+      "section5_item3": "No manipular ni extraer los contenidos de forma masiva.",
+      "section6_title": "6. Enlaces externos",
+      "section6_text": "PC FUTSAL puede incluir enlaces a webs de terceros. RUMAZA SYSTEMS S.L. no se responsabiliza del contenido o funcionamiento de dichas webs.",
+      "section7_title": "7. Protección de datos",
+      "section7_text": "El tratamiento de datos personales se detalla en la",
+      "section7_link": "Política de Privacidad",
+      "section8_title": "8. Legislación aplicable",
+      "section8_text": "Este sitio se rige por la legislación española. Las partes renuncian a cualquier otro fuero y someten sus conflictos a los Juzgados y Tribunales de Elche (Alicante)."
+    },
+    "privacidad": {
+      "title": "Política de Privacidad",
+      "meta_title": "Política de Privacidad — PC FUTSAL",
+      "meta_desc": "Política de privacidad de PC FUTSAL. Información sobre el tratamiento de datos personales según RGPD y LOPDGDD.",
+      "intro": "En cumplimiento del RGPD (Reglamento UE 2016/679) y la LOPDGDD, se informa lo siguiente:",
+      "section1_title": "1. Responsable del tratamiento",
+      "section1_company": "RUMAZA SYSTEMS S.L.",
+      "section1_commercial": "Nombre comercial: RUMAZA STUDIO",
+      "section1_project": "Proyecto: PC FUTSAL",
+      "section1_address": "Domicilio: C/ Antonio Moya Albadalejo nº13 bajo, 03204, Elche (Alicante)",
+      "section1_email": "Email:",
+      "section2_title": "2. Qué datos recopilamos",
+      "section2_voluntary_title": "Datos proporcionados voluntariamente",
+      "section2_voluntary_item1": "Nombre",
+      "section2_voluntary_item2": "Email",
+      "section2_voluntary_item3": "Información enviada por formularios o registro (si existiera)",
+      "section2_technical_title": "Datos técnicos (no identificativos)",
+      "section2_technical_item1": "Cookies técnicas",
+      "section2_technical_item2": "Datos analíticos",
+      "section2_technical_item3": "IP anonimizadas (cuando sea posible)",
+      "section2_technical_item4": "Uso y navegación",
+      "section2_scraping_title": "Datos provenientes de scraping (no personales)",
+      "section2_scraping_item1": "Clasificaciones",
+      "section2_scraping_item2": "Resultados",
+      "section2_scraping_item3": "Datos deportivos públicos",
+      "section2_scraping_item4": "Datos de jugadores publicados por federaciones (no datos sensibles)",
+      "section2_scraping_item5": "Listas públicas y estadísticas",
+      "section2_never": "Nunca recogemos datos privados no publicados oficialmente.",
+      "section3_title": "3. Finalidad del tratamiento",
+      "section3_item1": "Gestionar consultas enviadas a través del sitio",
+      "section3_item2": "Mejorar el funcionamiento técnico de la plataforma",
+      "section3_item3": "Realizar análisis estadísticos agregados",
+      "section3_item4": "Mostrar información deportiva pública",
+      "section3_item5": "Generar contenido lúdico (fantasy, rankings, datos visuales)",
+      "section3_footer": "Los datos deportivos públicos no se asocian a usuarios ni se utilizan para segmentación o publicidad.",
+      "section4_title": "4. Legitimación",
+      "section4_item1": "Consentimiento del usuario",
+      "section4_item2": "Interés legítimo para la gestión técnica y analítica del sitio",
+      "section4_item3": "Información pública accesible libremente",
+      "section5_title": "5. Destinatarios",
+      "section5_text": "No se ceden datos personales a terceros salvo obligación legal. Los proveedores tecnológicos (hosting, analítica) operan como encargados de tratamiento con contrato regulado.",
+      "section6_title": "6. Conservación de datos",
+      "section6_item1": "Datos enviados por el usuario: hasta solicitar su eliminación.",
+      "section6_item2": "Datos técnicos: según configuración de cookies.",
+      "section6_item3": "Datos de scraping: pueden mantenerse indefinidamente con fines estadísticos e informativos.",
+      "section7_title": "7. Derechos del usuario",
+      "section7_intro": "Puedes ejercer tus derechos de:",
+      "section7_item1": "Acceso",
+      "section7_item2": "Rectificación",
+      "section7_item3": "Supresión",
+      "section7_item4": "Oposición",
+      "section7_item5": "Limitación",
+      "section7_item6": "Portabilidad",
+      "section7_email": "Enviando un email a:",
+      "section7_aepd": "Si lo deseas, puedes reclamar ante la AEPD."
+    },
+    "cookies": {
+      "title": "Política de Cookies",
+      "meta_title": "Política de Cookies — PC FUTSAL",
+      "meta_desc": "Política de cookies de PC FUTSAL. Información sobre el uso de cookies técnicas y analíticas en el sitio.",
+      "intro": "PC FUTSAL utiliza cookies propias y de terceros para un correcto funcionamiento técnico y para analizar el uso del sitio.",
+      "section1_title": "1. ¿Qué cookies usamos?",
+      "section1_technical_title": "Cookies técnicas (obligatorias)",
+      "section1_technical_text": "Garantizan el funcionamiento del sitio y no requieren consentimiento.",
+      "section1_analytical_title": "Cookies analíticas",
+      "section1_analytical_text": "Permiten conocer cómo se utiliza la web. Usamos cookies de análisis (Google Analytics o equivalentes) anonimizadas.",
+      "section1_personalization_title": "Cookies de personalización (si existieran)",
+      "section1_personalization_text": "Permiten recordar preferencias como idioma o configuración visual.",
+      "section1_no_ads": "No usamos cookies de publicidad ni de segmentación.",
+      "section2_title": "2. Gestión de cookies",
+      "section2_text": "Puedes aceptar o rechazar las cookies analíticas desde el banner inicial o desde la configuración de tu navegador.",
+      "section3_title": "3. Cómo desactivar las cookies",
+      "section3_intro": "Desde los ajustes de:",
+      "section3_item1": "Chrome",
+      "section3_item2": "Firefox",
+      "section3_item3": "Safari",
+      "section3_item4": "Microsoft Edge",
+      "section3_item5": "Android o iOS"
+    },
+    "contacto": {
+      "title": "Contacto",
+      "subtitle": "(o cómo enviarnos un mensaje sin tener que gritar desde la grada)",
+      "meta_title": "Contacto — PC FUTSAL",
+      "meta_desc": "Contacta con PC FUTSAL. Información de contacto, email y datos de la empresa para consultas, sugerencias y colaboraciones.",
+      "intro": "Si has llegado a esta página es porque:",
+      "reasons": {
+        "reclamar": "quieres reclamar tu perfil,",
+        "valorar": "quieres ayudar a valorar jugadores,",
+        "fotos": "quieres aportar fotos para mejorar las tarjetas FIFA,",
+        "corregir": "quieres corregir datos de goleadores,",
+        "colaborar": "quieres colaborar en el mayor proyecto de futsal amateur del país,",
+        "intensidad": "o simplemente quieres decirnos que tu media en intensidad debería ser un 94."
+      },
+      "bienvenido": "Sea lo que sea… bienvenido/a.",
+      "descripcion": "En PC FUTSAL estamos construyendo una plataforma hecha por la gente del futsal para la gente del futsal: jugadores, entrenadores, aficionados, frikis del fantasy y cualquier persona que ame este deporte tanto como nosotros.",
+      "puedes_escribir": "Puedes escribirnos para:",
+      "motivos": {
+        "reclamar": "Reclamar o verificar tu perfil",
+        "aportar": "Aportar datos o fotos de equipos",
+        "mejoras": "Proponer mejoras, ideas o nuevas funcionalidades",
+        "errores": "Informar de errores, datos incorrectos o resultados faltantes",
+        "colaborar": "Colaborar como entrenador, jugador o aficionado",
+        "goat": "Decirnos quién crees que es el verdadero GOAT del fútbol sala"
+      },
+      "estamos_aqui": "Estamos al otro lado para ayudarte.",
+      "section_email": {
+        "title": "Email de contacto",
+        "email": "contacto@pcfutsal.es",
+        "respondo": "Respondo lo antes posible.",
+        "prometo": "Prometo que no tardo tanto como una federación actualizando las clasificaciones. 😅"
+      },
+      "section_proyecto": {
+        "title": "Información del proyecto",
+        "descripcion": "PC FUTSAL es un proyecto digital independiente que recopila datos públicos, genera tarjetas tipo FIFA, rankings, juego fantasy y perfiles de jugadores/clubes para dar visibilidad al futsal amateur y semiprofesional.",
+        "footer": "Es futsal real, con humor, datos y mucha pasión."
+      },
+      "section_empresa": {
+        "title": "Información de la empresa",
+        "company_name": "RUMAZA SYSTEMS S.L.",
+        "commercial_name": "Nombre comercial: RUMAZA STUDIO",
+        "project": "Proyecto responsable: PC FUTSAL",
+        "address": "Domicilio: C/ Antonio Moya Albadalejo nº13 bajo",
+        "city": "03204 Elche (Alicante), España",
+        "email_general": "Email general: contact@rumaza.io"
+      },
+      "section_colaborar": {
+        "title": "¿Quieres colaborar?",
+        "descripcion": "Si quieres unirte a la aventura, escríbenos.",
+        "footer": "Aquí hacemos las cosas en equipo… y sin portero-jugador mal ensayado."
+      }
+    },
+    "footer_links": {
+      "aviso_legal": "Aviso Legal",
+      "privacidad": "Privacidad",
+      "cookies": "Cookies",
+      "contacto": "Contacto"
+    }
+  },
+  "empty_states": {
+    "general": {
+      "loading": "Cargando datos...",
+      "error": "Error al cargar los datos. Por favor, intenta de nuevo más tarde.",
+      "no_data_generic": "No hay datos disponibles en este momento."
+    },
+    "home": {
+      "no_matches": "Los datos de esta sección se actualizan automáticamente cuando la Federación publica resultados oficiales. En este momento no se han cargado partidos para esta jornada.",
+      "no_classification": "Los datos de clasificación se actualizan automáticamente cuando la Federación publica resultados oficiales. En este momento no hay datos disponibles.",
+      "no_players": "Los datos de jugadores se actualizan automáticamente cuando la Federación publica resultados oficiales. En este momento no hay jugadores registrados.",
+      "no_teams": "Los datos de equipos se actualizan automáticamente cuando la Federación publica resultados oficiales. En este momento no hay equipos disponibles."
+    },
+    "competicion": {
+      "no_matches": "Los datos de partidos se actualizan automáticamente cuando la Federación publica resultados oficiales. En este momento no se han cargado partidos para esta jornada.",
+      "no_classification": "Los datos de clasificación se actualizan automáticamente cuando la Federación publica resultados oficiales. En este momento no hay datos de clasificación disponibles para este grupo.",
+      "no_players": "Los datos de jugadores se actualizan automáticamente cuando la Federación publica resultados oficiales. En este momento no hay jugadores registrados en este grupo.",
+      "no_goals": "Los datos de goles se actualizan automáticamente cuando la Federación publica resultados oficiales. En este momento no hay goles registrados para esta jornada.",
+      "no_mvp": "Los datos de MVP se actualizan automáticamente cuando la Federación publica resultados oficiales. En este momento no hay jugadores valorados para esta jornada."
+    },
+    "clubes": {
+      "no_clubs": "Los datos de clubes se actualizan automáticamente cuando la Federación publica resultados oficiales. En este momento no hay clubes disponibles.",
+      "no_matches": "Los datos de partidos se actualizan automáticamente cuando la Federación publica resultados oficiales. En este momento no hay partidos registrados para este club.",
+      "no_players": "Los datos de plantilla se actualizan automáticamente cuando la Federación publica resultados oficiales. En este momento no hay jugadores registrados en este club.",
+      "no_history": "Los datos históricos se actualizan automáticamente cuando la Federación publica resultados oficiales. En este momento no hay historial disponible para este club."
+    },
+    "rankings": {
+      "no_teams": "Los datos de equipos se actualizan automáticamente cuando la Federación publica resultados oficiales. En este momento no hay equipos disponibles para el ranking.",
+      "no_players": "Los datos de jugadores se actualizan automáticamente cuando la Federación publica resultados oficiales. En este momento no hay jugadores disponibles para el ranking.",
+      "no_goals": "Los datos de goleadores se actualizan automáticamente cuando la Federación publica resultados oficiales. En este momento no hay goleadores registrados.",
+      "no_sanctions": "Los datos de sanciones se actualizan automáticamente cuando la Federación publica resultados oficiales. En este momento no hay sanciones registradas."
+    },
+    "clasificacion": {
+      "no_classification": "Los datos de clasificación se actualizan automáticamente cuando la Federación publica resultados oficiales. En este momento no hay datos de clasificación disponibles para este grupo.",
+      "no_teams": "Los datos de equipos se actualizan automáticamente cuando la Federación publica resultados oficiales. En este momento no hay equipos en este grupo."
+    },
+    "mvp": {
+      "no_mvp": "Los datos de MVP se actualizan automáticamente cuando la Federación publica resultados oficiales. En este momento no hay jugadores valorados para esta jornada.",
+      "no_players": "Los datos de jugadores se actualizan automáticamente cuando la Federación publica resultados oficiales. En este momento no hay jugadores disponibles."
+    }
+  },
+  "editorial": {
+    "home": {
+      "title": "¿Qué es PC FUTSAL?",
+      "paragraph1": "PC FUTSAL es tu nueva obsesión (y lo sabemos). Somos la base de datos más completa del fútbol sala amateur en España, pero con estilo. No somos una simple web de resultados: somos el lugar donde los datos se convierten en historias, los jugadores en leyendas y las estadísticas en conversaciones de vestuario.",
+      "paragraph2": "Aquí encontrarás todo lo que necesitas saber sobre el futsal amateur: clasificaciones actualizadas al segundo, resultados de cada partido, rankings de jugadores tipo FIFA, perfiles completos de clubes y jugadores, y hasta un sistema de valoraciones que haría llorar a los algoritmos de EA Sports. Todo actualizado automáticamente cuando la Federación publica los datos oficiales, porque somos así de eficientes (y un poco frikis de los datos).",
+      "paragraph3": "Pero esto no es solo para ver resultados. Puedes explorar perfiles de jugadores con sus estadísticas completas, seguir la racha de tu equipo favorito, descubrir quién es el goleador de la temporada o simplemente perderte navegando entre datos. Y si te animas, pronto podrás jugar al fantasy, votar por el mejor jugador de la jornada y hasta reclamar tu propio perfil si eres jugador. Porque aquí, los datos tienen personalidad."
+    },
+    "clasificacion": {
+      "title": "Sobre las Clasificaciones",
+      "paragraph1": "Las clasificaciones en PC FUTSAL no son solo números en una tabla: son la crónica viva de cada temporada. Aquí verás posiciones, puntos, goles a favor, goles en contra y esa racha que tanto te gusta seguir (esa que te hace pensar 'este año sí que vamos a subir').",
+      "paragraph2": "Los datos se actualizan automáticamente cuando la Federación publica los resultados oficiales. No hay esperas, no hay retrasos: tan pronto como la FFCV actualiza sus sistemas, nosotros reflejamos esos cambios aquí. Tecnología al servicio del futsal, básicamente.",
+      "paragraph3": "En esta sección puedes ver la clasificación completa de cualquier grupo, filtrar por competición, seguir la evolución de tu equipo favorito y hasta comparar estadísticas entre equipos. Todo con un diseño limpio y fácil de leer, porque creemos que los datos deben ser accesibles, no un rompecabezas."
+    },
+    "rankings": {
+      "title": "Cómo Funcionan los Rankings",
+      "paragraph1": "Los rankings en PC FUTSAL no se generan con una calculadora y buenos deseos. Utilizamos un sistema de valoraciones avanzado que analiza el rendimiento real de cada jugador: goles, asistencias, tarjetas, partidos jugados y hasta el contexto de cada encuentro. Es como tener un ojeador virtual que nunca duerme.",
+      "paragraph2": "El 'rating' es nuestra forma de medir el nivel de un jugador. No es solo un número bonito: tiene en cuenta su rendimiento histórico, su forma actual, su impacto en el equipo y hasta su consistencia. Un jugador con rating alto no es solo bueno, es bueno de forma constante. Y eso, en futsal, vale su peso en oro (o en puntos, que es lo mismo).",
+      "paragraph3": "Las valoraciones se actualizan después de cada jornada, reflejando el rendimiento más reciente. Un buen partido puede subir tu rating, un mal día puede bajarlo. Es la vida real, pero con números. Y sí, sabemos que te encanta ver cómo sube o baja el rating de tu jugador favorito. No te juzgamos."
+    },
+    "club": {
+      "title": "Perfil del Club",
+      "paragraph1": "Cada club en PC FUTSAL tiene su propia identidad digital. Aquí encontrarás toda la información relevante: escudo, municipio, pabellón donde juega, posición actual en la liga, racha de resultados (esa que tanto te emociona o te preocupa) y los últimos partidos jugados.",
+      "paragraph2": "Pero no nos quedamos en lo básico. También puedes ver la plantilla completa del club, con todos los jugadores registrados, sus estadísticas individuales y hasta sus perfiles detallados si quieres profundizar. Es como tener el programa de mano, pero mejorado con datos en tiempo real y sin tener que doblarlo para que quepa en el bolsillo.",
+      "paragraph3": "Esta sección es tu punto de partida para conocer todo sobre un club: su historia reciente, sus jugadores estrella, su rendimiento en la temporada actual y hasta su coeficiente de valoración. Porque en PC FUTSAL, cada club cuenta su propia historia a través de los datos."
+    }
+  },
+  "que_es_pc_futsal": {
+    "meta_title": "¿Qué es PC FUTSAL? — La Plataforma del Fútbol Sala Amateur",
+    "meta_description": "PC FUTSAL es la plataforma donde el fútbol sala amateur deja de ser invisible. Datos, rankings, fantasy, narrativa y un poquito de mala leche bien entendida.",
+    "title": "¿Qué es PC FUTSAL?",
+    "subtitle": "La explicación que te daría un míster en un pabellón a las 21:45, pero con datos.",
+    "intro": "PC FUTSAL es la plataforma donde el fútbol sala amateur deja de ser invisible, deja de depender del primo que sube las fotos a Instagram y empieza a tener datos, rankings, fantasy, narrativa y un poquito de mala leche bien entendida.",
+    "section_real_futsal": {
+      "title": "Es futsal real, del de siempre:",
+      "item1": "Ese donde el cierre lleva cinta en la rodilla desde 2016,",
+      "item2": "el ala lo quiere todo al pie,",
+      "item3": "el pívot pide balón aunque esté de espaldas al portero,",
+      "item4": "y el míster dice que \"lo del portero-jugador está trabajado\"… pero todos sabemos que no.",
+      "footer": "Pero ahora con un extra: datos, tecnología y épica gratuita."
+    },
+    "section_ecosistema": {
+      "title": "Un ecosistema completo (sí, has leído bien: ecosistema)",
+      "subtitle": "PC FUTSAL es tres cosas al mismo tiempo:",
+      "database": {
+        "title": "1) La base de datos que el futsal amateur llevaba 20 años pidiendo",
+        "content": "Resultados, clasificaciones, jugadores, históricos, rachas… Todo ordenado, limpio, visual y accesible. Nada de buscar actas en PDF de hace tres temporadas como si fuera arqueología."
+      },
+      "fifa": {
+        "title": "2) El FIFA del fulbito, pero sin PlayStation",
+        "content": "Jugadores con medias tipo FIFA. Atributos: regate, intensidad, ataque, carisma… Perfiles que parecen cartas de Ultimate Team pero basadas en partidos reales. Lo que siempre quisieron ver los jugadores y lo que temieron ver los entrenadores."
+      },
+      "fantasy": {
+        "title": "3) Un fantasy real con jugadores de tu liga",
+        "content": "Elige tu quinteto. Vive la jornada con tensión. Y enfádate cuando tu colega no mete el doblepenalti que te habría puesto primero en el ranking."
+      }
+    },
+    "section_por_que": {
+      "title": "¿Por qué existe PC FUTSAL?",
+      "paragraph1": "Porque ya tocaba.",
+      "paragraph2": "Porque el futsal amateur es talento puro, caos ordenado, vestuario, sudor, madrugones, viajes interminables y pasión real.",
+      "paragraph3": "Y porque nadie lo estaba midiendo, narrando ni ordenando. Así que lo hacemos nosotros. Con cariño, datos y alguna ironía por el camino."
+    },
+    "section_que_encontraras": {
+      "title": "Lo que encontrarás dentro",
+      "clasificaciones": {
+        "title": "Clasificaciones y resultados claros",
+        "content": "Sin banners raros, sin confusión, sin scroll infinito. Todo limpio, directo y bonito (como debería ser)."
+      },
+      "perfiles": {
+        "title": "Perfiles de jugadores con estilo FIFA",
+        "content": "Con medias, estadísticas reales, histórico, atributos y distintivos. ¿Eres tú? Pues reclama tu perfil y súbete la autoestima (o bájatela, según lo que opinen los rivales)."
+      },
+      "rankings": {
+        "title": "Rankings que generan debate",
+        "content": "El cierre más intenso. El ala más desequilibrante. El portero más decisivo. El \"jugador en subida\". Esto va a traer conversaciones… y nosotros encantados."
+      },
+      "fantasy": {
+        "title": "Fantasy de verdad",
+        "content": "Cada semana: Tu quinteto, tus puntos, tus medallas, tus alegrías… …y tus cabreos."
+      },
+      "verificaciones": {
+        "title": "Verificaciones reales",
+        "content": "Aficionado → peso 1. Jugador verificado → peso 2. Entrenador verificado → peso 3. Por fin un sitio donde el míster manda… pero solo un poco."
+      },
+      "memoria": {
+        "title": "Memoria histórica del futsal",
+        "content": "Jugadores y entrenadores pueden aportar datos de temporadas antiguas. Lo que antes quedaba en un grupo de WhatsApp ahora queda registrado para siempre."
+      }
+    },
+    "section_tono": {
+      "title": "Nuestro tono (importante)",
+      "paragraph1": "No somos una federación.",
+      "paragraph2": "No somos un medio serio de corbata y despacho.",
+      "paragraph3": "No somos un periódico que pone \"emoción\" en cada titular.",
+      "paragraph4": "Somos futsal.",
+      "paragraph5": "El de verdad.",
+      "paragraph6": "Con ironía, con humor, con sinceridad. Con respeto, sin humillar. Con un toque de vestuario, pero siempre desde el cariño al deporte."
+    },
+    "section_futuro": {
+      "title": "¿Y hacia dónde vamos?",
+      "subtitle": "A convertir PC FUTSAL en:",
+      "item1": "la plataforma nacional del futsal amateur",
+      "item2": "el archivo histórico más grande del futsal español",
+      "item3": "el lugar donde todos quieren mirar cuando acaban los partidos",
+      "item4": "el sitio que dará un empujón a la visibilidad de jugadores y clubes",
+      "footer": "Todo sin humo, sin postureo y sin marketing barato. Solo datos, comunidad y pasión por este deporte."
+    },
+    "footer": {
+      "title": "PC FUTSAL",
+      "subtitle": "Donde los goles valen… y los datos también."
+    }
+  },
+  "quienes_somos": {
+    "meta_title": "¿Quiénes somos? — PC FUTSAL",
+    "meta_description": "Conoce al equipo detrás de PC FUTSAL. Un proyecto nacido para dar visibilidad al futsal amateur con datos, rankings, fantasy y comunidad.",
+    "title": "Quiénes somos",
+    "spoiler": "Spoiler: ahora mismo somos menos gente que en un entrenamiento de viernes antes de un puente",
+    "intro": "Bueno… ¿quiénes somos? ¿quiénes?",
+    "presentation": "De momento soy yo, Rubén Maestre.",
+    "alone": "Sí, sí… yo solo.",
+    "emoji_note": "🙃💦 (ese emoji de gota de sudor en la cara que deja claro que la cosa está divertida)",
+    "why_born": "PC FUTSAL ha nacido porque alguien tenía que hacerlo.",
+    "why_born_detail": "Porque el futsal amateur se merece una base de datos digna, un fantasy real, unas cartas tipo FIFA, una web que no parezca hecha en 2009 y, sobre todo, un lugar donde la gente del futsal tenga voz, pique sano y visibilidad.",
+    "alone_ecosystem": "Pero claro… un ecosistema entero, yo solo…",
+    "alone_ecosystem_detail": "Pues eso, que aquí estamos tirando del carro con alegría… y una espalda que ya empieza a crujir un poco de tanta frikada.",
+    "section_que_buscamos": {
+      "title": "¿Qué buscamos?",
+      "subtitle": "Gente del futsal que quiera aportar:",
+      "entrenadores": {
+        "title": "Entrenadores",
+        "content": "Que sepan quién tiene intensidad 96, quién tiene regate 12 y quién NO debe tirar un doblepenalti jamás."
+      },
+      "jugadores": {
+        "title": "Jugadores",
+        "content": "Que quieran reclamar su perfil, subir su foto y decir: \"Yo ese año metí 17 goles, no me pongas 8, por favor\"."
+      },
+      "directores": {
+        "title": "Directores deportivos",
+        "content": "Que sepan decir \"este es bueno, este es mejor, y este otro te la va a liar...\"."
+      },
+      "aficionados": {
+        "title": "Aficionados frikis del futsal",
+        "content": "Que disfruten valorando jugadores, votando rankings y debatiendo quién es el GOAT del fútbol sala español. Sí, sí, el GOAT. Vamos a resolver ese tema de una vez por todas... ya no vale eso de Este es el Messi del fútbol sala o el Cristiano Ronaldo del futsal. No. Vamos a encontrar al GOAT del futsal."
+      },
+      "cualquiera": {
+        "title": "Y cualquiera que quiera ayudar",
+        "content": "Porque este proyecto se construye desde dentro, con la gente que vive el futsal cada semana, no desde un despacho."
+      }
+    },
+    "section_para_que": {
+      "title": "¿Para qué queremos ayuda?",
+      "fifa": {
+        "title": "Para poner notas tipo FIFA a todos",
+        "content": "Quién tiene 64 de defensa. Quién tiene 92 de intensidad. Quién tiene 89 de regate. Quién tiene 76 de pase, pero cree que tiene 99. Y con ello provocar polémicas de todos esos que se enfandan con su puntuación... que eso también da vidilla."
+      },
+      "fotos": {
+        "title": "Para mejorar perfiles y fotos",
+        "content": "Jugadores, místeres, delegados, clubes… Queremos que los perfiles parezcan profesionales, no fotos hechas con flash en un pasillo de un pabellón ni que aún salgas con la foto de cuando eras cadete y ya andas quejándote que con el frío tus músculos veteranos ya no se calientan igual. Imagina entrar a un club y ver: fotos oficiales, staff completo, plantilla ordenada, estadísticas reales. Es que quedaría ES-PEC-TA-CU-LAR. Y depende de vosotros."
+      },
+      "database": {
+        "title": "Para construir la mayor base de datos del futsal",
+        "content": "De España. Y si nos liamos… del mundo. O del universo conocido, si nos dejan seguir scrapeando."
+      }
+    },
+    "section_que_ofrecemos": {
+      "title": "¿Qué ofrecemos a cambio?",
+      "intro": "Pues mira…",
+      "no_dinero": "Dinero no, que somos como la mayoría de clubes de fulbito, humildes.",
+      "no_enganamos": "Entones eso, no engañamos: no decimos \"sí, sí, te pagamos\"… y luego desaparecemos como ciertos clubes de gente impresentable que todos conocemos, sí, tu también los conoces 😅.",
+      "lo_que_ofrecemos": "Lo que sí ofrecemos:",
+      "items": {
+        "colaborador": "aparecer como colaborador del proyecto",
+        "ecosistema": "formar parte del ecosistema futsal más grande del país",
+        "influencia": "tener influencia real en las valoraciones",
+        "orgullo": "y poder decir \"eso lo subí yo\" cuando veas un perfil perfecto en pcfutsal.es"
+      }
+    },
+    "section_invitacion": {
+      "title": "Si quieres ayudar, estás invitado",
+      "items": {
+        "reclamar": "Reclama tu perfil",
+        "verificar": "Verifica tu cuenta",
+        "aportar": "Aporta datos",
+        "subir": "Sube fotos",
+        "proponer": "Propón mejoras",
+        "mensaje": "O simplemente mándame un mensaje"
+      },
+      "footer": "Aquí hacemos esto entre todos, sin postureos, sin humo y sin promesas raras. Futsal del de verdad: comunidad, pique sano y mucho cariño por este deporte."
+    },
+    "footer": {
+      "title": "PC FUTSAL",
+      "subtitle": "Donde los goles valen… y los datos también."
+    }
+  },
+  "como_colaborar": {
+    "meta_title": "Cómo colaborar con PC FUTSAL — Únete al Proyecto",
+    "meta_description": "Descubre cómo colaborar con PC FUTSAL. Reclama tu perfil, verifica tu cuenta, aporta datos, fotos y ayuda a construir la mayor base de datos del futsal amateur.",
+    "title": "Cómo colaborar con PC FUTSAL",
+    "subtitle": "(o cómo convertirte en parte del mayor proyecto de futsal del país sin sudar una gota… literalmente)",
+    "intro": "PC FUTSAL está construyendo la mayor base de datos del fútbol sala en España:",
+    "intro_items": "tarjetas tipo FIFA, rankings reales, estadísticas, juego fantasy, puntuaciones de jugadores, análisis de goleadores, rachas, históricos…",
+    "intro_footer": "Todo con actitud, ironía y amor por el futsal del de verdad.",
+    "but": "Pero claro… un proyecto así no lo puede hacer una persona sola.",
+    "ruben": "Rubén está bien, eh, pero no puede estar a la vez en la pista, en el ordenador, en el pabellón, en el scraping, en las tarjetas y votando al GOAT del futsal.",
+    "so": "Así que…",
+    "section_bienvenido": {
+      "title": "¿Quieres ayudar? Bienvenido/a al equipo (sin pagar ficha).",
+      "subtitle": "Aquí puedes colaborar de muchas maneras. Todas igual de importantes."
+    },
+    "section_jugador": {
+      "title": "1) Reclama tu perfil de jugador",
+      "intro": "Si apareces en PC FUTSAL, lo primero es verificarte.",
+      "subtitle": "Así podrás:",
+      "items": {
+        "foto": "Subir tu foto oficial (para una tarjeta FIFA como Dios manda)",
+        "datos": "Ajustar datos básicos",
+        "temporadas": "Aportar temporadas antiguas",
+        "votar": "Votar con mayor peso",
+        "archivo": "Ser parte activa del mayor archivo de fútbol sala amateur"
+      },
+      "footer": "Y oye… ver tu tarjeta con 87 de intensidad… eso no tiene precio."
+    },
+    "section_entrenador": {
+      "title": "2) Si eres entrenador, únete como verificado",
+      "intro": "Los entrenadores sois clave.",
+      "subtitle": "Podéis:",
+      "items": {
+        "mvp": "Designar MVPs reales",
+        "puntuacion": "Ayudar con la puntuación de jugadores",
+        "fotos_club": "Subir fotos oficiales de clubs",
+        "validar": "Validar datos históricos",
+        "decidir": "Decidir si un jugador tiene 64 de defensa o 94 (responsabilidad enorme, cuidado ahí)"
+      },
+      "footer": "Si quieres influir en el juego fantasy y en las valoraciones… este es tu sitio."
+    },
+    "section_aficionado": {
+      "title": "3) Aficionados del futsal: también sois importantes",
+      "intro": "Si vienes a debatir quién es el GOAT del fútbol sala,",
+      "intro2": "si te pasas horas mirando estadísticas,",
+      "intro3": "si te encanta comparar tarjetas FIFA reales de jugadores del barrio…",
+      "subtitle": "Entonces aquí puedes:",
+      "items": {
+        "votar": "Votar jugadores",
+        "rankings": "Construir rankings",
+        "fantasy": "Apostar por tus favoritos en el juego fantasy",
+        "corregir": "Ayudar a corregir datos",
+        "fotos": "Enviar fotos o info sobre clubes que no aparecen actualizados"
+      },
+      "footer": "No hace falta ser experto. Hace falta querer que el futsal crezca."
+    },
+    "section_fotos": {
+      "title": "4) Ayuda con fotos, datos y contenido",
+      "intro": "El futsal amateur necesita visibilidad.",
+      "subtitle": "Si puedes aportar:",
+      "items": {
+        "fotos_equipos": "Fotos oficiales de equipos",
+        "fotos_jugadores": "Fotos de jugadores o staff",
+        "historicos": "Datos históricos",
+        "trayectorias": "Trayectorias de jugadores",
+        "pabellones": "Información de pabellones o escudos"
+      },
+      "footer": "Serás parte del archivo más grande de futsal amateur. Y ver un club con su plantilla ordenada, sus fotos bien hechas y sus estadísticas completas… ESPECTACULAR. De verdad, se nota muchísimo."
+    },
+    "section_correcciones": {
+      "title": "5) Correcciones y aportes de temporadas antiguas",
+      "intro": "Muchos jugadores tienen años de historia que nadie ha registrado.",
+      "subtitle": "Aquí sí.",
+      "subtitle2": "Puedes mandarnos:",
+      "items": {
+        "temporadas": "Temporadas antiguas",
+        "estadisticas": "Estadísticas que recuerdes",
+        "goles": "Goles, clubes, minutos",
+        "datos": "Cualquier dato desaparecido que merezca estar en el archivo"
+      },
+      "footer": "Estamos construyendo la memoria del futsal."
+    },
+    "section_compartir": {
+      "title": "6) Comparte, difunde, pica a tus colegas",
+      "items": {
+        "tarjeta": "Comparte tu tarjeta FIFA.",
+        "fantasy": "Comparte tu puntuación fantasy.",
+        "medalla": "Comparte tu medalla semanal.",
+        "ranking": "Comparte tu ranking.",
+        "cualquier": "Comparte lo que quieras."
+      },
+      "footer1": "Cada vez que lo haces, ayudas a que PC FUTSAL crezca.",
+      "footer2": "Y además picas a tu compañero para que venga a reclamar su perfil.",
+      "footer3": "Perfecto."
+    },
+    "section_como_empezar": {
+      "title": "¿Cómo empezar?",
+      "subtitle": "Muy fácil:",
+      "email_label": "Escríbenos aquí:",
+      "email": "contacto@pcfutsal.es",
+      "or": "O simplemente:",
+      "items": {
+        "reclamar": "Reclama tu perfil",
+        "verificar": "Verifica tu cuenta",
+        "actualizar": "Actualiza tus datos",
+        "aportar": "Aporta fotos",
+        "fantasy": "Participa en el juego fantasy",
+        "votar": "Vota a los jugadores",
+        "goat": "Ayúdanos a decidir quién es el GOAT del futsal español"
+      },
+      "footer1": "Aquí nadie cobra (como en muchos clubes… pero al menos no lo escondemos 😅).",
+      "footer2": "Aquí se viene a construir, a ayudar y a hacer del futsal algo más grande."
+    },
+    "footer": {
+      "title": "PC FUTSAL",
+      "subtitle": "Donde los goles valen… y los datos también."
+    }
+  },
+  "solicitar_perfil": {
+    "meta_title": "¿Cómo solicitar mi perfil en PC FUTSAL? — Reclama tu Tarjeta FIFA",
+    "meta_description": "Descubre cómo solicitar y verificar tu perfil en PC FUTSAL. Reclama tu tarjeta FIFA personalizada, mejora tus estadísticas y participa en la mayor base de datos del futsal amateur.",
+    "title": "¿Cómo solicitar mi perfil en PC FUTSAL?",
+    "subtitle": "(o cómo conseguir tu propia tarjeta FIFA sin tener que fichar por el Barça)",
+    "intro": "Si has llegado hasta aquí, probablemente te has buscado en Google, has visto tu nombre en pcfutsal.es, y has dicho:",
+    "quote": "\"¿Cómo que tengo 72 de regate? ¿Quién ha puesto esto?\"",
+    "quote_author": "— Un ala cualquiera indignado",
+    "tranquilo": "Tranquilo.",
+    "respira": "Respira.",
+    "intro_footer": "Aquí puedes reclamar tu perfil, verificarlo y dejarlo tan perfecto como tu primer toque (o casi).",
+    "vamos": "Vamos paso a paso.",
+    "section_que_es": {
+      "title": "1) ¿Qué es \"solicitar mi perfil\"?",
+      "intro": "Solicitar tu perfil significa:",
+      "items": {
+        "confirmar": "Confirmar que tú eres tú (porque en futsal hay tres \"Josés\", cuatro \"Alex\", dos \"Robert\" y cinco \"Juanfis\").",
+        "modificar": "Poder modificar tu foto, tu historial, tu posición, tus temporadas, etc.",
+        "peso": "Tener más peso en las valoraciones de jugadores (sí, tu voto vale más).",
+        "acceder": "Acceder a tu tarjeta tipo FIFA totalmente personalizada.",
+        "participar": "Participar activamente en la mayor base de datos de fútbol sala del país."
+      },
+      "footer": "Y lo más importante: evitar que tu colega te ponga 48 en defensa por venganza."
+    },
+    "section_por_que": {
+      "title": "2) ¿Por qué reclamar mi perfil en PC FUTSAL?",
+      "intro": "Porque si no lo haces tú… lo hará alguien por ti.",
+      "subtitle": "Y entonces pasan cosas como:",
+      "ejemplos": {
+        "asistencias": "Tú pones 35 asistencias y alguien te pone 3.",
+        "goles": "Tú juras que metiste 17 goles y la web dice 8.",
+        "intensidad": "Tú te ves como un 89 de intensidad… la web pone 71.",
+        "ranking": "Tú te consideras top-10 de la liga… y el ranking te mete en la página 3."
+      },
+      "subtitle2": "Solicitar tu perfil te permite:",
+      "items": {
+        "tarjeta": "Tener tu tarjeta FIFA con una foto decente",
+        "rankings": "Aparecer correctamente en rankings, goleadores y puntuaciones",
+        "valoracion": "Mejorar tu valoración en atributos clave (ataque, regate, intensidad, pase, tiro, defensa…)",
+        "fantasy": "Salir en el juego Fantasy Futsal real con tus stats oficiales",
+        "archivo": "Ser parte del archivo histórico del futsal amateur"
+      },
+      "footer": "En serio, ¿quién no quiere tener su carta FIFA real?"
+    },
+    "section_como": {
+      "title": "3) ¿Cómo solicitar tu perfil? (modo simple)",
+      "email_label": "Envíanos un email:",
+      "email": "contacto@pcfutsal.es",
+      "subtitle": "Con esta info:",
+      "items": {
+        "nombre": "Tu nombre y apellidos",
+        "equipo": "Equipo actual",
+        "posicion": "Posición (portero, cierre, ala, pívot, universal)",
+        "dorsal": "Tu dorsal",
+        "enlace": "Enlace a tu perfil en pcfutsal.es (si lo has visto)",
+        "foto": "Foto oficial (si la tienes)",
+        "palmares": "Y si quieres aportar tu palmarés, tampoco nos enfadamos"
+      },
+      "footer1": "No hace falta adjuntar certificado médico ni acta federativa de 1998.",
+      "footer2": "Con que te identifiques, basta.",
+      "footer3": "No somos Hacienda."
+    },
+    "section_que_pasa": {
+      "title": "4) ¿Qué pasa cuando solicitas tu perfil?",
+      "intro": "Muy sencillo:",
+      "items": {
+        "revisamos": "Revisamos tu solicitud (con mucho cariño y algo de café).",
+        "marcamos": "Te marcamos como jugador verificado.",
+        "voto": "Tu voto pasa a valer más en la valoración de jugadores.",
+        "correcciones": "Puedes pedir correcciones de temporadas pasadas.",
+        "mejorar": "Puedes mejorar tu ficha y tu fotografía.",
+        "oficial": "Tu perfil se vuelve oficial dentro del ecosistema PC FUTSAL."
+      },
+      "footer": "Y si eres entrenador o staff, aún mejor: puedes asignar MVPs y validar datos."
+    },
+    "section_errores": {
+      "title": "5) ¿Y si veo errores en mi perfil?",
+      "intro": "¡Perfecto!",
+      "subtitle": "Estás invitado oficialmente a:",
+      "items": {
+        "correcciones": "Proponer correcciones",
+        "temporadas": "Aportar temporadas antiguas",
+        "goles": "Añadir goles que no aparecen",
+        "fotos": "Mandar fotos nuevas",
+        "historial": "Actualizar tu historial"
+      },
+      "footer": "Estamos construyendo la mayor base de datos del futsal español, y tú puedes ayudarnos a que sea completamente real."
+    },
+    "section_cuesta": {
+      "title": "6) ¿Cuesta dinero solicitar mi perfil?",
+      "answer": "JAJAJAJAJAJAJA.",
+      "no": "No, amigo.",
+      "intro": "Esto es futsal.",
+      "footer1": "Aquí no se cobra ni se paga por estas cosas.",
+      "footer2": "Como en los clubes de verdad… pero por lo menos nosotros no fingimos 😅."
+    },
+    "section_ayudar": {
+      "title": "7) ¿Y puedo ayudar en más cosas?",
+      "intro": "Claro.",
+      "subtitle": "Siempre necesitamos ayuda con:",
+      "items": {
+        "fotos": "Fotos de equipos",
+        "datos": "Datos de jugadores",
+        "estadisticas": "Estadísticas antiguas",
+        "informacion": "Información de clubes",
+        "correcciones": "Correcciones",
+        "valoraciones": "Valoraciones",
+        "goat": "Y, por supuesto, votar para descubrir quién es EL GOAT del futsal español"
+      }
+    },
+    "section_final": {
+      "title": "Solicita tu perfil y entra en el universo PC FUTSAL",
+      "email_label": "Escríbenos:",
+      "email": "contacto@pcfutsal.es",
+      "footer1": "Tu tarjeta FIFA te espera.",
+      "footer2": "Tus rankings también.",
+      "footer3": "Y tu colega ya está reclamando la suya… por si acaso."
+    }
+  },
+  "web_club": {
+    "meta_title": "¿Quieres una web para tu club? — Diseño Web para Clubes de Futsal",
+    "meta_description": "Crea una web moderna y automática para tu club de futsal. Diseño profesional, datos en tiempo real, tarjetas FIFA y contenido automático. Presupuesto claro y adaptado.",
+    "title": "¿Quieres una web para tu club?",
+    "subtitle": "(Porque seguir usando el cartel del pabellón como \"página oficial\" ya no cuela)",
+    "intro": "Si tu club de futsal necesita una web moderna, automática, con datos reales y un diseño que dé orgullo enseñar… estás en el sitio correcto.",
+    "intro2": "Del típico \"información en un PDF perdido\" pasamos a una web profesional que trabaja sola mientras tú entrenas.",
+    "intro3": "Podemos crear una web igual de dinámica que PC FUTSAL, o adaptada a cualquier estilo que te guste: minimalista, clásico, moderno, vintage, futurista…",
+    "intro4": "Lo que tú digas, lo hacemos.",
+    "section_por_que": {
+      "title": "¿Por qué tu club necesita una web de verdad?",
+      "intro": "Estas son las ventajas que te dan puntos… incluso aunque no corras el contraataque:",
+      "ventaja1": {
+        "title": "1) Más visibilidad para patrocinadores",
+        "desc1": "Tu club puede presumir de imagen y tus patrocinadores también.",
+        "desc2": "En tu web, su logo se ve siempre:",
+        "desc3": "clarito, bien puesto, sin pixelarse y sin esconderlo detrás de un banquillo.",
+        "desc4": "Perfecto para atraer nuevos sponsors."
+      },
+      "ventaja2": {
+        "title": "2) Una presencia profesional (aunque juguéis a las 21:45 entre semana)",
+        "desc1": "Resultados, clasificación, goleadores, rachas, calendario…",
+        "desc2": "Todo aparece automáticamente y bien presentado.",
+        "desc3": "La gente ve orden, seriedad y proyecto."
+      },
+      "ventaja3": {
+        "title": "3) Contenido para redes sociales sin romperte la cabeza",
+        "desc1": "Tarjetas tipo FIFA, previas automáticas, crónicas generadas con IA, rankings, estadísticas…",
+        "desc2": "En vez de pensar \"¿qué subimos esta semana?\", tendrás contenido listo cada jornada."
+      },
+      "ventaja4": {
+        "title": "4) Información clara para la cantera y las familias",
+        "desc1": "Los padres sabrán:",
+        "items": {
+          "item1": "– dónde es el partido",
+          "item2": "– a qué hora",
+          "item3": "– contra quién",
+          "item4": "– cómo va la clasificación",
+          "item5": "– qué equipo es cuál (importantísimo 😅)"
+        },
+        "desc2": "Todo accesible desde el móvil en dos clics."
+      },
+      "ventaja5": {
+        "title": "5) Un club más atractivo para jugadores y entrenadores",
+        "desc1": "Una web seria da buena imagen.",
+        "desc2": "La gente quiere estar en proyectos cuidados, visibles y con identidad."
+      }
+    },
+    "section_incluye": {
+      "title": "Lo que incluye tu web",
+      "items": {
+        "item1": "Ficha completa del club",
+        "item2": "Plantilla con fotos y tarjetas tipo FIFA",
+        "item3": "Staff técnico",
+        "item4": "Cantera y categorías",
+        "item5": "Resultados y estadísticas automáticas",
+        "item6": "Ranking interno, goleadores y rachas",
+        "item7": "Crónicas y previas generadas con IA",
+        "item8": "Sección de patrocinadores",
+        "item9": "Noticias y comunicados",
+        "item10": "Diseño adaptado a móvil",
+        "item11": "Estilo personalizable"
+      },
+      "footer": "Y, por si no ha quedado claro:",
+      "footer2": "La web se actualiza sola. Tú no tienes que hacer nada."
+    },
+    "section_estilos": {
+      "title": "¿Qué estilos puedes elegir?",
+      "intro": "El que quieras.",
+      "estilos": {
+        "estilo1": "Minimalista",
+        "estilo2": "Moderno",
+        "estilo3": "Retro",
+        "estilo4": "Futurista",
+        "estilo5": "Oscuro tipo PC FUTSAL",
+        "estilo6": "Vintage deportivo",
+        "estilo7": "Colorido",
+        "estilo8": "Elegante",
+        "estilo9": "O algo totalmente raro que solo tú entiendes"
+      },
+      "footer": "Aquí diseñamos como jugamos: con libertad y personalidad."
+    },
+    "section_cuanto": {
+      "title": "¿Cuánto cuesta?",
+      "desc1": "Menos de lo que imaginas.",
+      "desc2": "Sin líos, sin cláusulas raras y sin prometer cosas imposibles.",
+      "desc3": "Presupuesto claro, justo y adaptado a cada club."
+    },
+    "section_info": {
+      "title": "¿Quieres más información?",
+      "email_label": "Envíanos:",
+      "email": "contact@rumaza.io",
+      "items": {
+        "item1": "Nombre del club",
+        "item2": "Qué estilo te gusta",
+        "item3": "Qué secciones necesitas",
+        "item4": "Si quieres crónicas/previas automáticas",
+        "item5": "Si tenéis fotos oficiales",
+        "item6": "Cualquier idea que te ronde la cabeza"
+      },
+      "footer": "Responderemos rápido.",
+      "footer2": "Más rápido que un ala saliendo a la contra."
+    },
+    "section_final": {
+      "title": "Tu club merece una web que esté a la altura.",
+      "subtitle": "Nosotros te la hacemos."
+    }
+  },
+  "partidos": {
+    "meta_title": "Partidos de Fútbol Sala — Resultados y Calendario",
+    "meta_desc": "Consulta todos los partidos de fútbol sala amateur en España. Resultados, calendario y detalles de cada encuentro.",
+    "fecha_hora": "Fecha y hora",
+    "jornada_grupo": "Jornada y grupo",
+    "pabellon": "Pabellón",
+    "arbitros": "Árbitros",
+    "timeline_title": "Línea del Tiempo",
+    "primera_parte": "Primera Parte (0-20 min)",
+    "segunda_parte": "Segunda Parte (20:01-40 min)",
+    "prorroga": "Prórroga",
+    "no_eventos": "No hay eventos registrados",
+    "alineaciones_title": "Alineaciones",
+    "local": "Local",
+    "visitante": "Visitante",
+    "titulares": "Titulares",
+    "suplentes": "Suplentes",
+    "staff_title": "Staff Técnico",
+    "estadisticas_title": "Estadísticas del Partido",
+    "goles_total": "Goles totales",
+    "goles_por_parte": "Goles por parte",
+    "tarjetas": "Tarjetas",
+    "mvps": "MVPs",
+    "volver_partidos": "Volver a partidos de la división"
+  }
+}

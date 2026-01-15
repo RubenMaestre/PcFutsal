@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+set -e
+
+# Configuración: Ajusta estas variables según tu entorno
+PROJECT_ROOT="${PROJECT_ROOT:-/ruta/a/tu/proyecto}"
+BACKEND_DIR="$PROJECT_ROOT/backend"
+FRONTEND_DIR="$PROJECT_ROOT/frontend"
+VENV_DIR="$PROJECT_ROOT/venv"
+PM2_PROCESS_NAME="${PM2_PROCESS_NAME:-pcfutsal-frontend}"
+PM2_PORT="${PM2_PORT:-3055}"
+SYSTEMD_SERVICE="${SYSTEMD_SERVICE:-pcfutsal}"
+
+# Cargar GUNICORN_PASSWORD del .env
+if [ -f "$PROJECT_ROOT/.env" ]; then
+  export $(grep GUNICORN_PASSWORD "$PROJECT_ROOT/.env" | sed 's/"//g' | xargs)
+fi
+
+echo "== PC FUTSAL DEPLOY =="
+
+echo "[1/4] Build frontend (Next.js)..."
+cd "$FRONTEND_DIR"
+npm run build
+
+echo "[2/4] Restart PM2 ($PM2_PROCESS_NAME)..."
+# Si ya existe, reinicia; si no, lo crea
+if pm2 list | grep -q "$PM2_PROCESS_NAME"; then
+  pm2 restart "$PM2_PROCESS_NAME"
+else
+  pm2 start npm --name "$PM2_PROCESS_NAME" -- start -- -p "$PM2_PORT"
+fi
+
+echo "[3/4] Restart Gunicorn backend ($SYSTEMD_SERVICE.service)..."
+if [ -n "$GUNICORN_PASSWORD" ]; then
+  echo "$GUNICORN_PASSWORD" | sudo -S systemctl restart "$SYSTEMD_SERVICE"
+else
+  echo "⚠️  GUNICORN_PASSWORD no configurado, saltando reinicio de Gunicorn"
+fi
+
+echo "[4/4] Test & reload Nginx..."
+if [ -n "$GUNICORN_PASSWORD" ]; then
+  echo "$GUNICORN_PASSWORD" | sudo -S nginx -t
+  echo "$GUNICORN_PASSWORD" | sudo -S systemctl reload nginx
+else
+  echo "⚠️  GUNICORN_PASSWORD no configurado, saltando reload de Nginx"
+fi
+
+echo "== Deploy completado correctamente =="
