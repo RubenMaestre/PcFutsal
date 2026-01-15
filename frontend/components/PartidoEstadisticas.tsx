@@ -30,8 +30,10 @@ export default function PartidoEstadisticas({
         {dict?.partidos?.estadisticas_title || "Estadísticas del Partido"}
       </h2>
 
+      {/* Grid responsive: 2 columnas en móvil, 4 en desktop.
+          Muestra estadísticas clave del partido de forma visual y compacta. */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        {/* Goles */}
+        {/* Goles totales del partido con desglose local/visitante */}
         <div className="bg-[var(--color-navy)] rounded-lg p-5 border border-[var(--color-accent)]/30 hover:border-[var(--color-accent)] transition-colors">
           <div className="text-xs font-bold text-white/60 mb-2 uppercase tracking-wide">
             {dict?.partidos?.goles_total || "Goles totales"}
@@ -44,7 +46,7 @@ export default function PartidoEstadisticas({
           </div>
         </div>
 
-        {/* Goles por parte */}
+        {/* Goles desglosados por parte del partido (primera y segunda parte) */}
         <div className="bg-[var(--color-navy)] rounded-lg p-5 border border-[var(--color-accent)]/30 hover:border-[var(--color-accent)] transition-colors">
           <div className="text-xs font-bold text-white/60 mb-2 uppercase tracking-wide">
             {dict?.partidos?.goles_por_parte || "Goles por parte"}

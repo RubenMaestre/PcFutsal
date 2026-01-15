@@ -36,7 +36,11 @@ def _norm_media(url: str) -> str:
 class Command(BaseCommand):
     help = (
         "Calcula y almacena puntos MVP por jornada para optimizar el ranking MVP global.\n"
-        "Reutiliza la lógica de cálculo de MVPGlobalView pero almacena los resultados."
+        "Reutiliza la lógica de cálculo de MVPGlobalView pero almacena los resultados.\n"
+        "\n"
+        "Este comando es crucial para el rendimiento: en lugar de recalcular los puntos\n"
+        "MVP cada vez que se consulta el ranking, los precalcula y almacena en PuntosMVPJornada.\n"
+        "Esto reduce significativamente el tiempo de respuesta de las consultas de ranking."
     )
 
     def add_arguments(self, parser):
@@ -83,9 +87,13 @@ class Command(BaseCommand):
         """
         Calcula puntos MVP para todos los jugadores de un grupo en una jornada específica.
         
+        Esta función reutiliza la lógica de MVPGlobalView pero la aplica a una jornada concreta.
+        Los coeficientes de división y club se usan para ajustar los puntos según la competitividad.
+        
         Retorna: dict[jugador_id, {puntos, goles, partidos_jugados, ...}]
         """
-        # Obtener todos los partidos de esa jornada en ese grupo
+        # Obtener todos los partidos de esa jornada en ese grupo.
+        # Usamos select_related y prefetch_related para optimizar las consultas y evitar N+1 queries.
         partidos = (
             Partido.objects
             .filter(
