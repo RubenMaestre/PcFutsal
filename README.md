@@ -602,8 +602,7 @@ Las contribuciones son bienvenidas. Para contribuir:
 
 ### Guías de Contribución
 
-- Sigue el estilo de código existente
-- Añade comentarios según la guía de estilo
+- Sigue las convenciones del proyecto
 - Actualiza la documentación si es necesario
 - Prueba tus cambios antes de hacer commit
 
