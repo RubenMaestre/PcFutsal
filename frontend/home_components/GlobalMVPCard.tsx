@@ -98,6 +98,8 @@ export default function GlobalMVPCard({
           <img
             src={foto}
             alt={j.nombre}
+            loading="lazy"
+            decoding="async"
             className="absolute top-[33%] left-1/2 -translate-x-1/2 w-[30%] aspect-square object-cover rounded-full shadow-2xl bg-black/10"
             style={{ border: `3px solid ${GOLD}` }}
           />
@@ -115,6 +117,8 @@ export default function GlobalMVPCard({
           <img
             src={clubEscudo}
             alt={j.club_nombre}
+            loading="lazy"
+            decoding="async"
             className="absolute top-[38%] left-[60%] w-[16%] aspect-square rounded-full object-contain bg-black/20 p-[3px]"
             style={{ border: `2px solid ${GOLD}` }}
             onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }}
