@@ -46,20 +46,32 @@ def coef_por_pos_fijo_16(pos: int) -> float:
 
 def coef_por_pos_proporcional(pos: int, total_equipos: int) -> float:
     """
-    Escalado lineal: 1º -> 1.0, último -> 0.1.
+    Calcula el coeficiente usando escalado lineal proporcional.
+    
+    El primer equipo (posición 1) tiene coeficiente 1.0, el último tiene 0.1.
+    Los equipos intermedios se distribuyen linealmente entre estos valores.
+    Esto es útil para grupos con número de equipos diferente a 16.
     """
     if total_equipos <= 1:
         return 1.0
-    frac = (pos - 1) / (total_equipos - 1)  # 0 en 1º, 1 en último
+    # Calcular fracción: 0 en 1º, 1 en último
+    frac = (pos - 1) / (total_equipos - 1)
+    # Aplicar escalado: 1.0 - 0.9 * frac (va de 1.0 a 0.1)
     val = 1.0 - 0.9 * frac
     return clamp(val)
 
 
 def coef_por_pos(pos: int, total_equipos: int, modo: str = "hibrido") -> float:
     """
-    modo:
-      - "hibrido": si total==16 usa tabla fija, si no usa proporcional
-      - "proporcional": siempre proporcional
+    Calcula el coeficiente según la posición en la clasificación.
+    
+    Modos:
+      - "hibrido": Si total==16 usa tabla fija (optimizada para el caso más común),
+                   si no usa proporcional (adaptable a cualquier número de equipos)
+      - "proporcional": Siempre usa escalado proporcional (útil para grupos no estándar)
+    
+    El modo híbrido optimiza para el caso más común (16 equipos) mientras mantiene
+    flexibilidad para otros tamaños de grupo.
     """
     if modo == "hibrido" and total_equipos == 16:
         return coef_por_pos_fijo_16(pos)

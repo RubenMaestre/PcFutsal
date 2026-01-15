@@ -17,27 +17,32 @@ export default function EmptyState({
   customMessage,
   className = ""
 }: EmptyStateProps) {
-  // Obtener el mensaje del diccionario
+  // Obtener el mensaje del diccionario con sistema de fallbacks.
+  // Prioridad: customMessage > mensaje específico por tipo/variant > mensaje general > hardcoded.
+  // Esto permite personalizar mensajes por contexto mientras mantiene fallbacks seguros.
   const getMessage = () => {
+    // Si hay mensaje personalizado, usarlo directamente (máxima prioridad)
     if (customMessage) return customMessage;
     
     const emptyStates = dict?.empty_states;
     if (!emptyStates) {
-      // Fallback hardcoded si no hay diccionario
+      // Fallback hardcoded si no hay diccionario disponible
       return "No hay datos disponibles en este momento.";
     }
 
-    // Intentar obtener el mensaje específico
+    // Intentar obtener el mensaje específico para este tipo y variant
+    // (ej: emptyStates.competicion.no_matches)
     if (type !== "general" && emptyStates[type] && emptyStates[type][variant]) {
       return emptyStates[type][variant];
     }
 
-    // Fallback al general
+    // Fallback al mensaje general con el mismo variant
+    // (ej: emptyStates.general.no_matches)
     if (emptyStates.general && emptyStates.general[variant]) {
       return emptyStates.general[variant];
     }
 
-    // Último fallback
+    // Último fallback: mensaje genérico por defecto
     return emptyStates.general?.no_data_generic || "No hay datos disponibles en este momento.";
   };
 

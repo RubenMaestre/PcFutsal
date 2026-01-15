@@ -33,7 +33,9 @@ export default function LanguageSwitcher({ currentLang, currentPath }: Props) {
   // Idioma activo
   const active = LANGS.find((l) => l.code === currentLang) ?? LANGS[0];
 
-  // Cerrar el desplegable al hacer click fuera
+  // Cerrar el desplegable automáticamente al hacer click fuera del componente.
+  // Esto mejora la UX al evitar que el menú se quede abierto cuando el usuario
+  // hace click en otra parte de la página.
   useEffect(() => {
     function handleClickOutside(e: MouseEvent) {
       if (!containerRef.current) return;
@@ -41,6 +43,7 @@ export default function LanguageSwitcher({ currentLang, currentPath }: Props) {
         setOpen(false);
       }
     }
+    // Solo añadir el listener cuando el desplegable está abierto para optimizar rendimiento
     if (open) {
       document.addEventListener("mousedown", handleClickOutside);
     } else {
@@ -51,7 +54,9 @@ export default function LanguageSwitcher({ currentLang, currentPath }: Props) {
     };
   }, [open]);
 
-  // Función para generar la URL con el nuevo idioma
+  // Genera la URL con el nuevo idioma manteniendo la estructura de la ruta actual.
+  // Si la URL ya tiene un idioma como primer segmento (ej: /es/...), lo sustituye.
+  // Si no, lo añade al principio. Esto permite cambiar de idioma sin perder la navegación.
   const getLangUrl = (newLang: string) => {
     if (!currentPath) return `/${newLang}`;
     const parts = currentPath.split("/");

@@ -40,6 +40,7 @@ export function useTeamGoals(
   const [error, setError] = React.useState<string | null>(null);
 
   React.useEffect(() => {
+    // Si no hay grupoId, no tiene sentido hacer la petición.
     if (!grupoId) {
       setData(null);
       setError(null);
@@ -47,6 +48,8 @@ export function useTeamGoals(
       return;
     }
 
+    // Flag para cancelar la petición si el componente se desmonta antes de que termine.
+    // Evita errores de "Can't perform a React state update on an unmounted component".
     let cancelled = false;
 
     async function fetchData() {
@@ -58,11 +61,14 @@ export function useTeamGoals(
         params.set("grupo_id", String(grupoId));
 
         // TODO jornada: cuando el backend acepte ?jornada=,
-        // descomentar esto:
+        // descomentar esto para permitir filtrar por jornada específica:
         // if (jornada != null) {
         //   params.set("jornada", String(jornada));
         // }
+        // Por ahora, el parámetro jornada está en las dependencias del useEffect
+        // para que reactive el fetch cuando el backend lo soporte.
 
+        // Usamos ruta relativa /api/ para aprovechar el proxy de Nginx.
         const url = `/api/estadisticas/goles-por-equipo/?${params.toString()}`;
 
         const res = await fetch(url, { cache: "no-store" });
