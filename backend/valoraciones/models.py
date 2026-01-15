@@ -73,7 +73,13 @@ class VotoValoracionJugador(models.Model):
 class CoeficienteClub(models.Model):
     """
     Coeficiente de fuerza/dificultad de un club en una temporada.
-    Podemos guardarlo por jornada de referencia (ej. el de la jornada 6).
+    
+    Este coeficiente se usa para calcular el "interés" de los partidos (partido estrella)
+    y para ajustar los puntos MVP según la división. Un club con coeficiente alto
+    indica que juega en una división más competitiva.
+    
+    Podemos guardarlo por jornada de referencia (ej. el de la jornada 6) para tener
+    un snapshot del coeficiente en un momento específico de la temporada.
     """
     club = models.ForeignKey(
         "clubes.Club",
@@ -86,13 +92,16 @@ class CoeficienteClub(models.Model):
         related_name="coeficientes_clubes",
     )
 
-    # ej. 6 → "coef calculado con la foto de la jornada 6"
+    # Jornada de referencia sobre la que se calculó este coeficiente.
+    # Ejemplo: 6 → "coef calculado con la foto de la jornada 6"
+    # Esto permite tener diferentes coeficientes para la misma temporada si se recalcula.
     jornada_referencia = models.IntegerField(
         null=True, blank=True,
         help_text="Jornada sobre la que se calculó este coeficiente.",
     )
 
-    # 0.1 ... 1.0
+    # Valor del coeficiente (0.1 ... 1.0).
+    # 1.0 = máxima dificultad/competitividad, 0.1 = mínima.
     valor = models.FloatField(default=1.0)
 
     comentario = models.TextField(blank=True)

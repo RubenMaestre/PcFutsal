@@ -118,10 +118,12 @@ class PuntosFantasyJugador(models.Model):
 class PuntosMVPJornada(models.Model):
     """
     Almacena los puntos MVP de un jugador en una jornada/semana específica.
-    Estos puntos se calculan desde valoraciones y se almacenan aquí para optimizar
-    el ranking MVP global (evitar recalcular cada vez).
     
-    Se crea/actualiza cuando termina una jornada o semana.
+    Estos puntos se calculan desde valoraciones y se almacenan aquí para optimizar
+    el ranking MVP global. Esto evita tener que recalcular los puntos cada vez
+    que se consulta el ranking, mejorando significativamente el rendimiento.
+    
+    Se crea/actualiza cuando termina una jornada o semana mediante un management command.
     """
     jugador = models.ForeignKey(
         "jugadores.Jugador",

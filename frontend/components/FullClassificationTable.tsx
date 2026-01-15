@@ -46,7 +46,10 @@ type Props = {
   lang?: string;
 };
 
-// 👇 componente nuevo para mostrar TODA la racha
+// Componente que muestra TODA la racha reciente de un equipo como puntos de colores.
+// A diferencia de MiniClassificationTable que muestra solo 5, este muestra toda la racha.
+// Cada punto es clickeable y puede tener un handler para navegar al partido correspondiente.
+// Los colores indican: verde (V=Victoria), amarillo (E=Empate), rojo (D=Derrota).
 function RachaDotsFull({
   racha,
   onClickDot,
@@ -65,6 +68,8 @@ function RachaDotsFull({
       {racha.map((res, idx) => {
         const code = (res || "").toUpperCase();
 
+        // Mapeo de códigos de resultado a colores CSS variables.
+        // Esto permite cambiar los colores globalmente desde el tema.
         let bgClass = "bg-[var(--color-error)]"; // derrota
         if (code === "V") {
           bgClass = "bg-[var(--color-success)]"; // victoria
